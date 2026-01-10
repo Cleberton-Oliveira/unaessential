@@ -6,7 +6,7 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import Link from "next/link";
 
 const WHATSAPP_URL =
-  "https://api.whatsapp.com/send/?phone=5548996260816&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20";
+  "https://api.whatsapp.com/send/?phone=5548991904131&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20";
 
 export function FloatingWhatsappButton() {
   return (

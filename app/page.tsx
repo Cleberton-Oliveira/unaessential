@@ -107,6 +107,10 @@ export default function Home() {
           borderBottom: 1,
           borderColor: "divider",
           bgcolor: "background.paper",
+          backgroundImage: "url(image/banners/banner_1.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <Container maxWidth="lg">
