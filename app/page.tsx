@@ -9,7 +9,6 @@ import {
   CardContent,
   CardMedia,
   Container,
-  Grid,
   Typography,
 } from "@mui/material";
 import Link from "next/link";
@@ -177,54 +176,63 @@ export default function Home() {
             </Typography>
           </Box>
 
-          <Grid container spacing={3}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, minmax(0, 1fr))",
+                md: "repeat(3, minmax(0, 1fr))",
+              },
+              gap: 3,
+            }}
+          >
             {sections.map((section) => (
-              <Grid item xs={12} sm={6} md={4} key={section.key}>
-                <Card
+              <Card
+                key={section.key}
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: "none",
+                  borderRadius: 3,
+                  border: 1,
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <CardMedia
+                  component="div"
                   sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    boxShadow: "none",
-                    borderRadius: 3,
-                    border: 1,
-                    borderColor: "divider",
-                    bgcolor: "background.paper",
+                    height: 140,
+                    bgcolor: "primary.main",
+                    opacity: 0.2,
                   }}
-                >
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      height: 140,
-                      bgcolor: "primary.main",
-                      opacity: 0.2,
-                    }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="overline" color="primary" sx={{ letterSpacing: 1 }}>
-                      {section.title}
-                    </Typography>
-                    <Typography variant="h6" sx={{ mt: 1 }}>
-                      {section.subtitle}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5 }}>
-                      {section.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions sx={{ px: 2, pb: 2 }}>
-                    <Button
-                      component={Link}
-                      href={section.href}
-                      size="small"
-                      color="primary"
-                    >
-                      Ir para a página
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="overline" color="primary" sx={{ letterSpacing: 1 }}>
+                    {section.title}
+                  </Typography>
+                  <Typography variant="h6" sx={{ mt: 1 }}>
+                    {section.subtitle}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5 }}>
+                    {section.description}
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ px: 2, pb: 2 }}>
+                  <Button
+                    component={Link}
+                    href={section.href}
+                    size="small"
+                    color="primary"
+                  >
+                    Ir para a página
+                  </Button>
+                </CardActions>
+              </Card>
             ))}
-          </Grid>
+          </Box>
         </Container>
       </Box>
     </Box>
