@@ -57,22 +57,13 @@ const sections = [
       "Descubra as tecnologias que utilizamos e como elas potencializam os resultados dos tratamentos.",
   },
   {
-    key: "resultados",
-    title: "Resultados",
-    subtitle: "Antes e depois e histórias reais de transformação.",
+    key: "resultados-feedbacks",
+    title: "Resultados & Feedbacks",
+    subtitle: "Antes e depois e relatos de quem já viveu a experiência.",
     href: "/resultados",
     image: "/images/resultados.jpg",
     description:
-      "Veja exemplos de resultados e entenda o que você pode esperar de cada protocolo da unaessential.",
-  },
-  {
-    key: "feedbacks",
-    title: "Feedbacks",
-    subtitle: "Depoimentos de quem já viveu a experiência unaessential.",
-    href: "/feedbacks",
-    image: "/images/feedbacks.jpg",
-    description:
-      "Leia as percepções e relatos de pacientes sobre o cuidado, o ambiente e os resultados.",
+      "Veja exemplos de resultados e leia depoimentos reais sobre o cuidado, o ambiente e a experiência na unaessential.",
   },
   {
     key: "endereco",

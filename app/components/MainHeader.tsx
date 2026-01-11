@@ -6,11 +6,10 @@ import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Início", href: "/" },
-  { label: "Tratamentos", href: "/tratamentos" },
+  { label: "Tratamentos & SPA", href: "/tratamentos" },
   { label: "Profissionais", href: "/profissionais" },
   { label: "Tecnologias", href: "/tecnologias" },
-  { label: "Resultados", href: "/resultados" },
-  { label: "Feedbacks", href: "/feedbacks" },
+  { label: "Resultados & Feedbacks", href: "/resultados" },
   { label: "Endereço", href: "/endereco" },
 ];
 
