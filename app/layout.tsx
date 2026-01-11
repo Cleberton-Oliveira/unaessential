@@ -31,9 +31,17 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <MuiThemeProvider>
-          <MainHeader />
-          <main>{children}</main>
-          <MainFooter />
+          <div
+            style={{
+              minHeight: "100vh",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <MainHeader />
+            <main style={{ flex: 1 }}>{children}</main>
+            <MainFooter />
+          </div>
           <FloatingWhatsappButton />
         </MuiThemeProvider>
       </body>

@@ -7,6 +7,8 @@ type ResultSlide = {
   id: string;
   title: string;
   description: string;
+  imageSrc?: string;
+  alt?: string;
 };
 
 type Feedback = {
@@ -19,23 +21,39 @@ type Feedback = {
 const resultSlides: ResultSlide[] = [
   {
     id: "resultado-1",
-    title: "Resultado corporal",
+    title: "Antes e depois 1",
     description:
-      "Espaço reservado para foto de antes e depois de um tratamento corporal (ex.: redução de medidas, flacidez, celulite).",
+      "Exemplo de resultado real obtido na clínica, ilustrando a diferença visual entre o antes e o depois do protocolo.",
+    imageSrc: "/image/resultados/antes_e_depois_1.jpg",
+    alt: "Foto de antes e depois ilustrando um resultado de tratamento estético.",
   },
   {
     id: "resultado-2",
-    title: "Resultado facial",
+    title: "Antes e depois 2",
     description:
-      "Espaço reservado para foto de antes e depois de um tratamento facial (ex.: textura, manchas, luminosidade).",
+      "Sequência de imagens de antes e depois destacando melhora de contorno, volume ou textura da região tratada.",
+    imageSrc: "/image/resultados/antes_e_depois_2.jpg",
+    alt: "Sequência de fotos mostrando resultado de tratamento com melhora visível.",
   },
   {
     id: "resultado-3",
-    title: "Resultado tecnologia",
+    title: "Antes e depois 3",
     description:
-      "Espaço reservado para foto destacando resultados obtidos com o uso de tecnologias associadas aos tratamentos.",
+      "Registro fotográfico de mais um caso acompanhado na clínica, com evolução visível entre o antes e o depois.",
+    imageSrc: "/image/resultados/antes_e_depois_3.jpg",
+    alt: "Foto de antes e depois evidenciando evolução de tratamento.",
+  },
+  {
+    id: "resultado-4",
+    title: "Antes e depois 4",
+    description:
+      "Outra possibilidade de resultado, reforçando como os protocolos são personalizados para cada necessidade.",
+    imageSrc: "/image/resultados/antes_e_depois_4.png",
+    alt: "Imagem de antes e depois de tratamento personalizado.",
   },
 ];
+
+const RESULTS_PER_PAGE = 4;
 
 const textFeedbacks: Feedback[] = [
   {
@@ -116,18 +134,19 @@ const textFeedbacks: Feedback[] = [
 ];
 
 export default function ResultadosPage() {
-  const [currentResultIndex, setCurrentResultIndex] = useState(0);
+  const [currentResultPage, setCurrentResultPage] = useState(0);
   const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);
 
-  const currentResult = resultSlides[currentResultIndex];
   const currentFeedback = textFeedbacks[currentFeedbackIndex];
 
+  const totalResultPages = Math.ceil(resultSlides.length / RESULTS_PER_PAGE);
+
   const handlePrevResult = () => {
-    setCurrentResultIndex((prev) => (prev - 1 + resultSlides.length) % resultSlides.length);
+    setCurrentResultPage((prev) => (prev - 1 + totalResultPages) % totalResultPages);
   };
 
   const handleNextResult = () => {
-    setCurrentResultIndex((prev) => (prev + 1) % resultSlides.length);
+    setCurrentResultPage((prev) => (prev + 1) % totalResultPages);
   };
 
   const handlePrevFeedback = () => {
@@ -161,66 +180,101 @@ export default function ResultadosPage() {
             Em breve, aqui você verá fotos de antes e depois organizadas por tipo de tratamento.
           </Typography>
 
-          <Card
-            sx={{
-              mt: 3,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              boxShadow: "none",
-              overflow: "hidden",
-            }}
-          >
+          <Box sx={{ mt: 3 }}>
             <Box
               sx={{
-                height: 260,
-                bgcolor: "grey.100",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                px: 3,
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, 1fr)",
+                  md: "repeat(4, 1fr)",
+                },
+                gap: 2,
               }}
             >
-              <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 520 }}>
-                {currentResult.description}
-              </Typography>
+              {resultSlides
+                .slice(currentResultPage * RESULTS_PER_PAGE, currentResultPage * RESULTS_PER_PAGE + RESULTS_PER_PAGE)
+                .map((result) => (
+                  <Card
+                    key={result.id}
+                    sx={{
+                      borderRadius: 3,
+                      border: 1,
+                      borderColor: "divider",
+                      boxShadow: "none",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        bgcolor: "grey.100",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        px: 2,
+                        py: 2,
+                      }}
+                    >
+                      {result.imageSrc ? (
+                        <Box
+                          component="img"
+                          src={result.imageSrc}
+                          alt={result.alt || result.title}
+                          sx={{
+                            width: "100%",
+                            maxHeight: 360,
+                            objectFit: "contain",
+                            borderRadius: 2,
+                          }}
+                        />
+                      ) : (
+                        <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 520 }}>
+                          {result.description}
+                        </Typography>
+                      )}
+                    </Box>
+                    <CardContent>
+                      <Typography variant="overline" color="primary" sx={{ letterSpacing: 1 }}>
+                        {result.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                        {result.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))}
             </Box>
-            <CardContent>
-              <Typography variant="overline" color="primary" sx={{ letterSpacing: 1 }}>
-                {currentResult.title}
-              </Typography>
-            </CardContent>
-          </Card>
 
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{ mt: 2, alignItems: "center", justifyContent: "space-between" }}
-          >
-            <Stack direction="row" spacing={1}>
-              <Button size="small" variant="outlined" color="primary" onClick={handlePrevResult}>
-                Anterior
-              </Button>
-              <Button size="small" variant="outlined" color="primary" onClick={handleNextResult}>
-                Próximo
-              </Button>
-            </Stack>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{ mt: 2, alignItems: "center", justifyContent: "space-between" }}
+            >
+              <Stack direction="row" spacing={1}>
+                <Button size="small" variant="outlined" color="primary" onClick={handlePrevResult}>
+                  Anterior
+                </Button>
+                <Button size="small" variant="outlined" color="primary" onClick={handleNextResult}>
+                  Próximo
+                </Button>
+              </Stack>
 
-            <Stack direction="row" spacing={0.5}>
-              {resultSlides.map((slide, index) => (
-                <Box
-                  key={slide.id}
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: "50%",
-                    bgcolor: index === currentResultIndex ? "primary.main" : "grey.300",
-                  }}
-                />
-              ))}
+              <Stack direction="row" spacing={0.5}>
+                {Array.from({ length: totalResultPages }).map((_, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: "50%",
+                      bgcolor: index === currentResultPage ? "primary.main" : "grey.300",
+                    }}
+                  />
+                ))}
+              </Stack>
             </Stack>
-          </Stack>
+          </Box>
         </Box>
 
         {/* CARROSSEL DE FEEDBACKS (TEXTO ESTILO GOOGLE) */}

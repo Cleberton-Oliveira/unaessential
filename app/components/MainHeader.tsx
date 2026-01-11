@@ -1,8 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { AppBar, Toolbar, Typography, Button, Container, Stack } from "@mui/material";
+import Image from "next/image";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Container,
+  Stack,
+  IconButton,
+  Menu,
+  MenuItem,
+  Box,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navItems = [
   { label: "Início", href: "/" },
@@ -15,6 +30,17 @@ const navItems = [
 
 export function MainHeader() {
   const pathname = usePathname();
+
+  const [mobileMenuAnchorEl, setMobileMenuAnchorEl] = useState<null | HTMLElement>(null);
+  const mobileMenuOpen = Boolean(mobileMenuAnchorEl);
+
+  const handleOpenMobileMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMenuAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseMobileMenu = () => {
+    setMobileMenuAnchorEl(null);
+  };
 
   return (
     <AppBar
@@ -37,46 +63,125 @@ export function MainHeader() {
             alignItems: "center",
           }}
         >
-          <Typography
-            variant="h6"
+          <Box
             component={Link}
             href="/"
             sx={{
+              display: "flex",
+              alignItems: "center",
               textDecoration: "none",
-              color: "secondary.main",
-              letterSpacing: 2,
-              textTransform: "uppercase",
             }}
           >
-            unaessential
-          </Typography>
+            <Image
+              src="/logo/logo.svg"
+              alt="Logo Unaessential"
+              width={160}
+              height={40}
+              style={{ height: "auto", width: "auto", maxHeight: 34 }}
+              priority
+            />
+          </Box>
 
-          <Stack direction="row" spacing={1.5} sx={{ display: { xs: "none", md: "flex" } }}>
+          {/* MENU DESKTOP */}
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              alignItems: "center",
+              flexGrow: 1,
+              ml: 4,
+            }}
+          >
+            <Stack direction="row" spacing={1.5}>
+              {navItems.map((item) => {
+                // considera "/" como ativo apenas na home exata; demais usam prefixo
+                const isActive =
+                  item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+                return (
+                  <Button
+                    key={item.href}
+                    component={Link}
+                    href={item.href}
+                    color="inherit"
+                    sx={{
+                      textTransform: "none",
+                      fontSize: 14,
+                      color: isActive ? "primary.main" : "secondary.main",
+                      bgcolor: isActive ? "secondary.main" : "transparent",
+                      borderRadius: 999,
+                      px: 2,
+                    }}
+                  >
+                    {item.label}
+                  </Button>
+                );
+              })}
+            </Stack>
+
+            <Button
+              component={Link}
+              href="/agendar"
+              variant="contained"
+              color="secondary"
+              startIcon={<EventAvailableIcon />}
+              sx={{
+                textTransform: "none",
+                fontSize: 14,
+                borderRadius: 999,
+                px: 2.5,
+                ml: "auto",
+              }}
+            >
+              Agendar agora
+            </Button>
+          </Box>
+
+          {/* MENU MOBILE */}
+          <IconButton
+            edge="end"
+            color="secondary"
+            aria-label="abrir menu"
+            onClick={handleOpenMobileMenu}
+            sx={{ display: { xs: "flex", md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          <Menu
+            anchorEl={mobileMenuAnchorEl}
+            open={mobileMenuOpen}
+            onClose={handleCloseMobileMenu}
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            transformOrigin={{ vertical: "top", horizontal: "right" }}
+          >
             {navItems.map((item) => {
-              // considera "/" como ativo apenas na home exata; demais usam prefixo
               const isActive =
                 item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
 
               return (
-                <Button
+                <MenuItem
                   key={item.href}
                   component={Link}
                   href={item.href}
-                  color="inherit"
+                  onClick={handleCloseMobileMenu}
                   sx={{
-                    textTransform: "none",
                     fontSize: 14,
-                    color: isActive ? "primary.main" : "secondary.main",
-                    bgcolor: isActive ? "secondary.main" : "transparent",
-                    borderRadius: 999,
-                    px: 2,
+                    color: isActive ? "primary.main" : "text.primary",
                   }}
                 >
                   {item.label}
-                </Button>
+                </MenuItem>
               );
             })}
-          </Stack>
+            <MenuItem
+              component={Link}
+              href="/agendar"
+              onClick={handleCloseMobileMenu}
+              sx={{ fontSize: 14, fontWeight: 500, mr: -10}}
+            >
+              Agendar agora
+            </MenuItem>
+          </Menu>
         </Toolbar>
       </Container>
     </AppBar>
