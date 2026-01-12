@@ -51,6 +51,30 @@ const resultSlides: ResultSlide[] = [
     imageSrc: "/image/resultados/antes_e_depois_4.png",
     alt: "Imagem de antes e depois de tratamento personalizado.",
   },
+  {
+    id: "resultado-5",
+    title: "Pós-cirúrgico",
+    description:
+      "Registro fotográfico de acompanhamento pós-cirúrgico, evidenciando redução de inchaço e melhora gradual do contorno.",
+    imageSrc: "/image/resultados/poscirurgico.jpg",
+    alt: "Antes e depois de tratamento pós-cirúrgico, com redução de inchaço.",
+  },
+  {
+    id: "resultado-6",
+    title: "Tratamento facial",
+    description:
+      "Exemplo de resultado facial, com melhora de textura, viço e uniformidade da pele após protocolo estético.",
+    imageSrc: "/image/resultados/facial.jpg",
+    alt: "Antes e depois de tratamento facial, mostrando pele mais uniforme e luminosa.",
+  },
+  {
+    id: "resultado-7",
+    title: "Tratamento em braços",
+    description:
+      "Resultado em região de braços, com melhora de contorno e aspecto da pele após sequência de atendimentos.",
+    imageSrc: "/image/resultados/bracos.png",
+    alt: "Antes e depois de tratamento estético em braços.",
+  },
 ];
 
 const RESULTS_PER_PAGE = 4;
@@ -168,9 +192,10 @@ export default function ResultadosPage() {
         </Typography>
 
         <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 760 }}>
-          Nesta página você encontra, de forma organizada, exemplos de resultados dos tratamentos unaessential e
-          depoimentos de quem já viveu essa experiência. As fotos de resultados serão apresentadas em formato de
-          carrossel e os feedbacks em um layout semelhante às avaliações do Google.
+          Nesta página você encontra resultados de alguns tratamentos estéticos e registros fotográficos de alívio
+          imediato após drenagem, além de depoimentos de pessoas que já viveram a experiência na unaessential. Os
+          relatos apresentados aqui também podem ser encontrados nas avaliações do Google, reforçando a transparência
+          e a realidade da experiência de quem passa por nossos atendimentos.
         </Typography>
 
         {/* CARROSSEL DE RESULTADOS (FOTOS) */}
