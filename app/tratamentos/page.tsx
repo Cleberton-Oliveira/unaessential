@@ -1,4 +1,5 @@
 import { Container, Typography, Box, Stack, Button } from "@mui/material";
+import Image from "next/image";
 
 export default function TratamentosPage() {
   return (
@@ -127,17 +128,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para fotos ou vídeos dos tratamentos corporais, mostrando antes e depois, ambiente e
-              momentos de cuidado.
-            </Typography>
+            <Image
+              src="/image/tratamentos/ultrassomab.jpg"
+              alt="Tratamento corporal com ultrassom abdominal na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -171,17 +171,22 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para fotos ou vídeos relacionados ao tratamento de lipedema, reforçando acolhimento,
-              resultados e sensação de leveza.
-            </Typography>
+            <Image
+              src="/image/tecnologias/ultrassom.jpg"
+              alt="Imagem ilustrativa de tecnologia utilizada no tratamento de lipedema"
+              width={800}
+              height={600}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 35%",
+                display: "block",
+              }}
+            />
           </Box>
         </Stack>
 
@@ -229,17 +234,79 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para fotos ou vídeos dos tratamentos faciais, como antes e depois, detalhes de pele e
-              a experiência de cabine.
+            <Image
+              src="/image/tratamentos/crioffacial.jpg"
+              alt="Tratamento facial crioffacial na UnaEssential"
+              width={800}
+              height={600}
+              style={{
+                width: "120%",
+                height: "120%",
+                objectFit: "cover",
+                objectPosition: "center 40%",
+                display: "block",
+              }}
+            />
+          </Box>
+        </Stack>
+
+        {/* LIMPEZA DE PELE */}
+        <Typography variant="h4" sx={{ mt: 6 }}>
+          Limpeza de pele
+        </Typography>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={3}
+          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
+        >
+          <Box sx={{ flex: 2 }}>
+            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
+              A limpeza de pele é um cuidado essencial para manter a pele mais equilibrada, macia e com aspecto saudável
+              no dia a dia. Ela auxilia na remoção de impurezas, excesso de oleosidade e células mortas que se
+              acumulam ao longo da rotina, preparando a pele para absorver melhor os ativos de tratamento.
             </Typography>
+
+            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
+              Indicada para quem sente a pele pesada, com poros aparentes, cravinhos ou brilho excessivo, a limpeza de
+              pele também pode ser associada a outros protocolos faciais, potencializando resultados e mantendo a pele
+              com toque mais uniforme e confortável.
+            </Typography>
+
+            <Box component="ul" sx={{ mt: 1.5, pl: 3, color: "text.secondary" }}>
+              <li>Ajuda a desobstruir poros e reduzir a aparência de cravos</li>
+              <li>Contribui para controlar oleosidade e brilho excessivo</li>
+              <li>Melhora a textura e o viço da pele</li>
+              <li>Prepara a pele para receber melhor outros tratamentos faciais</li>
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              flex: 1,
+              borderRadius: 3,
+              border: 1,
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              minHeight: 220,
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="/image/tratamentos/limpeza.jpg"
+              alt="Limpeza de pele na UnaEssential"
+              width={800}
+              height={600}
+              style={{
+                width: "110%",
+                height: "110%",
+                objectFit: "cover",
+                objectPosition: "center 45%",
+                display: "block",
+              }}
+            />
           </Box>
         </Stack>
 
@@ -309,16 +376,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para imagem ou vídeo (reels) mostrando a experiência de Head SPA na UnaEssential.
-            </Typography>
+            <Image
+              src="/image/tratamentos/headspa1.jpg"
+              alt="Experiência de Head SPA na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -352,17 +419,22 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da massagem relaxante, ilustrando o ambiente acolhedor e o momento de
-              alívio das tensões.
-            </Typography>
+            <Image
+              src="/image/tratamentos/relax.jpg"
+              alt="Massagem relaxante na UnaEssential"
+              width={800}
+              height={600}
+              style={{
+                width: "140%",
+                height: "140%",
+                objectFit: "cover",
+                objectPosition: "center 50%",
+                display: "block",
+              }}
+            />
           </Box>
         </Stack>
 
@@ -391,17 +463,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da massagem com pedras quentes, destacando o aconchego do
-              procedimento.
-            </Typography>
+            <Image
+              src="/image/tratamentos/quente.png"
+              alt="Massagem com pedras quentes na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -431,17 +502,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da Massagem Aura, demonstrando o clima terapêutico e sensorial do
-              atendimento.
-            </Typography>
+            <Image
+              src="/image/tratamentos/aura.jpg"
+              alt="Massagem Aura na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -471,17 +541,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo do Detox SPA Intensivo, mostrando a manta térmica, a argila abdominal
-              e o clima de relaxamento do ritual.
-            </Typography>
+            <Image
+              src="/image/tratamentos/detox.jpg"
+              alt="Detox SPA intensivo na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -516,17 +585,22 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo do peeling vulcânico, evidenciando o aspecto luminoso e renovado da
-              pele.
-            </Typography>
+            <Image
+              src="/image/tratamentos/mascara.jpg"
+              alt="Aplicação de máscara no peeling vulcânico na UnaEssential"
+              width={800}
+              height={600}
+              style={{
+                width: "120%",
+                height: "120%",
+                objectFit: "cover",
+                objectPosition: "center 80%",
+                display: "block",
+              }}
+            />
           </Box>
         </Stack>
 
@@ -556,17 +630,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da hidratação facial multicamadas, destacando o conforto e o brilho da
-              pele após o tratamento.
-            </Typography>
+            <Image
+              src="/image/tratamentos/hidrata.jpg"
+              alt="Hidratação intensiva facial multicamadas na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -592,17 +665,16 @@ export default function TratamentosPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 200,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo do Spa dos Lábios, mostrando o cuidado delicado e o resultado de
-              lábios mais macios e viçosos.
-            </Typography>
+            <Image
+              src="/image/tratamentos/spalabio.jpg"
+              alt="Spa dos Lábios na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 

@@ -39,6 +39,15 @@ const sections = [
       "Conheça a curadoria de tratamentos faciais e corporais da unaessential, pensados para cada fase da sua jornada.",
   },
   {
+    key: "spa-servicos",
+    title: "SPA & Day SPA",
+    subtitle: "Momentos de pausa, relaxamento profundo e autocuidado.",
+    href: "/tratamentos",
+    image: "/images/spa.jpg",
+    description:
+      "Explore nossas experiências de SPA, Day SPA e rituais sensoriais com óleos essenciais, massagem relaxante e head spa.",
+  },
+  {
     key: "profissionais",
     title: "Profissionais",
     subtitle: "Uma equipe especializada, acolhedora e em constante atualização.",
@@ -200,8 +209,60 @@ export default function Home() {
                   component="div"
                   sx={{
                     height: 140,
-                    bgcolor: "primary.main",
-                    opacity: 0.2,
+                    borderTopLeftRadius: 12,
+                    borderTopRightRadius: 12,
+                    overflow: "hidden",
+                    bgcolor:
+                      section.key === "profissionais" ||
+                      section.key === "tratamentos" ||
+                      section.key === "spa-servicos" ||
+                      section.key === "tecnologias" ||
+                      section.key === "resultados-feedbacks" ||
+                      section.key === "endereco"
+                        ? undefined
+                        : "primary.main",
+                    opacity:
+                      section.key === "profissionais" ||
+                      section.key === "tratamentos" ||
+                      section.key === "spa-servicos" ||
+                      section.key === "tecnologias" ||
+                      section.key === "resultados-feedbacks" ||
+                      section.key === "endereco"
+                        ? 1
+                        : 0.2,
+                    backgroundImage:
+                      section.key === "profissionais"
+                        ? "url(/image/profissionais/Laura.jpg)"
+                        : section.key === "tratamentos"
+                        ? "url(/image/tratamentos/drenagem.jpg)"
+                        : section.key === "spa-servicos"
+                        ? "url(/image/tratamentos/headspa1.jpg)"
+                        : section.key === "tecnologias"
+                        ? "url(/image/tecnologias/ultrassom.jpg)"
+                        : section.key === "resultados-feedbacks"
+                        ? "url(/image/resultados/antes_e_depois_1.jpg)"
+                        : section.key === "endereco"
+                        ? "url(/image/banners/recepcao.jpg)"
+                        : undefined,
+                    backgroundSize:
+                      section.key === "profissionais" ||
+                      section.key === "tratamentos" ||
+                      section.key === "spa-servicos" ||
+                      section.key === "tecnologias" ||
+                      section.key === "resultados-feedbacks" ||
+                      section.key === "endereco"
+                        ? "cover"
+                        : undefined,
+                    backgroundPosition:
+                      section.key === "spa-servicos"
+                        ? "center 20%"
+                        : section.key === "profissionais" ||
+                          section.key === "tratamentos" ||
+                          section.key === "tecnologias" ||
+                          section.key === "resultados-feedbacks" ||
+                          section.key === "endereco"
+                        ? "center"
+                        : undefined,
                   }}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
