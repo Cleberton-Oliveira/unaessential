@@ -161,6 +161,35 @@ export default function EnderecoPage() {
           </Box>
         </Stack>
 
+        <Box
+          sx={{
+            mt: 3,
+            borderRadius: 3,
+            overflow: "hidden",
+            boxShadow: 1,
+            height: { xs: 340, md: 480 },
+            border: 1,
+            borderColor: "divider",
+            bgcolor: "background.paper",
+          }}
+        >
+          <Box
+            component="video"
+            src="/video/clinica.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            sx={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </Box>
+
       </Container>
     </Box>
   );
