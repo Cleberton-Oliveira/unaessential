@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Box,
   Button,
@@ -26,19 +26,35 @@ const banners = [
     title: "Resultados que transformam",
     subtitle: "Acompanhamento próximo e foco em resultados naturais.",
   },
+  {
+    title: "Head Spa & relaxamento",
+    subtitle: "Uma experiência completa de bem-estar para desacelerar e se cuidar.",
+  },
+  {
+    title: "Resultados & feedbacks",
+    subtitle: "Antes e depois e relatos reais de quem já viveu a experiência.",
+  },
 ];
 
 const videoBanners = [
   {
-    src: "/video/corpoban.mov",
+    src: "/video/geralban.mp4",
     rotation: 0,
   },
   {
-    src: "/video/faceban.mov",
+    src: "/video/faceban.mp4",
     rotation: 0,
   },
   {
-    src: "/video/geralban.mov",
+    src: "/video/Resultados.mp4",
+    rotation: 0,
+  },
+  {
+    src: "/video/headspaban.mp4",
+    rotation: 0,
+  },
+  {
+    src: "/video/corpoban.mp4",
     rotation: 0,
   },
 ];
@@ -102,6 +118,12 @@ const sections = [
 
 export default function Home() {
   const [currentBanner, setCurrentBanner] = useState(0);
+  const [videoReady, setVideoReady] = useState<boolean[]>(() =>
+    Array(videoBanners.length).fill(false)
+  );
+  const [videoErrored, setVideoErrored] = useState<boolean[]>(() =>
+    Array(videoBanners.length).fill(false)
+  );
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -111,7 +133,22 @@ export default function Home() {
     return () => clearInterval(id);
   }, []);
   const banner = banners[currentBanner];
-  const video = videoBanners[currentBanner % videoBanners.length];
+  const preferredVideoIndex = currentBanner % videoBanners.length;
+  const activeVideoIndex = useMemo(() => {
+    const len = videoBanners.length;
+    if (!len) return 0;
+
+    const anyReady = videoReady.some(Boolean);
+
+    for (let step = 0; step < len; step += 1) {
+      const idx = (preferredVideoIndex + step) % len;
+      if (videoErrored[idx]) continue;
+      if (!anyReady) return idx;
+      if (videoReady[idx]) return idx;
+    }
+
+    return 0;
+  }, [preferredVideoIndex, videoReady, videoErrored]);
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
@@ -120,37 +157,64 @@ export default function Home() {
         sx={{
           position: "relative",
           overflow: "hidden",
-          py: { xs: 8, md: 10 },
-          minHeight: { xs: "60vh", md: "80vh" },
+          py: { xs: 6, md: 7 },
+          minHeight: { xs: "45vh", md: "58vh" },
           borderBottom: 1,
           borderColor: "divider",
           bgcolor: "background.paper",
         }}
       >
-        <Box
-          component="video"
-          src={video.src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          sx={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transform: video.rotation ? `rotate(${video.rotation}deg)` : "none",
-            transformOrigin: "center center",
-            zIndex: 0,
-          }}
-        />
+        {videoBanners.map((item, index) => {
+          const isActive = activeVideoIndex === index;
+          return (
+            <Box
+              key={item.src}
+              component="video"
+              src={item.src}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onCanPlay={() => {
+                setVideoReady((prev) => {
+                  if (prev[index]) return prev;
+                  const next = [...prev];
+                  next[index] = true;
+                  return next;
+                });
+              }}
+              onError={() => {
+                setVideoErrored((prev) => {
+                  if (prev[index]) return prev;
+                  const next = [...prev];
+                  next[index] = true;
+                  return next;
+                });
+              }}
+              sx={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                transform: item.rotation ? `rotate(${item.rotation}deg)` : "none",
+                transformOrigin: "center center",
+                opacity: isActive ? 1 : 0,
+                transition: "opacity 800ms ease",
+                zIndex: 0,
+              }}
+            />
+          );
+        })}
 
         <Box
           sx={{
             position: "relative",
             zIndex: 1,
-            bgcolor: "rgba(0, 0, 0, 0.35)",
+            bgcolor: "rgba(0, 0, 0, 0.55)",
+            backdropFilter: "blur(1px)",
+            py: { xs: 4, md: 5 },
           }}
         >
           <Container maxWidth="lg">
@@ -163,13 +227,13 @@ export default function Home() {
               }}
             >
               <Box sx={{ flex: 1 }}>
-              <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
+              <Typography variant="overline" sx={{ letterSpacing: 2, color: "common.white", textShadow: "0 2px 10px rgba(0,0,0,0.85)" }}>
                 estética & bem-estar
               </Typography>
-              <Typography variant="h3" component="h1" sx={{ mt: 2, mb: 2 }}>
+              <Typography variant="h3" component="h1" sx={{ mt: 2, mb: 2, color: "common.white", textShadow: "0 3px 16px rgba(0,0,0,0.9)" }}>
                 {banner.title}
               </Typography>
-              <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 520, mb: 4 }}>
+              <Typography variant="body1" sx={{ maxWidth: 520, mb: 4, color: "rgba(255,255,255,0.92)", textShadow: "0 2px 10px rgba(0,0,0,0.85)" }}>
                 {banner.subtitle}
               </Typography>
               <Button
