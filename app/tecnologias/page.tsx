@@ -1,4 +1,5 @@
 import { Container, Typography, Box, Stack, Button, Divider } from "@mui/material";
+import Image from "next/image";
 
 function Checklist({ items }: { items: string[] }) {
   return (
@@ -282,17 +283,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da criolipólise de placas, mostrando a aplicação das placas em áreas
-              corporais e faciais.
-            </Typography>
+            <Image
+              src="/image/tecnologias/crio.jpg"
+              alt="Aplicação da criolipólise de placas na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -344,17 +344,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da radiofrequência, evidenciando o aquecimento controlado e a
-              aplicação em região corporal ou facial.
-            </Typography>
+            <Image
+              src="/image/tratamentos/crioffacial.jpg"
+              alt="Tratamento facial com radiofrequência na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "120%", height: "120%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -408,17 +407,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da criofrequência em uso, mostrando a ponteira resfriada e o conforto
-              do procedimento.
-            </Typography>
+            <Image
+              src="/image/tecnologias/CrioFreq1.jpg"
+              alt="Aplicação de criofrequência na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -471,17 +469,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo do ultrassom estético, mostrando a aplicação e a experiência de
-              conforto durante o procedimento.
-            </Typography>
+            <Image
+              src="/image/tratamentos/ultrassomab.jpg"
+              alt="Aplicação do ultrassom estético na região abdominal na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -535,17 +532,21 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da tecarterapia, evidenciando a aplicação em regiões corporais e o
-              foco terapêutico.
-            </Typography>
+            <Image
+              src="/image/tecnologias/tecarr.webp"
+              alt="Aplicação da tecarterapia na UnaEssential"
+              width={800}
+              height={600}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
           </Box>
         </Stack>
 
@@ -599,17 +600,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da criotecarterapia, mostrando o cuidado com o conforto térmico e o
-              trabalho profundo nos tecidos.
-            </Typography>
+            <Image
+              src="/image/tecnologias/CrioFreq1.jpg"
+              alt="Aplicação de criotecarterapia na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -664,17 +664,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da radiofrequência fracionada, mostrando a ponteira fracionada e as
-              áreas de aplicação.
-            </Typography>
+            <Image
+              src="/image/tecnologias/fracionada.jpg"
+              alt="Aplicação de radiofrequência fracionada na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -728,17 +727,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da aplicação de laser e LED, evidenciando a luz sobre a pele e o clima
-              de conforto do procedimento.
-            </Typography>
+            <Image
+              src="/image/tecnologias/fototerapia.jpg"
+              alt="Aplicação de laser e LED na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -792,17 +790,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo do Vacuum LED em ação, mostrando a sucção suave, o uso de luzes e o
-              cuidado com o conforto da pele.
-            </Typography>
+            <Image
+              src="/image/tecnologias/endermo.jpg"
+              alt="Aplicação de Vacuum LED na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -856,17 +853,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da aplicação de microcorrentes, mostrando a delicadeza e o conforto do
-              procedimento.
-            </Typography>
+            <Image
+              src="/image/tecnologias/micro.jpg"
+              alt="Aplicação de microcorrentes na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -919,17 +915,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da corrente russa e aussie, evidenciando a aplicação em áreas
-              corporais e de contorno facial.
-            </Typography>
+            <Image
+              src="/image/tecnologias/russa.jpeg"
+              alt="Aplicação da corrente russa e aussie na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -982,17 +977,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da Massagem Aura, transmitindo a sensação de relaxamento e acolhimento
-              do ritual.
-            </Typography>
+            <Image
+              src="/image/tratamentos/aura.jpg"
+              alt="Massagem Aura com tecnologia na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -1045,17 +1039,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da manta térmica detox, mostrando o aconchego e o clima de pausa do
-              momento.
-            </Typography>
+            <Image
+              src="/image/tecnologias/manta.png"
+              alt="Manta térmica detox na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -1108,16 +1101,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo da bota pneumática, mostrando o conforto do uso nas pernas.
-            </Typography>
+            <Image
+              src="/image/tratamentos/botaedrena.jpg"
+              alt="Bota pneumática em uso na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
 
@@ -1170,17 +1163,16 @@ export default function TecnologiasPage() {
               borderColor: "divider",
               bgcolor: "background.paper",
               minHeight: 220,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              px: 2,
+              overflow: "hidden",
             }}
           >
-            <Typography variant="body2" color="text.secondary">
-              Espaço reservado para foto ou vídeo de terapia combinada, mostrando o uso de mais de uma tecnologia na
-              mesma sessão.
-            </Typography>
+            <Image
+              src="/image/tratamentos/auraebota.jpg"
+              alt="Terapia combinada com Massagem Aura e bota pneumática na UnaEssential"
+              width={800}
+              height={600}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </Box>
         </Stack>
       </Container>
