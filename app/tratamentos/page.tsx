@@ -94,7 +94,11 @@ export default function TratamentosPage() {
         </Box>
 
         {/* TRATAMENTOS CORPORAIS */}
-        <Typography id="tratamentos-corporais" variant="h4" sx={{ mt: 4 }}>
+        <Typography
+          id="tratamentos-corporais"
+          variant="h4"
+          sx={{ mt: 4, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Tratamentos corporais
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5, maxWidth: 720 }}>
@@ -142,7 +146,11 @@ export default function TratamentosPage() {
         </Stack>
 
         {/* TRATAMENTO PARA LIPEDEMA */}
-        <Typography id="tratamento-lipedema" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="tratamento-lipedema"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Tratamento para lipedema
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5, maxWidth: 720 }}>
@@ -191,7 +199,11 @@ export default function TratamentosPage() {
         </Stack>
 
         {/* TRATAMENTOS FACIAIS */}
-        <Typography id="tratamentos-faciais" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="tratamentos-faciais"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Tratamentos faciais
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5, maxWidth: 720 }}>
@@ -313,7 +325,11 @@ export default function TratamentosPage() {
         {/* SPA & DAY SPA */}
 
         {/* HEAD SPA */}
-        <Typography id="head-spa" variant="h4" sx={{ mt: 8 }}>
+        <Typography
+          id="head-spa"
+          variant="h4"
+          sx={{ mt: 8, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Head SPA
         </Typography>
         <Stack
@@ -390,7 +406,11 @@ export default function TratamentosPage() {
         </Stack>
 
         {/* MASSAGENS CORPORAIS (SPA) */}
-        <Typography id="massagens-spa" variant="h4" sx={{ mt: 8 }}>
+        <Typography
+          id="massagens-spa"
+          variant="h4"
+          sx={{ mt: 8, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Massagens corporais (SPA)
         </Typography>
 
@@ -555,7 +575,11 @@ export default function TratamentosPage() {
         </Stack>
 
         {/* TRATAMENTOS FACIAIS EM CLIMA DE SPA */}
-        <Typography id="experiencias-faciais-spa" variant="h4" sx={{ mt: 8 }}>
+        <Typography
+          id="experiencias-faciais-spa"
+          variant="h4"
+          sx={{ mt: 8, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Experiências faciais em clima de SPA
         </Typography>
 
@@ -679,7 +703,11 @@ export default function TratamentosPage() {
         </Stack>
 
         {/* DAY SPA */}
-        <Typography id="day-spa" variant="h4" sx={{ mt: 8 }}>
+        <Typography
+          id="day-spa"
+          variant="h4"
+          sx={{ mt: 8, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Day SPA unaessential
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 760 }}>

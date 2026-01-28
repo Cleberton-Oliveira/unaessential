@@ -222,7 +222,11 @@ export default function TecnologiasPage() {
         </Box>
 
         {/* CRIOLIPÓLISE DE PLACAS */}
-        <Typography id="criolipolise-placas" variant="h4" sx={{ mt: 5 }}>
+        <Typography
+          id="criolipolise-placas"
+          variant="h4"
+          sx={{ mt: 5, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Criolipólise de placas
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -295,7 +299,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* RADIOFREQUÊNCIA */}
-        <Typography id="radiofrequencia" variant="h4" sx={{ mt: 5 }}>
+        <Typography
+          id="radiofrequencia"
+          variant="h4"
+          sx={{ mt: 5, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Radiofrequência
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -353,7 +361,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* CRIOFREQUÊNCIA */}
-        <Typography id="criofrequencia" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="criofrequencia"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Criofrequência
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -413,7 +425,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* ULTRASSOM ESTÉTICO */}
-        <Typography id="ultrassom-estetico" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="ultrassom-estetico"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Ultrassom estético
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -472,7 +488,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* TECARTERAPIA */}
-        <Typography id="tecarterapia" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="tecarterapia"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Tecarterapia
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -532,7 +552,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* CRIOTECARTERAPIA */}
-        <Typography id="criotecarterapia" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="criotecarterapia"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Criotecarterapia
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -592,7 +616,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* RADIOFREQUÊNCIA FRACIONADA */}
-        <Typography id="radiofrequencia-fracionada" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="radiofrequencia-fracionada"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Radiofrequência fracionada
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -653,7 +681,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* LASER & LED */}
-        <Typography id="laser-led" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="laser-led"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Laser &amp; LED
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -713,7 +745,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* VACUUM LED */}
-        <Typography id="vacuum-led" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="vacuum-led"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Vacuum LED
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -773,7 +809,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* MICROCORRENTES */}
-        <Typography id="microcorrentes" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="microcorrentes"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Microcorrentes
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -833,7 +873,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* CORRENTE RUSSA E AUSSIE */}
-        <Typography id="corrente-russa-aussie" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="corrente-russa-aussie"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Corrente russa &amp; aussie
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -892,7 +936,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* MASSAGEM AURA */}
-        <Typography id="massagem-aura" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="massagem-aura"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Massagem Aura
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -951,7 +999,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* MANTA TÉRMICA DETOX */}
-        <Typography id="manta-termica-detox" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="manta-termica-detox"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Manta térmica detox
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -1010,7 +1062,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* BOTA PNEUMÁTICA */}
-        <Typography id="bota-pneumatica" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="bota-pneumatica"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Bota pneumática
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -1068,7 +1124,11 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* TERAPIA COMBINADA */}
-        <Typography id="terapia-combinada" variant="h4" sx={{ mt: 6 }}>
+        <Typography
+          id="terapia-combinada"
+          variant="h4"
+          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
+        >
           Terapia combinada
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
