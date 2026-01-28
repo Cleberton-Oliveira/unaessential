@@ -28,6 +28,21 @@ const banners = [
   },
 ];
 
+const videoBanners = [
+  {
+    src: "/video/corpoban.mov",
+    rotation: 0,
+  },
+  {
+    src: "/video/faceban.mov",
+    rotation: 0,
+  },
+  {
+    src: "/video/geralban.mov",
+    rotation: 0,
+  },
+];
+
 const sections = [
   {
     key: "tratamentos",
@@ -95,34 +110,59 @@ export default function Home() {
 
     return () => clearInterval(id);
   }, []);
-
   const banner = banners[currentBanner];
+  const video = videoBanners[currentBanner % videoBanners.length];
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <Box
         component="section"
         sx={{
+          position: "relative",
+          overflow: "hidden",
           py: { xs: 8, md: 10 },
+          minHeight: { xs: "60vh", md: "80vh" },
           borderBottom: 1,
           borderColor: "divider",
           bgcolor: "background.paper",
-          backgroundImage: "url(image/banners/banner_1.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
-        <Container maxWidth="lg">
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              alignItems: "center",
-              gap: 6,
-            }}
-          >
-            <Box sx={{ flex: 1 }}>
+        <Box
+          component="video"
+          src={video.src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          sx={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: video.rotation ? `rotate(${video.rotation}deg)` : "none",
+            transformOrigin: "center center",
+            zIndex: 0,
+          }}
+        />
+
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            bgcolor: "rgba(0, 0, 0, 0.35)",
+          }}
+        >
+          <Container maxWidth="lg">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              <Box sx={{ flex: 1 }}>
               <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
                 estética & bem-estar
               </Typography>
@@ -143,26 +183,10 @@ export default function Home() {
               </Button>
             </Box>
 
-            <Box
-              sx={{
-                flex: 1,
-                minHeight: 260,
-                borderRadius: 4,
-                bgcolor: "primary.main",
-                color: "secondary.main",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                px: 4,
-                textAlign: "center",
-              }}
-            >
-              <Typography variant="h5" sx={{ maxWidth: 380 }}>
-                unaessential é um espaço dedicado ao cuidado, à pausa e ao essencial.
-              </Typography>
-            </Box>
+            <Box sx={{ flex: 1 }} />
           </Box>
         </Container>
+        </Box>
       </Box>
 
       <Box component="section" sx={{ py: { xs: 6, md: 8 } }}>
