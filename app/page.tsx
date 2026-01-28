@@ -140,15 +140,37 @@ export default function Home() {
 
     const anyReady = videoReady.some(Boolean);
 
-    for (let step = 0; step < len; step += 1) {
-      const idx = (preferredVideoIndex + step) % len;
+    const idxBySrc = (src: string) =>
+      videoBanners.findIndex((item) => item.src === src);
+
+    const candidates: number[] = [];
+    const pushIfValid = (idx: number) => {
+      if (idx < 0 || idx >= len) return;
+      if (!candidates.includes(idx)) candidates.push(idx);
+    };
+
+    if (currentBanner === 1) {
+      pushIfValid(idxBySrc("/video/faceban.mp4"));
+      pushIfValid(idxBySrc("/video/corpoban.mp4"));
+    }
+
+    if (currentBanner === 3) {
+      pushIfValid(idxBySrc("/video/headspaban.mp4"));
+      pushIfValid(idxBySrc("/video/geralban.mp4"));
+    }
+
+    pushIfValid(preferredVideoIndex);
+
+    for (let i = 0; i < len; i += 1) pushIfValid(i);
+
+    for (const idx of candidates) {
       if (videoErrored[idx]) continue;
       if (!anyReady) return idx;
       if (videoReady[idx]) return idx;
     }
 
     return 0;
-  }, [preferredVideoIndex, videoReady, videoErrored]);
+  }, [currentBanner, preferredVideoIndex, videoReady, videoErrored]);
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
