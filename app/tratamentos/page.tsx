@@ -135,12 +135,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/ultrassomab.jpg"
-              alt="Tratamento corporal com ultrassom abdominal na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/Tratcorp.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -182,18 +185,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tecnologias/ultrassom.jpg"
-              alt="Imagem ilustrativa de tecnologia utilizada no tratamento de lipedema"
-              width={800}
-              height={600}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 35%",
-                display: "block",
-              }}
+            <Box
+              component="video"
+              src="/Reels/Lipe.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -249,18 +249,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/crioffacial.jpg"
-              alt="Tratamento facial crioffacial na UnaEssential"
-              width={800}
-              height={600}
-              style={{
-                width: "120%",
-                height: "120%",
-                objectFit: "cover",
-                objectPosition: "center 40%",
-                display: "block",
-              }}
+            <Box
+              component="video"
+              src="/Reels/Tratfacial.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -442,18 +439,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/relax.jpg"
-              alt="Massagem relaxante na UnaEssential"
-              width={800}
-              height={600}
-              style={{
-                width: "140%",
-                height: "140%",
-                objectFit: "cover",
-                objectPosition: "center 50%",
-                display: "block",
-              }}
+            <Box
+              component="video"
+              src="/Reels/Relax.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -486,12 +480,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/quente.png"
-              alt="Massagem com pedras quentes na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/Pedras.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -525,12 +522,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/aura.jpg"
-              alt="Massagem Aura na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/Aura.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -612,18 +612,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/mascara.jpg"
-              alt="Aplicação de máscara no peeling vulcânico na UnaEssential"
-              width={800}
-              height={600}
-              style={{
-                width: "120%",
-                height: "120%",
-                objectFit: "cover",
-                objectPosition: "center 80%",
-                display: "block",
-              }}
+            <Box
+              component="video"
+              src="/Reels/Vulcao.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -657,12 +654,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/hidrata.jpg"
-              alt="Hidratação intensiva facial multicamadas na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/Hidratacao.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
