@@ -78,7 +78,7 @@ export default function ProfissionaisPage() {
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
               Ao longo dessa jornada, percebeu um padrão que não condizia com a forma como acredita que o
               cuidado deve ser oferecido: atendimentos focados apenas em lucro, protocolos engessados e a
-              exigência de "pacotes específicos" para cada demanda — estética, relaxamento ou bem-estar —
+              exigência de &quot;pacotes específicos&quot; para cada demanda — estética, relaxamento ou bem-estar —
               muitas vezes sem considerar a real necessidade de cada pessoa.
             </Typography>
 

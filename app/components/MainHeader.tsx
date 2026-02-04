@@ -5,7 +5,6 @@ import Image from "next/image";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Container,
   Stack,

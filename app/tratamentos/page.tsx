@@ -102,7 +102,7 @@ export default function TratamentosPage() {
           Tratamentos corporais
         </Typography>
         <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5, maxWidth: 720 }}>
-          Seu corpo não precisa "se encaixar" em um padrão. Ele precisa ser ouvido, cuidado e aliviado das dores e
+          Seu corpo não precisa &quot;se encaixar&quot; em um padrão. Ele precisa ser ouvido, cuidado e aliviado das dores e
           tensões que você carrega todos os dias.
         </Typography>
         <Stack
