@@ -245,7 +245,7 @@ export default function Home() {
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
                 alignItems: "center",
-                gap: 6,
+                gap: 10,
               }}
             >
               <Box sx={{ flex: 1 }}>
@@ -255,7 +255,7 @@ export default function Home() {
               <Typography variant="h3" component="h1" sx={{ mt: 2, mb: 2, color: "common.white", textShadow: "0 3px 16px rgba(0,0,0,0.9)" }}>
                 {banner.title}
               </Typography>
-              <Typography variant="body1" sx={{ maxWidth: 520, mb: 4, color: "rgba(255,255,255,0.92)", textShadow: "0 2px 10px rgba(0,0,0,0.85)" }}>
+              <Typography variant="body1" sx={{ maxWidth: 520, mb: 4, color: "rgba(255,255,255,0.92)", textShadow: "0 2px 10px rgba(0,0,0,0.85)", fontSize: "1.4rem" }}>
                 {banner.subtitle}
               </Typography>
               <Button
