@@ -392,12 +392,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/headspa1.jpg"
-              alt="Experiência de Head SPA na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/HSPA.MP4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -564,12 +567,15 @@ export default function TratamentosPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/detox.jpg"
-              alt="Detox SPA intensivo na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/detox.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -656,7 +662,7 @@ export default function TratamentosPage() {
           >
             <Box
               component="video"
-              src="/Reels/Hidratacao.mp4"
+              src="/Reels/hidrat.mp4"
               autoPlay
               muted
               loop
@@ -814,17 +820,19 @@ export default function TratamentosPage() {
             borderColor: "divider",
             bgcolor: "background.paper",
             minHeight: 220,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            px: 2,
+            overflow: "hidden",
           }}
         >
-          <Typography variant="body2" color="text.secondary">
-            Espaço reservado para fotos ou vídeos dos rituais de Day SPA, mostrando a sensação de descanso profundo e
-            leveza após as sessões.
-          </Typography>
+          <Box
+            component="video"
+            src="/Reels/dayspa.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
         </Box>
       </Container>
     </Box>
