@@ -138,7 +138,7 @@ export default function TecnologiasPage() {
             color="primary"
             sx={{ textTransform: "none", fontSize: 13 }}
           >
-            Radiofrequência fracionada
+            Radiofrequência e Criofrequência fracionada
           </Button>
           <Button
             component="a"
@@ -286,12 +286,15 @@ export default function TecnologiasPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tecnologias/crio.jpg"
-              alt="Aplicação da criolipólise de placas na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/teccrio.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -299,12 +302,13 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* RADIOFREQUÊNCIA */}
+        <Box id="criofrequencia" sx={{ scrollMarginTop: { xs: 96, md: 112 } }} />
         <Typography
           id="radiofrequencia"
           variant="h4"
           sx={{ mt: 5, scrollMarginTop: { xs: 96, md: 112 } }}
         >
-          Radiofrequência
+          Radiofrequência e Criofrequência
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
           Não invasivo · Corporal e facial
@@ -317,70 +321,18 @@ export default function TecnologiasPage() {
         >
           <Box sx={{ flex: 2 }}>
             <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Estimula a produção natural de colágeno e elastina por meio de ondas eletromagnéticas, que geram uma
-              sensação de aquecimento no local aplicado.
+              A radiofrequência estimula a produção natural de colágeno e elastina por meio de ondas eletromagnéticas,
+              que geram uma sensação de aquecimento no local aplicado.
             </Typography>
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
               Auxilia na melhora da flacidez, definição de contornos, suavização de linhas e devolve firmeza e viço à
               pele do rosto e do corpo, com conforto e segurança.
             </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Auxilia na flacidez",
-                "Ajuda na definição de contornos",
-                "Contribui para suavização de linhas e viço da pele",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tratamentos/crioffacial.jpg"
-              alt="Tratamento facial com radiofrequência na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "120%", height: "120%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* CRIOFREQUÊNCIA */}
-        <Typography
-          id="criofrequencia"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Criofrequência
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              É uma radiofrequência que possui a ponteira de aplicação resfriada, podendo atingir até -6 ºC, que
-              combina o resfriamento da superfície da pele com o aquecimento das camadas profundas. Esse conjunto
-              estimula intensamente a produção de colágeno e elastina.
+            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
+              Já a criofrequência é uma radiofrequência que possui a ponteira de aplicação resfriada, podendo atingir
+              até -6 ºC, que combina o resfriamento da superfície da pele com o aquecimento das camadas profundas.
+              Esse conjunto estimula intensamente a produção de colágeno e elastina, por ativar proteínas responsáveis
+              por choque térmico.
             </Typography>
 
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
@@ -393,6 +345,8 @@ export default function TecnologiasPage() {
                 "Uso corporal",
                 "Uso facial",
                 "Auxilia na flacidez",
+                "Ajuda na definição de contornos",
+                "Contribui para suavização de linhas e viço da pele",
                 "Melhora textura e contorno corporal e facial",
                 "Estimula colágeno e elastina",
               ]}
@@ -405,17 +359,23 @@ export default function TecnologiasPage() {
               borderRadius: 3,
               border: 1,
               borderColor: "divider",
-              bgcolor: "background.paper",
+              bgcolor: "grey.100",
               minHeight: 220,
               overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Image
-              src="/image/tecnologias/CrioFreq1.jpg"
-              alt="Aplicação de criofrequência na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/tecradio.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -472,12 +432,15 @@ export default function TecnologiasPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/ultrassomab.jpg"
-              alt="Aplicação do ultrassom estético na região abdominal na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/tecUS.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -485,12 +448,13 @@ export default function TecnologiasPage() {
         <Divider sx={{ mt: 6, mb: 4 }} />
 
         {/* TECARTERAPIA */}
+        <Box id="criotecarterapia" sx={{ scrollMarginTop: { xs: 96, md: 112 } }} />
         <Typography
           id="tecarterapia"
           variant="h4"
           sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
         >
-          Tecarterapia
+          Tecarterapia e Criotecarterapia
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
           Não invasivo · Foco terapêutico corporal
@@ -503,8 +467,8 @@ export default function TecnologiasPage() {
         >
           <Box sx={{ flex: 2 }}>
             <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              É uma forma específica de radiofrequência, que atua mais profundamente nos tecidos e tem foco mais
-              terapêutico, ajudando na circulação, alívio de dores e regeneração tecidual.
+              A tecarterapia é uma forma específica de radiofrequência, que atua mais profundamente nos tecidos e tem
+              foco mais terapêutico, ajudando na circulação, alívio de dores e regeneração tecidual.
             </Typography>
 
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
@@ -512,67 +476,10 @@ export default function TecnologiasPage() {
               importante aliada no tratamento de dores, melhora da flacidez e é especialmente indicada como suporte em
               protocolos para lipedema em fase inicial.
             </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Foco em circulação e regeneração tecidual",
-                "Auxilia no alívio de dores",
-                "Contribui para melhora da flacidez",
-                "Aliada em protocolos para lipedema em fase inicial",
-              ]}
-            />
-          </Box>
 
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tecnologias/tecarr.webp"
-              alt="Aplicação da tecarterapia na UnaEssential"
-              width={800}
-              height={600}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* CRIOTECARTERAPIA */}
-        <Typography
-          id="criotecarterapia"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Criotecarterapia
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Foco terapêutico corporal
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              É a combinação da tecarterapia com o resfriamento controlado da superfície da pele, unindo estímulo
-              profundo dos tecidos com maior conforto térmico.
+            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
+              Já a criotecarterapia é a combinação da tecarterapia com o resfriamento controlado da superfície da pele,
+              unindo estímulo profundo dos tecidos com maior conforto térmico.
             </Typography>
 
             <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
@@ -584,6 +491,10 @@ export default function TecnologiasPage() {
               items={[
                 "Não invasivo",
                 "Uso corporal",
+                "Foco em circulação e regeneração tecidual",
+                "Auxilia no alívio de dores",
+                "Contribui para melhora da flacidez",
+                "Aliada em protocolos para lipedema em fase inicial",
                 "Combina estímulo profundo com resfriamento superficial",
                 "Potencializa a circulação e ação drenante",
                 "Auxilia em processos inflamatórios",
@@ -598,17 +509,23 @@ export default function TecnologiasPage() {
               borderRadius: 3,
               border: 1,
               borderColor: "divider",
-              bgcolor: "background.paper",
+              bgcolor: "grey.100",
               minHeight: 220,
               overflow: "hidden",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Image
-              src="/image/tecnologias/CrioFreq1.jpg"
-              alt="Aplicação de criotecarterapia na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/tecradio.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -621,7 +538,7 @@ export default function TecnologiasPage() {
           variant="h4"
           sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
         >
-          Radiofrequência fracionada
+          Radiofrequência e Criofrequência fracionada
         </Typography>
         <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
           Não invasivo · Corporal e facial
@@ -667,12 +584,15 @@ export default function TecnologiasPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tecnologias/fracionada.jpg"
-              alt="Aplicação de radiofrequência fracionada na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/tecfracionada.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -980,12 +900,15 @@ export default function TecnologiasPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tratamentos/aura.jpg"
-              alt="Massagem Aura com tecnologia na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/Aura.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
@@ -1042,12 +965,15 @@ export default function TecnologiasPage() {
               overflow: "hidden",
             }}
           >
-            <Image
-              src="/image/tecnologias/manta.png"
-              alt="Manta térmica detox na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            <Box
+              component="video"
+              src="/Reels/detox.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </Box>
         </Stack>
