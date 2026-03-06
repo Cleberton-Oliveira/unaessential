@@ -1,5 +1,45 @@
-import { Container, Typography, Box, Stack, Button, Divider } from "@mui/material";
+"use client";
+
+import {
+  Container,
+  Typography,
+  Box,
+  Stack,
+  Button,
+  Chip,
+  Card,
+  CardContent,
+  CardActions,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 import Image from "next/image";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import type { ReactNode } from "react";
+
+const WHATSAPP_PHONE = "5548991904131";
+const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
+
+function buildWhatsAppUrl(serviceName: string) {
+  const text = `${WHATSAPP_BASE_TEXT} ${serviceName}`;
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+}
+
+type TechnologyCardMedia = {
+  type: "video" | "image";
+  src: string;
+  alt?: string;
+};
+
+type TechnologyCard = {
+  id: string;
+  title: string;
+  description: string;
+  chips: string[];
+  media: TechnologyCardMedia;
+  more: ReactNode;
+};
 
 function Checklist({ items }: { items: string[] }) {
   return (
@@ -45,6 +85,468 @@ function Checklist({ items }: { items: string[] }) {
 }
 
 export default function TecnologiasPage() {
+  const technologyCards: TechnologyCard[] = [
+    {
+      id: "criolipolise-placas",
+      title: "Criolipólise de placas",
+      description:
+        "Resfriamento controlado para atuar na gordura localizada, ajudando a reduzir medidas e estimular firmeza da pele, com conforto e segurança.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: { type: "video" as const, src: "/Reels/teccrio.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A criolipólise de placas utiliza resfriamento controlado para atuar na gordura localizada, promovendo
+            redução de medidas ao mesmo tempo em que estimula a firmeza da pele.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Por meio do resfriamento uniforme, o tratamento auxilia na modelagem corporal, melhora do contorno e
+            estímulo de colágeno, podendo ser aplicado no rosto e no corpo, de forma segura, confortável e não
+            invasiva.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Na UnaEssential, é realizada de forma estática ou dinâmica, com protocolo e técnica exclusiva, construída
+            a partir de referências científicas, com foco em resultados seguros, efetivos e duradouros. Essa forma de
+            aplicação busca atuar não só na redução de volume, mas também na qualidade do tecido adiposo, ajudando a
+            modular processos inflamatórios, a reduzir a sensação de nódulos de gordura típicos do lipedema e a
+            estimular a produção de colágeno, especialmente o colágeno tipo I, que contribui diretamente para a firmeza
+            e sustentação da pele.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Por isso, a criolipólise de placas é uma das principais aliadas nos protocolos da clínica para tratamento
+            de lipedema em diferentes fases, além de ser integrada a planos de harmonização de contornos faciais e
+            corporais, incluindo regiões como face, pescoço, colo, braços, abdômen e costas.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Foco em gordura localizada e redução de medidas",
+              "Auxilia na modelagem e contorno corporal e facial",
+              "Estimula colágeno e firmeza da pele",
+              "Protocolo exclusivo, estático ou dinâmico, com forte atuação em protocolos para lipedema",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "radiofrequencia",
+      title: "Radiofrequência e Criofrequência",
+      description:
+        "Ondas eletromagnéticas que aquecem tecidos de forma controlada para estimular colágeno e elastina, melhorando firmeza, contorno e textura da pele.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: { type: "video" as const, src: "/Reels/tecradio.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A radiofrequência estimula a produção natural de colágeno e elastina por meio de ondas eletromagnéticas,
+            que geram uma sensação de aquecimento no local aplicado.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na melhora da flacidez, definição de contornos, suavização de linhas e devolve firmeza e viço à
+            pele do rosto e do corpo, com conforto e segurança.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Já a criofrequência é uma radiofrequência que possui a ponteira de aplicação resfriada, podendo atingir
+            até -6 ºC, que combina o resfriamento da superfície da pele com o aquecimento das camadas profundas.
+            Esse conjunto estimula intensamente a produção de colágeno e elastina, por ativar proteínas responsáveis
+            por choque térmico.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na redução da flacidez, melhora da textura da pele e definição de contornos, promovendo firmeza,
+            viço e rejuvenescimento no rosto e no corpo, com conforto e segurança.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Auxilia na flacidez",
+              "Ajuda na definição de contornos",
+              "Contribui para suavização de linhas e viço da pele",
+              "Melhora textura e contorno corporal e facial",
+              "Estimula colágeno e elastina",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "ultrassom-estetico",
+      title: "Ultrassom estético",
+      description:
+        "Atua em camadas mais profundas auxiliando na redução de gordura localizada, melhora da flacidez e estímulo à circulação, com conforto.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: { type: "video" as const, src: "/Reels/tecUS.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Atua nas camadas mais profundas da pele, auxiliando na redução de gordura localizada, melhora da
+            flacidez e estímulo à circulação.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Ele promove um contorno corporal e facial mais harmônico, melhora a textura da pele e potencializa os
+            resultados de outros tratamentos, tudo de forma segura e confortável.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Auxilia na gordura localizada",
+              "Auxilia na flacidez",
+              "Contribui para melhora da celulite e da circulação",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "tecarterapia",
+      title: "Tecarterapia e Criotecarterapia",
+      description:
+        "Tecnologia com foco terapêutico que atua mais profundamente nos tecidos, auxiliando circulação, regeneração e alívio de dores; pode ser associada ao resfriamento para mais conforto.",
+      chips: ["Não invasivo", "Corporal"],
+      media: { type: "video" as const, src: "/Reels/tecradio.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A tecarterapia é uma forma específica de radiofrequência, que atua mais profundamente nos tecidos e tem
+            foco mais terapêutico, ajudando na circulação, alívio de dores e regeneração tecidual.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Diferente da radiofrequência tradicional, que tem foco principal na pele, a tecarterapia atua como uma
+            importante aliada no tratamento de dores, melhora da flacidez e é especialmente indicada como suporte em
+            protocolos para lipedema em fase inicial.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Já a criotecarterapia é a combinação da tecarterapia com o resfriamento controlado da superfície da pele,
+            unindo estímulo profundo dos tecidos com maior conforto térmico.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Essa associação potencializa a circulação, favorece a ação drenante e anti-inflamatória, estimula a
+            regeneração celular e também o aumento de colágeno e elastina, contribuindo para uma pele e tecidos mais
+            saudáveis.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Foco em circulação e regeneração tecidual",
+              "Auxilia no alívio de dores",
+              "Contribui para melhora da flacidez",
+              "Aliada em protocolos para lipedema em fase inicial",
+              "Combina estímulo profundo com resfriamento superficial",
+              "Potencializa a circulação e ação drenante",
+              "Auxilia em processos inflamatórios",
+              "Estimula colágeno, elastina e regeneração celular",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "radiofrequencia-fracionada",
+      title: "Radiofrequência e Criofrequência fracionada",
+      description:
+        "Ponteira fracionada com disparos pontuais para estimular renovação, luminosidade e colágeno, auxiliando em linhas finas, flacidez localizada e efeito glow.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: { type: "video" as const, src: "/Reels/tecfracionada.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            É a radiofrequência com ou sem resfriamento, realizada por meio de uma ponteira fracionada que emite
+            disparos pontuais, promovendo estímulos precisos na pele.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Esses disparos favorecem a renovação cutânea, devolvem a luminosidade natural, com aparência mais
+            saudável, e estimulam a produção de colágeno e elastina. Auxilia na melhora de linhas finas, como pés de
+            galinha, flacidez localizada (como o chamado “umbigo triste”), estrias e promove o efeito glow nas áreas
+            tratadas.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Foco em renovação e luminosidade da pele",
+              "Auxilia em linhas finas e flacidez localizada",
+              "Pode ser aliado em estrias e efeito glow (bb glow) na pele",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "laser-led",
+      title: "Laser & LED",
+      description:
+        "Fotobiomodulação para estimular regeneração celular, circulação e equilíbrio inflamatório; pode incluir ILIB com efeito sistêmico de revitalização e suporte ao colágeno.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: {
+        type: "image" as const,
+        src: "/image/tecnologias/fototerapia.jpg",
+        alt: "Aplicação de laser e LED na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Por meio de laser e LED aplicados na cor, intensidade e tempo adequados, a fotobiomodulação estimula
+            processos naturais do organismo, promovendo regeneração celular, melhora da circulação e equilíbrio
+            inflamatório.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            O ILIB atua de forma sistêmica, auxiliando na oxigenação do sangue, recuperação, estímulo de colágeno e
+            melhora da qualidade da pele, com efeito revitalizante e toque de rejuvenescimento.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Auxilia na regeneração celular e equilíbrio inflamatório",
+              "Contribui para melhora da circulação e oxigenação",
+              "Suporte em dores e rejuvenescimento da pele",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "vacuum-led",
+      title: "Vacuum LED",
+      description:
+        "Sucção associada à estimulação mecânica para melhorar circulação e drenagem, auxiliar em celulite e flacidez e potencializar resultados com LEDs.",
+      chips: ["Não invasivo", "Corporal"],
+      media: {
+        type: "image" as const,
+        src: "/image/tecnologias/endermo.jpg",
+        alt: "Aplicação de Vacuum LED na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Utiliza sucção associada à estimulação mecânica dos tecidos, promovendo melhora da circulação, drenagem
+            linfática e estímulo do colágeno.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na redução de celulite, retenção de líquidos e flacidez, melhora o contorno corporal e a textura
+            da pele. Na clínica, é possível associar o vácuo com LEDs em diferentes comprimentos de onda para
+            potencializar os resultados.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Auxilia na gordura localizada e contorno corporal",
+              "Contribui para melhora da flacidez e celulite",
+              "Favorece a drenagem linfática e circulação",
+              "Ajuda a estimular o metabolismo local",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "microcorrentes",
+      title: "Microcorrentes",
+      description:
+        "Corrente de baixa intensidade que imita a bioeletricidade natural, ajudando na tonificação, flacidez e revitalização com um tratamento indolor.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: {
+        type: "image" as const,
+        src: "/image/tecnologias/micro.jpg",
+        alt: "Aplicação de microcorrentes na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            É a única corrente capaz de imitar a bioeletricidade natural do organismo, por meio de estímulos
+            elétricos de baixa intensidade e imperceptíveis, tornando o tratamento indolor.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na normalização das funções celulares, tonificação, melhora da flacidez, definição de contornos e
+            revitalização da pele, promovendo uma aparência mais firme, iluminada e saudável no rosto e no corpo,
+            além de potencializar os resultados de todos os protocolos estéticos.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Melhora a qualidade e o metabolismo celular da pele",
+              "Auxilia na eliminação de toxinas",
+              "Ajuda a normalizar funções celulares e potencializar protocolos estéticos",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "corrente-russa-aussie",
+      title: "Corrente russa & aussie",
+      description:
+        "Estimulação elétrica para contrações musculares controladas, auxiliando tonificação, flacidez e definição de contornos com segurança.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: {
+        type: "image" as const,
+        src: "/image/tecnologias/russa.jpeg",
+        alt: "Aplicação da corrente russa e aussie na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A corrente russa utiliza estímulos elétricos para promover contrações musculares controladas.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia no fortalecimento e tonificação muscular, melhora da flacidez, definição de contornos e suporte
+            ao contorno corporal e facial, potencializando os resultados dos protocolos estéticos, de forma segura e
+            controlada no rosto e no corpo.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Estimula contração muscular e tonificação",
+              "Auxilia na flacidez e definição de contornos",
+              "Potencializa protocolos de modelagem corporal e facial",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "massagem-aura",
+      title: "Massagem Aura",
+      description:
+        "Estímulos eletrovibratórios para relaxamento profundo, melhora da circulação e ação drenante, com sensação de leveza e conforto.",
+      chips: ["Não invasivo", "Corporal"],
+      media: { type: "video" as const, src: "/Reels/Aura.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Massagem com estímulos eletrovibratórios, promovendo relaxamento profundo, melhora da circulação e
+            liberação de tensões.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Potencializa os resultados estéticos por ter ação drenante, anti-inflamatória e analgésica para dores,
+            proporcionando sensação de leveza, conforto e reconexão com o próprio corpo.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Promove relaxamento e liberação de tensões",
+              "Ação drenante e melhora da circulação",
+              "Auxilia em processos inflamatórios e dores",
+              "Potencializa protocolos estéticos corporais",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "manta-termica-detox",
+      title: "Manta térmica detox",
+      description:
+        "Aquecimento controlado para estimular circulação e sudorese, potencializando eliminação de toxinas, redução de medidas e bem-estar.",
+      chips: ["Não invasivo", "Corporal"],
+      media: { type: "video" as const, src: "/Reels/detox.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Promove aquecimento controlado, estimulando a circulação, a sudorese e o relaxamento muscular.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na eliminação de toxinas, potencializa a redução de medidas, melhora a absorção de ativos e
+            contribui para o bem-estar e leveza corporal, sendo uma excelente aliada nos protocolos estéticos, de
+            forma confortável e segura.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Aquecimento controlado para conforto e relaxamento",
+              "Auxilia na eliminação de toxinas e retenção",
+              "Potencializa redução de medidas e absorção de ativos",
+              "Complemento em protocolos detox e de bem-estar",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "bota-pneumatica",
+      title: "Bota pneumática",
+      description:
+        "Compressão de ar sequencial para estimular retorno venoso, circulação e drenagem linfática, reduzindo inchaço e sensação de peso nas pernas.",
+      chips: ["Não invasivo", "Corporal"],
+      media: {
+        type: "image" as const,
+        src: "/image/tratamentos/botaedrena.jpg",
+        alt: "Bota pneumática em uso na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A bota pneumática utiliza compressão de ar sequencial para estimular a circulação, a drenagem linfática e
+            o retorno venoso.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Auxilia na redução de inchaço, sensação de peso e fadiga nas pernas, promovendo alívio, leveza e
+            bem-estar, além de potencializar os resultados dos protocolos estéticos.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Estimula circulação, drenagem linfática e retorno venoso",
+              "Auxilia na redução de inchaço e sensação de peso",
+              "Contribui para alívio de fadiga e bem-estar",
+              "Potencializa protocolos estéticos corporais",
+            ]}
+          />
+        </>
+      ),
+    },
+    {
+      id: "terapia-combinada",
+      title: "Terapia combinada",
+      description:
+        "Associação estratégica de duas ou mais tecnologias na mesma sessão para potencializar resultados e otimizar tempo, com foco em contorno, flacidez e qualidade global da pele.",
+      chips: ["Não invasivo", "Corporal", "Facial"],
+      media: {
+        type: "image" as const,
+        src: "/image/tratamentos/auraebota.jpg",
+        alt: "Terapia combinada com Massagem Aura e bota pneumática na UnaEssential",
+      },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            A terapia combinada permite a associação de duas ou mais tecnologias no mesmo atendimento, seja de forma
+            simultânea em diferentes áreas ou por meio de um único aplicador.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+            Essa integração potencializa os resultados dos tratamentos, otimiza tempo, estimula diferentes camadas dos
+            tecidos e promove melhora da flacidez, contorno e qualidade geral da pele.
+          </Typography>
+
+          <Checklist
+            items={[
+              "Associação estratégica de tecnologias em uma mesma sessão",
+              "Otimiza tempo de atendimento e resultados",
+              "Estimula diferentes camadas de tecido",
+              "Foco em flacidez, contorno e qualidade global da pele",
+            ]}
+          />
+        </>
+      ),
+    },
+  ];
+
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
@@ -70,1037 +572,126 @@ export default function TecnologiasPage() {
             gap: 1,
           }}
         >
-          <Button
-            component="a"
-            href="#criolipolise-placas"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Criolipólise de placas
-          </Button>
-          <Button
-            component="a"
-            href="#radiofrequencia"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Radiofrequência
-          </Button>
-          <Button
-            component="a"
-            href="#criofrequencia"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Criofrequência
-          </Button>
-          <Button
-            component="a"
-            href="#ultrassom-estetico"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Ultrassom estético
-          </Button>
-          <Button
-            component="a"
-            href="#tecarterapia"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Tecarterapia
-          </Button>
-          <Button
-            component="a"
-            href="#criotecarterapia"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Criotecarterapia
-          </Button>
-          <Button
-            component="a"
-            href="#radiofrequencia-fracionada"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Radiofrequência e Criofrequência fracionada
-          </Button>
-          <Button
-            component="a"
-            href="#laser-led"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Laser &amp; LED
-          </Button>
-          <Button
-            component="a"
-            href="#vacuum-led"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Vacuum LED
-          </Button>
-          <Button
-            component="a"
-            href="#microcorrentes"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Microcorrentes
-          </Button>
-          <Button
-            component="a"
-            href="#corrente-russa-aussie"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Corrente russa &amp; aussie
-          </Button>
-          <Button
-            component="a"
-            href="#massagem-aura"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Massagem Aura
-          </Button>
-          <Button
-            component="a"
-            href="#manta-termica-detox"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Manta térmica detox
-          </Button>
-          <Button
-            component="a"
-            href="#bota-pneumatica"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Bota pneumática
-          </Button>
-          <Button
-            component="a"
-            href="#terapia-combinada"
-            size="small"
-            variant="outlined"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Terapia combinada
-          </Button>
+          {technologyCards.map((card) => (
+            <Button
+              key={`shortcut-${card.id}`}
+              component="a"
+              href={`#card-${card.id}`}
+              size="small"
+              variant="outlined"
+              color="primary"
+              sx={{ textTransform: "none", fontSize: 13 }}
+            >
+              {card.title}
+            </Button>
+          ))}
         </Box>
 
-        {/* CRIOLIPÓLISE DE PLACAS */}
-        <Typography
-          id="criolipolise-placas"
-          variant="h4"
-          sx={{ mt: 5, scrollMarginTop: { xs: 96, md: 112 } }}
+        <Box
+          sx={{
+            mt: 4,
+            display: "grid",
+            gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
+            gap: 2,
+          }}
         >
-          Criolipólise de placas
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A criolipólise de placas utiliza resfriamento controlado para atuar na gordura localizada, promovendo
-              redução de medidas ao mesmo tempo em que estimula a firmeza da pele.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Por meio do resfriamento uniforme, o tratamento auxilia na modelagem corporal, melhora do contorno e
-              estímulo de colágeno, podendo ser aplicado no rosto e no corpo, de forma segura, confortável e não
-              invasiva.
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Na UnaEssential, é realizada de forma estática ou dinâmica, com protocolo e técnica exclusiva, construída
-              a partir de referências científicas, com foco em resultados seguros, efetivos e duradouros. Essa forma de
-              aplicação busca atuar não só na redução de volume, mas também na qualidade do tecido adiposo, ajudando a
-              modular processos inflamatórios, a reduzir a sensação de nódulos de gordura típicos do lipedema e a
-              estimular a produção de colágeno, especialmente o colágeno tipo I, que contribui diretamente para a firmeza
-              e sustentação da pele.
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Por isso, a criolipólise de placas é uma das principais aliadas nos protocolos da clínica para tratamento
-              de lipedema em diferentes fases, além de ser integrada a planos de harmonização de contornos faciais e
-              corporais, incluindo regiões como face, pescoço, colo, braços, abdômen e costas.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal e facial",
-                "Foco em gordura localizada e redução de medidas",
-                "Auxilia na modelagem e contorno corporal e facial",
-                "Estimula colágeno e firmeza da pele",
-                "Protocolo exclusivo, estático ou dinâmico, com forte atuação em protocolos para lipedema",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/teccrio.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* RADIOFREQUÊNCIA */}
-        <Box id="criofrequencia" sx={{ scrollMarginTop: { xs: 96, md: 112 } }} />
-        <Typography
-          id="radiofrequencia"
-          variant="h4"
-          sx={{ mt: 5, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Radiofrequência e Criofrequência
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A radiofrequência estimula a produção natural de colágeno e elastina por meio de ondas eletromagnéticas,
-              que geram uma sensação de aquecimento no local aplicado.
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na melhora da flacidez, definição de contornos, suavização de linhas e devolve firmeza e viço à
-              pele do rosto e do corpo, com conforto e segurança.
-            </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Já a criofrequência é uma radiofrequência que possui a ponteira de aplicação resfriada, podendo atingir
-              até -6 ºC, que combina o resfriamento da superfície da pele com o aquecimento das camadas profundas.
-              Esse conjunto estimula intensamente a produção de colágeno e elastina, por ativar proteínas responsáveis
-              por choque térmico.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na redução da flacidez, melhora da textura da pele e definição de contornos, promovendo firmeza,
-              viço e rejuvenescimento no rosto e no corpo, com conforto e segurança.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Auxilia na flacidez",
-                "Ajuda na definição de contornos",
-                "Contribui para suavização de linhas e viço da pele",
-                "Melhora textura e contorno corporal e facial",
-                "Estimula colágeno e elastina",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "grey.100",
-              minHeight: 220,
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/tecradio.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* ULTRASSOM ESTÉTICO */}
-        <Typography
-          id="ultrassom-estetico"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Ultrassom estético
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Atua nas camadas mais profundas da pele, auxiliando na redução de gordura localizada, melhora da
-              flacidez e estímulo à circulação.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Ele promove um contorno corporal e facial mais harmônico, melhora a textura da pele e potencializa os
-              resultados de outros tratamentos, tudo de forma segura e confortável.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Auxilia na gordura localizada",
-                "Auxilia na flacidez",
-                "Contribui para melhora da celulite e da circulação",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/tecUS.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* TECARTERAPIA */}
-        <Box id="criotecarterapia" sx={{ scrollMarginTop: { xs: 96, md: 112 } }} />
-        <Typography
-          id="tecarterapia"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Tecarterapia e Criotecarterapia
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Foco terapêutico corporal
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A tecarterapia é uma forma específica de radiofrequência, que atua mais profundamente nos tecidos e tem
-              foco mais terapêutico, ajudando na circulação, alívio de dores e regeneração tecidual.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Diferente da radiofrequência tradicional, que tem foco principal na pele, a tecarterapia atua como uma
-              importante aliada no tratamento de dores, melhora da flacidez e é especialmente indicada como suporte em
-              protocolos para lipedema em fase inicial.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Já a criotecarterapia é a combinação da tecarterapia com o resfriamento controlado da superfície da pele,
-              unindo estímulo profundo dos tecidos com maior conforto térmico.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Essa associação potencializa a circulação, favorece a ação drenante e anti-inflamatória, estimula a
-              regeneração celular e também o aumento de colágeno e elastina, contribuindo para uma pele e tecidos mais
-              saudáveis.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Foco em circulação e regeneração tecidual",
-                "Auxilia no alívio de dores",
-                "Contribui para melhora da flacidez",
-                "Aliada em protocolos para lipedema em fase inicial",
-                "Combina estímulo profundo com resfriamento superficial",
-                "Potencializa a circulação e ação drenante",
-                "Auxilia em processos inflamatórios",
-                "Estimula colágeno, elastina e regeneração celular",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "grey.100",
-              minHeight: 220,
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/tecradio.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* RADIOFREQUÊNCIA FRACIONADA */}
-        <Typography
-          id="radiofrequencia-fracionada"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Radiofrequência e Criofrequência fracionada
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              É a radiofrequência com ou sem resfriamento, realizada por meio de uma ponteira fracionada que emite
-              disparos pontuais, promovendo estímulos precisos na pele.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Esses disparos favorecem a renovação cutânea, devolvem a luminosidade natural, com aparência mais
-              saudável, e estimulam a produção de colágeno e elastina. Auxilia na melhora de linhas finas, como pés de
-              galinha, flacidez localizada (como o chamado “umbigo triste”), estrias e promove o efeito glow nas áreas
-              tratadas.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Foco em renovação e luminosidade da pele",
-                "Auxilia em linhas finas e flacidez localizada",
-                "Pode ser aliado em estrias e efeito glow (bb glow) na pele",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/tecfracionada.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* LASER & LED */}
-        <Typography
-          id="laser-led"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Laser &amp; LED
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Por meio de laser e LED aplicados na cor, intensidade e tempo adequados, a fotobiomodulação estimula
-              processos naturais do organismo, promovendo regeneração celular, melhora da circulação e equilíbrio
-              inflamatório.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              O ILIB atua de forma sistêmica, auxiliando na oxigenação do sangue, recuperação, estímulo de colágeno e
-              melhora da qualidade da pele, com efeito revitalizante e toque de rejuvenescimento.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Auxilia na regeneração celular e equilíbrio inflamatório",
-                "Contribui para melhora da circulação e oxigenação",
-                "Suporte em dores e rejuvenescimento da pele",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tecnologias/fototerapia.jpg"
-              alt="Aplicação de laser e LED na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* VACUUM LED */}
-        <Typography
-          id="vacuum-led"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Vacuum LED
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Foco corporal
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Utiliza sucção associada à estimulação mecânica dos tecidos, promovendo melhora da circulação, drenagem
-              linfática e estímulo do colágeno.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na redução de celulite, retenção de líquidos e flacidez, melhora o contorno corporal e a textura
-              da pele. Na clínica, é possível associar o vácuo com LEDs em diferentes comprimentos de onda para
-              potencializar os resultados.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Auxilia na gordura localizada e contorno corporal",
-                "Contribui para melhora da flacidez e celulite",
-                "Favorece a drenagem linfática e circulação",
-                "Ajuda a estimular o metabolismo local",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tecnologias/endermo.jpg"
-              alt="Aplicação de Vacuum LED na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* MICROCORRENTES */}
-        <Typography
-          id="microcorrentes"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Microcorrentes
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              É a única corrente capaz de imitar a bioeletricidade natural do organismo, por meio de estímulos
-              elétricos de baixa intensidade e imperceptíveis, tornando o tratamento indolor.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na normalização das funções celulares, tonificação, melhora da flacidez, definição de contornos e
-              revitalização da pele, promovendo uma aparência mais firme, iluminada e saudável no rosto e no corpo,
-              além de potencializar os resultados de todos os protocolos estéticos.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial",
-                "Melhora a qualidade e o metabolismo celular da pele",
-                "Auxilia na eliminação de toxinas",
-                "Ajuda a normalizar funções celulares e potencializar protocolos estéticos",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tecnologias/micro.jpg"
-              alt="Aplicação de microcorrentes na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* CORRENTE RUSSA E AUSSIE */}
-        <Typography
-          id="corrente-russa-aussie"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Corrente russa &amp; aussie
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A corrente russa utiliza estímulos elétricos para promover contrações musculares controladas.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia no fortalecimento e tonificação muscular, melhora da flacidez, definição de contornos e suporte
-              ao contorno corporal e facial, potencializando os resultados dos protocolos estéticos, de forma segura e
-              controlada no rosto e no corpo.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Uso facial selecionado",
-                "Estimula contração muscular e tonificação",
-                "Auxilia na flacidez e definição de contornos",
-                "Potencializa protocolos de modelagem corporal e facial",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tecnologias/russa.jpeg"
-              alt="Aplicação da corrente russa e aussie na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* MASSAGEM AURA */}
-        <Typography
-          id="massagem-aura"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Massagem Aura
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Massagem com estímulos eletrovibratórios, promovendo relaxamento profundo, melhora da circulação e
-              liberação de tensões.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Potencializa os resultados estéticos por ter ação drenante, anti-inflamatória e analgésica para dores,
-              proporcionando sensação de leveza, conforto e reconexão com o próprio corpo.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Promove relaxamento e liberação de tensões",
-                "Ação drenante e melhora da circulação",
-                "Auxilia em processos inflamatórios e dores",
-                "Potencializa protocolos estéticos corporais",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/Aura.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* MANTA TÉRMICA DETOX */}
-        <Typography
-          id="manta-termica-detox"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Manta térmica detox
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              Promove aquecimento controlado, estimulando a circulação, a sudorese e o relaxamento muscular.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na eliminação de toxinas, potencializa a redução de medidas, melhora a absorção de ativos e
-              contribui para o bem-estar e leveza corporal, sendo uma excelente aliada nos protocolos estéticos, de
-              forma confortável e segura.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal",
-                "Aquecimento controlado para conforto e relaxamento",
-                "Auxilia na eliminação de toxinas e retenção",
-                "Potencializa redução de medidas e absorção de ativos",
-                "Complemento em protocolos detox e de bem-estar",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              component="video"
-              src="/Reels/detox.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* BOTA PNEUMÁTICA */}
-        <Typography
-          id="bota-pneumatica"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Bota pneumática
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal (membros inferiores)
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A bota pneumática utiliza compressão de ar sequencial para estimular a circulação, a drenagem linfática e
-              o retorno venoso.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Auxilia na redução de inchaço, sensação de peso e fadiga nas pernas, promovendo alívio, leveza e
-              bem-estar, além de potencializar os resultados dos protocolos estéticos.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo",
-                "Uso corporal (pernas e membros inferiores)",
-                "Estimula circulação, drenagem linfática e retorno venoso",
-                "Auxilia na redução de inchaço e sensação de peso",
-                "Contribui para alívio de fadiga e bem-estar",
-                "Potencializa protocolos estéticos corporais",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tratamentos/botaedrena.jpg"
-              alt="Bota pneumática em uso na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
-
-        <Divider sx={{ mt: 6, mb: 4 }} />
-
-        {/* TERAPIA COMBINADA */}
-        <Typography
-          id="terapia-combinada"
-          variant="h4"
-          sx={{ mt: 6, scrollMarginTop: { xs: 96, md: 112 } }}
-        >
-          Terapia combinada
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 0.5 }}>
-          Não invasivo · Corporal e facial (dependendo das tecnologias associadas)
-        </Typography>
-
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 2, alignItems: { xs: "flex-start", md: "stretch" } }}
-        >
-          <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 760 }}>
-              A terapia combinada permite a associação de duas ou mais tecnologias no mesmo atendimento, seja de forma
-              simultânea em diferentes áreas ou por meio de um único aplicador.
-            </Typography>
-
-            <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-              Essa integração potencializa os resultados dos tratamentos, otimiza tempo, estimula diferentes camadas dos
-              tecidos e promove melhora da flacidez, contorno e qualidade geral da pele.
-            </Typography>
-            <Checklist
-              items={[
-                "Não invasivo (de acordo com as tecnologias associadas)",
-                "Pode ser usada em protocolos corporais e faciais",
-                "Associação estratégica de tecnologias em uma mesma sessão",
-                "Otimiza tempo de atendimento e resultados",
-                "Estimula diferentes camadas de tecido",
-                "Foco em flacidez, contorno e qualidade global da pele",
-              ]}
-            />
-          </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              borderRadius: 3,
-              border: 1,
-              borderColor: "divider",
-              bgcolor: "background.paper",
-              minHeight: 220,
-              overflow: "hidden",
-            }}
-          >
-            <Image
-              src="/image/tratamentos/auraebota.jpg"
-              alt="Terapia combinada com Massagem Aura e bota pneumática na UnaEssential"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </Box>
-        </Stack>
+          {technologyCards.map((card) => (
+            <Card
+              key={card.id}
+              id={`card-${card.id}`}
+              sx={{
+                borderRadius: 3,
+                border: 1,
+                borderColor: "divider",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+                scrollMarginTop: { xs: 96, md: 112 },
+              }}
+            >
+              <Box sx={{ width: "100%", height: 220, bgcolor: "background.paper" }}>
+                {card.media.type === "video" ? (
+                  <Box
+                    component="video"
+                    src={card.media.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: card.id === "manta-termica-detox" ? "50% 80%" : "50% 50%",
+                      display: "block",
+                    }}
+                  />
+                ) : (
+                  <Image
+                    src={card.media.src}
+                    alt={card.media.alt ?? ""}
+                    width={800}
+                    height={600}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: card.id === "bota-pneumatica" ? "50% 70%" : "50% 50%",
+                      display: "block",
+                    }}
+                  />
+                )}
+              </Box>
+
+              <CardContent sx={{ flex: 1 }}>
+                <Typography variant="h6">{card.title}</Typography>
+
+                {card.chips?.length ? (
+                  <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
+                    {card.chips.map((label) => (
+                      <Chip
+                        key={`${card.id}-${label}`}
+                        label={label}
+                        variant="filled"
+                        sx={{
+                          bgcolor: "rgba(46, 125, 50, 0.12)",
+                          color: "text.secondary",
+                          fontWeight: 600,
+                        }}
+                      />
+                    ))}
+                  </Box>
+                ) : null}
+
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+                  {card.description}
+                </Typography>
+
+                <Accordion elevation={0} sx={{ mt: 2, border: 1, borderColor: "divider", borderRadius: 2 }}>
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography variant="subtitle2">Saiba mais</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>{card.more}</AccordionDetails>
+                </Accordion>
+              </CardContent>
+
+              <CardActions sx={{ px: 2, pb: 2, pt: 0 }}>
+                <Button
+                  component="a"
+                  href={buildWhatsAppUrl(card.title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  color="primary"
+                  sx={{ textTransform: "none" }}
+                >
+                  Agendar
+                </Button>
+              </CardActions>
+            </Card>
+          ))}
+        </Box>
       </Container>
     </Box>
   );
