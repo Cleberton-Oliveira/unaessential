@@ -5,6 +5,8 @@ import {
   Box,
   Stack,
   Button,
+  Tabs,
+  Tab,
   Card,
   CardContent,
   CardActions,
@@ -18,7 +20,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import type { ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 
  type TreatmentCardMedia = {
    type: "video" | "image";
@@ -712,6 +714,7 @@ export default function TratamentosPage() {
     "tratamentos-corporais": 1,
     "tratamento-lipedema": 2,
     "tratamentos-faciais": 3,
+    "limpeza-de-pele": 3.5,
     "drenagem-linfatica": 4,
     drenarelax: 5,
     drenadetox: 6,
@@ -725,6 +728,8 @@ export default function TratamentosPage() {
     "hidratacao-intensiva-facial-multicamadas": 14,
     "harmonizacao-corporal-e-facial-sem-cortes": 15,
     "design-de-sobrancelhas-spa": 16,
+    "spa-dos-labios": 17,
+    "plastica-dos-pes": 99,
   };
 
   const sortedTreatmentCards = [...treatmentCards].sort((a, b) => {
@@ -732,6 +737,78 @@ export default function TratamentosPage() {
     const orderB = TREATMENT_ORDER[b.id] ?? Number.MAX_SAFE_INTEGER;
     return orderA - orderB;
   });
+
+  const tabConfigs = useMemo(
+    () =>
+      [
+        {
+          key: "todos",
+          label: "TODOS SERVIÇOS",
+          ids: sortedTreatmentCards.map((card) => card.id),
+        },
+        {
+          key: "corpo",
+          label: "CORPO",
+          ids: [
+            "tratamentos-corporais",
+            "tratamento-lipedema",
+            "drenagem-linfatica",
+            "drenarelax",
+            "drenadetox",
+            "detox-spa-intensivo",
+            "massagem-aura",
+            "massagem-relaxante",
+            "massagem-pedras-quentes",
+            "harmonizacao-corporal-e-facial-sem-cortes",
+          ],
+        },
+        {
+          key: "rosto",
+          label: "ROSTO",
+          ids: [
+            "tratamentos-faciais",
+            "limpeza-de-pele",
+            "hidratacao-intensiva-facial-multicamadas",
+            "peeling-vulcanico",
+            "design-de-sobrancelhas-spa",
+            "spa-dos-labios",
+            "harmonizacao-corporal-e-facial-sem-cortes",
+          ],
+        },
+        {
+          key: "spa",
+          label: "SPA",
+          ids: [
+            "head-spa",
+            "day-spa",
+            "massagem-relaxante",
+            "massagem-pedras-quentes",
+            "drenarelax",
+            "drenadetox",
+            "detox-spa-intensivo",
+            "spa-dos-labios",
+          ],
+        },
+        {
+          key: "pes",
+          label: "PÉS",
+          ids: ["plastica-dos-pes"],
+        },
+      ] as const,
+    [sortedTreatmentCards]
+  );
+
+  const [activeTab, setActiveTab] = useState<(typeof tabConfigs)[number]["key"]>("todos");
+
+  const activeTabCardIds = useMemo(() => {
+    const config = tabConfigs.find((tab) => tab.key === activeTab);
+    return new Set(config?.ids ?? []);
+  }, [activeTab, tabConfigs]);
+
+  const visibleTreatmentCards = useMemo(
+    () => sortedTreatmentCards.filter((card) => activeTabCardIds.has(card.id)),
+    [activeTabCardIds, sortedTreatmentCards]
+  );
 
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
@@ -743,6 +820,23 @@ export default function TratamentosPage() {
           Estética, saúde & SPA UnaEssential
         </Typography>
 
+        <Tabs
+          value={activeTab}
+          onChange={(_, value) => setActiveTab(value)}
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{ mt: 3 }}
+        >
+          {tabConfigs.map((tab) => (
+            <Tab
+              key={tab.key}
+              value={tab.key}
+              label={tab.label}
+              sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
+            />
+          ))}
+        </Tabs>
+
         {/* MENU INTERNO DE ATALHOS */}
         <Box
           sx={{
@@ -752,7 +846,7 @@ export default function TratamentosPage() {
             gap: 1,
           }}
         >
-          {sortedTreatmentCards.map((card) => (
+          {visibleTreatmentCards.map((card) => (
             <Button
               key={`shortcut-${card.id}`}
               component="a"
@@ -788,7 +882,7 @@ export default function TratamentosPage() {
             gap: 2,
           }}
         >
-          {sortedTreatmentCards.map((card) => (
+          {visibleTreatmentCards.map((card) => (
             <Card
               key={card.id}
               id={`card-${card.id}`}
