@@ -90,9 +90,10 @@ export default function ProfissionaisPage() {
                 </Box>
 
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 900 }}>
-                  Idealizadora da UnaEssential, com mais de 10 anos de experiência em estética, saúde e bem-estar.
-                  Une técnicas manuais e tecnologias para criar atendimentos personalizados com foco em resultado real,
-                  conforto e acolhimento.
+                  <strong>Idealizadora da UnaEssential</strong>, com <strong>mais de 10 anos de experiência</strong> em
+                  <strong> estética, saúde e bem-estar</strong>. Une <strong>técnicas manuais</strong> e
+                  <strong> tecnologias</strong> para criar <strong>atendimentos personalizados</strong> com foco em
+                  <strong> resultado real</strong>, <strong>conforto</strong> e <strong>acolhimento</strong>.
                 </Typography>
 
                 <Accordion
@@ -104,19 +105,21 @@ export default function ProfissionaisPage() {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 900 }}>
-                      Laura Araujo, 30 anos, é a idealizadora da UnaEssential. Com mais de 10 anos de experiência na
-                      área da estética, saúde e bem-estar, construiu sua trajetória atuando em diferentes clínicas e
-                      acompanhando de perto os bastidores do setor.
+                      Laura Araujo, 30 anos, é a <strong>idealizadora da UnaEssential</strong>. Com
+                      <strong> mais de 10 anos de experiência</strong> na área da <strong>estética, saúde e bem-estar</strong>,
+                      construiu sua trajetória atuando em <strong>diferentes clínicas</strong> e acompanhando de perto os
+                      bastidores do setor.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Ao longo dessa caminhada, Laura buscou constante formação e aperfeiçoamento: realizou cursos nos
-                      métodos Renata França e Amanda Fernandes, formação em lipoescultura gessada, especialização em
-                      lipedema e linfedema, pós-graduação em terapias integrativas, especialização em harmonização
-                      corporal e facial de forma não invasiva com Chris Tofoli e especialização em tecnologias com
-                      Aline Canicais. A partir desse repertório técnico e da vivência prática em consultório, hoje ela
-                      desenvolveu o próprio método de atendimento, unindo o que há de mais eficiente em cada técnica
-                      para potencializar resultados reais.
+                      Ao longo dessa caminhada, Laura buscou <strong>constante formação e aperfeiçoamento</strong>: realizou
+                      cursos nos <strong>métodos Renata França e Amanda Fernandes</strong>, formação em
+                      <strong> lipoescultura gessada</strong>, especialização em <strong>lipedema e linfedema</strong>,
+                      pós-graduação em <strong>terapias integrativas</strong>, especialização em
+                      <strong> harmonização corporal e facial não invasiva</strong> com Chris Tofoli e especialização em
+                      <strong> tecnologias</strong> com Aline Canicais. A partir desse repertório técnico e da vivência
+                      prática em consultório, hoje ela desenvolveu o <strong>próprio método de atendimento</strong>, unindo o
+                      que há de mais eficiente em cada técnica para potencializar <strong>resultados reais</strong>.
                     </Typography>
 
                     <Box component="ul" sx={{ mt: 1.5, pl: 3, maxWidth: 900, color: "text.secondary" }}>
@@ -131,33 +134,38 @@ export default function ProfissionaisPage() {
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
                       Ao longo dessa jornada, percebeu um padrão que não condizia com a forma como acredita que o
-                      cuidado deve ser oferecido: atendimentos focados apenas em lucro, protocolos engessados e a
-                      exigência de &quot;pacotes específicos&quot; para cada demanda — estética, relaxamento ou bem-estar —
-                      muitas vezes sem considerar a real necessidade de cada pessoa.
+                      cuidado deve ser oferecido: <strong>atendimentos focados apenas em lucro</strong>,
+                      <strong> protocolos engessados</strong> e a exigência de <strong>"pacotes específicos"</strong> para cada
+                      demanda — estética, relaxamento ou bem-estar — muitas vezes sem considerar a
+                      <strong> real necessidade de cada pessoa</strong>.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      A UnaEssential nasce, então, do desejo de fazer diferente. Aqui, o foco não é a venda a qualquer
-                      custo para bater uma meta, mas sim você: sua história, seu momento e aquilo que realmente faz
-                      sentido para o seu corpo e para a sua rotina.
+                      A UnaEssential nasce, então, do <strong>desejo de fazer diferente</strong>. Aqui, o foco não é a
+                      <strong> venda a qualquer custo</strong> para bater uma meta, mas sim <strong>você</strong>: sua história, seu
+                      momento e aquilo que realmente faz sentido para o seu corpo e para a sua rotina.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Por isso, o valor dos tratamentos é único, independentemente dos ativos concentrados, das técnicas
-                      manuais e das tecnologias utilizadas durante o atendimento para atingir o seu objetivo. Cada sessão
+                      Por isso, o <strong>valor dos tratamentos é único</strong>, independentemente dos
+                      <strong> ativos concentrados</strong>, das <strong>técnicas manuais</strong> e das
+                      <strong> tecnologias</strong> utilizadas durante o atendimento para atingir o seu objetivo. Cada sessão
                       é conduzida de acordo com o que o corpo ou o rosto realmente precisa naquele momento, considerando
-                      também a resposta ao tratamento, o que permite ajustar tecnologias e estímulos sem custos adicionais.
+                      também a <strong>resposta ao tratamento</strong>, o que permite ajustar tecnologias e estímulos sem custos
+                      adicionais.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      A única exceção é a tecnologia de criolipólise, devido ao alto custo do equipamento, dos insumos
-                      descartáveis necessários e por entregar resultados expressivos em um número bem mais reduzido de
-                      sessões.
+                      A única exceção é a tecnologia de <strong>criolipólise</strong>, devido ao <strong>alto custo do equipamento</strong>,
+                      dos <strong>insumos descartáveis</strong> necessários e por entregar <strong>resultados expressivos</strong> em um
+                      número bem mais reduzido de sessões.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Mais do que resultados estéticos, Laura acredita em oferecer conforto, acolhimento, ética e presença.
-                      A UnaEssential é reflexo dessa visão: uma clínica pensada para promover resultados reais e bem-estar.
+                      Mais do que <strong>resultados estéticos</strong>, Laura acredita em oferecer
+                      <strong> conforto</strong>, <strong>acolhimento</strong>, <strong>ética</strong> e
+                      <strong> presença</strong>. A UnaEssential é reflexo dessa visão: uma clínica pensada para promover
+                      <strong> resultados reais</strong> e <strong>bem-estar</strong>.
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -213,9 +221,10 @@ export default function ProfissionaisPage() {
                 </Box>
 
                 <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 900 }}>
-                  Especialista em bem-estar e terapias relaxantes, com mais de 15 anos de experiência.
-                  Conduz atendimentos sensoriais e personalizados, com foco em desacelerar, aliviar tensões e criar
-                  uma pausa consciente.
+                  <strong>Especialista em bem-estar e terapias relaxantes</strong>, com
+                  <strong> mais de 15 anos de experiência</strong>. Conduz <strong>atendimentos sensoriais e personalizados</strong>,
+                  com foco em <strong>desacelerar</strong>, <strong>aliviar tensões</strong> e criar uma
+                  <strong> pausa consciente</strong>.
                 </Typography>
 
                 <Accordion elevation={0} sx={{ mt: 1.5, bgcolor: "transparent", border: 1, borderColor: "divider" }}>
@@ -224,20 +233,24 @@ export default function ProfissionaisPage() {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 900 }}>
-                      Amanda Gawain, 38 anos, é especializada em bem-estar, atendendo principalmente quem busca relaxar,
-                      desacelerar e sentir o toque terapêutico aliado aos óleos essenciais no ambiente. Com mais de 15 anos
-                      de experiência na área, já atuou em SPAs de grandes hotéis de Florianópolis e também em navios,
-                      levando cuidado e acolhimento para diferentes perfis de clientes.
+                      Amanda Gawain, 38 anos, é especializada em <strong>bem-estar</strong>, atendendo principalmente quem busca
+                      <strong> relaxar</strong>, <strong>desacelerar</strong> e sentir o <strong>toque terapêutico</strong> aliado aos
+                      <strong> óleos essenciais</strong> no ambiente. Com <strong>mais de 15 anos de experiência</strong> na área, já atuou
+                      em <strong>SPAs de grandes hotéis</strong> de Florianópolis e também em <strong>navios</strong>, levando cuidado e
+                      acolhimento para diferentes perfis de clientes.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Em cada atendimento, Amanda busca estar presente de verdade, adaptando o momento ao que o seu corpo
-                      pede: seja em regiões com mais dor, tensão ou cansaço acumulado. Mais do que uma massagem, a proposta
-                      é criar uma pausa consciente, sensorial e personalizada para que você se reconecte consigo mesma.
-                      Ela também é responsável pelos Day SPA da UnaEssential, montando protocolos exclusivos que envolvem
-                      massagem e drenagem relaxante de corpo e rosto, tratamentos faciais com dermocosméticos de alta
-                      performance e o famoso head spa, com produtos que hidratam, nutrem e reconstroem profundamente os fios.
-                      São experiências de cuidado e renovação completa, que podem durar de 2 a 4 horas consecutivas.
+                      Em cada atendimento, Amanda busca estar <strong>presente de verdade</strong>, adaptando o momento ao que o
+                      seu corpo pede: seja em regiões com mais <strong>dor</strong>, <strong>tensão</strong> ou
+                      <strong> cansaço acumulado</strong>. Mais do que uma massagem, a proposta é criar uma
+                      <strong> pausa consciente, sensorial e personalizada</strong> para que você se reconecte consigo mesma.
+                      Ela também é responsável pelos <strong>Day SPA</strong> da UnaEssential, montando
+                      <strong> protocolos exclusivos</strong> que envolvem massagem e drenagem relaxante de corpo e rosto,
+                      tratamentos faciais com <strong>dermocosméticos de alta performance</strong> e o famoso
+                      <strong> head spa</strong>, com produtos que <strong>hidratam</strong>, <strong>nutrem</strong> e
+                      <strong> reconstroem profundamente os fios</strong>. São experiências de <strong>cuidado</strong> e
+                      <strong> renovação completa</strong>, que podem durar de <strong>2 a 4 horas consecutivas</strong>.
                     </Typography>
                   </AccordionDetails>
                 </Accordion>

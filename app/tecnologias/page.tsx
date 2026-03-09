@@ -96,29 +96,32 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A criolipólise de placas utiliza resfriamento controlado para atuar na gordura localizada, promovendo
-            redução de medidas ao mesmo tempo em que estimula a firmeza da pele.
+            A criolipólise de placas utiliza <strong>resfriamento controlado</strong> para atuar na
+            <strong> gordura localizada</strong>, promovendo <strong>redução de medidas</strong> ao mesmo tempo em que estimula a
+            <strong> firmeza da pele</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Por meio do resfriamento uniforme, o tratamento auxilia na modelagem corporal, melhora do contorno e
-            estímulo de colágeno, podendo ser aplicado no rosto e no corpo, de forma segura, confortável e não
-            invasiva.
+            Por meio do <strong>resfriamento uniforme</strong>, o tratamento auxilia na <strong>modelagem corporal</strong>,
+            <strong> melhora do contorno</strong> e <strong>estímulo de colágeno</strong>, podendo ser aplicado no rosto e no corpo,
+            de forma <strong>segura</strong>, <strong>confortável</strong> e <strong>não invasiva</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Na UnaEssential, é realizada de forma estática ou dinâmica, com protocolo e técnica exclusiva, construída
-            a partir de referências científicas, com foco em resultados seguros, efetivos e duradouros. Essa forma de
-            aplicação busca atuar não só na redução de volume, mas também na qualidade do tecido adiposo, ajudando a
-            modular processos inflamatórios, a reduzir a sensação de nódulos de gordura típicos do lipedema e a
-            estimular a produção de colágeno, especialmente o colágeno tipo I, que contribui diretamente para a firmeza
-            e sustentação da pele.
+            Na UnaEssential, é realizada de forma <strong>estática ou dinâmica</strong>, com <strong>protocolo e técnica exclusiva</strong>,
+            construída a partir de <strong>referências científicas</strong>, com foco em resultados <strong>seguros</strong>,
+            <strong> efetivos</strong> e <strong>duradouros</strong>. Essa forma de aplicação busca atuar não só na
+            <strong>redução de volume</strong>, mas também na <strong>qualidade do tecido adiposo</strong>, ajudando a modular
+            <strong>processos inflamatórios</strong>, a reduzir a sensação de <strong>nódulos de gordura</strong> típicos do lipedema e a
+            estimular a produção de <strong>colágeno</strong>, especialmente o <strong>colágeno tipo I</strong>, que contribui diretamente
+            para a <strong>firmeza</strong> e <strong>sustentação da pele</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Por isso, a criolipólise de placas é uma das principais aliadas nos protocolos da clínica para tratamento
-            de lipedema em diferentes fases, além de ser integrada a planos de harmonização de contornos faciais e
-            corporais, incluindo regiões como face, pescoço, colo, braços, abdômen e costas.
+            Por isso, a criolipólise de placas é uma das <strong>principais aliadas</strong> nos protocolos da clínica para
+            tratamento de <strong>lipedema</strong> em diferentes fases, além de ser integrada a planos de
+            <strong> harmonização de contornos faciais e corporais</strong>, incluindo regiões como <strong>face</strong>,
+            <strong> pescoço</strong>, <strong>colo</strong>, <strong>braços</strong>, <strong>abdômen</strong> e <strong>costas</strong>.
           </Typography>
 
           <Checklist
@@ -142,25 +145,27 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A radiofrequência estimula a produção natural de colágeno e elastina por meio de ondas eletromagnéticas,
-            que geram uma sensação de aquecimento no local aplicado.
+            A radiofrequência estimula a produção natural de <strong>colágeno</strong> e <strong>elastina</strong> por meio de
+            <strong> ondas eletromagnéticas</strong>, que geram uma sensação de <strong>aquecimento</strong> no local aplicado.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na melhora da flacidez, definição de contornos, suavização de linhas e devolve firmeza e viço à
-            pele do rosto e do corpo, com conforto e segurança.
+            Auxilia na melhora da <strong>flacidez</strong>, <strong>definição de contornos</strong>,
+            <strong> suavização de linhas</strong> e devolve <strong>firmeza</strong> e <strong>viço</strong> à pele do rosto e do corpo, com
+            <strong> conforto</strong> e <strong>segurança</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Já a criofrequência é uma radiofrequência que possui a ponteira de aplicação resfriada, podendo atingir
-            até -6 ºC, que combina o resfriamento da superfície da pele com o aquecimento das camadas profundas.
-            Esse conjunto estimula intensamente a produção de colágeno e elastina, por ativar proteínas responsáveis
-            por choque térmico.
+            Já a criofrequência é uma radiofrequência que possui a <strong>ponteira de aplicação resfriada</strong>, podendo atingir
+            até <strong>-6 ºC</strong>, que combina o <strong>resfriamento da superfície</strong> da pele com o
+            <strong>aquecimento das camadas profundas</strong>. Esse conjunto estimula intensamente a produção de
+            <strong> colágeno</strong> e <strong>elastina</strong>, por ativar <strong>proteínas de choque térmico</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na redução da flacidez, melhora da textura da pele e definição de contornos, promovendo firmeza,
-            viço e rejuvenescimento no rosto e no corpo, com conforto e segurança.
+            Auxilia na redução da <strong>flacidez</strong>, <strong>melhora da textura da pele</strong> e
+            <strong> definição de contornos</strong>, promovendo <strong>firmeza</strong>, <strong>viço</strong> e
+            <strong> rejuvenescimento</strong> no rosto e no corpo, com <strong>conforto</strong> e <strong>segurança</strong>.
           </Typography>
 
           <Checklist
@@ -185,13 +190,14 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Atua nas camadas mais profundas da pele, auxiliando na redução de gordura localizada, melhora da
-            flacidez e estímulo à circulação.
+            Atua nas <strong>camadas mais profundas da pele</strong>, auxiliando na <strong>redução de gordura localizada</strong>,
+            <strong> melhora da flacidez</strong> e <strong>estímulo à circulação</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Ele promove um contorno corporal e facial mais harmônico, melhora a textura da pele e potencializa os
-            resultados de outros tratamentos, tudo de forma segura e confortável.
+            Ele promove um <strong>contorno corporal e facial</strong> mais harmônico, <strong>melhora a textura da pele</strong> e
+            <strong> potencializa os resultados</strong> de outros tratamentos, tudo de forma <strong>segura</strong> e
+            <strong> confortável</strong>.
           </Typography>
 
           <Checklist
@@ -214,25 +220,27 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A tecarterapia é uma forma específica de radiofrequência, que atua mais profundamente nos tecidos e tem
-            foco mais terapêutico, ajudando na circulação, alívio de dores e regeneração tecidual.
+            A tecarterapia é uma forma específica de <strong>radiofrequência</strong>, que atua mais
+            <strong> profundamente nos tecidos</strong> e tem foco mais <strong>terapêutico</strong>, ajudando na
+            <strong> circulação</strong>, <strong>alívio de dores</strong> e <strong>regeneração tecidual</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
             Diferente da radiofrequência tradicional, que tem foco principal na pele, a tecarterapia atua como uma
-            importante aliada no tratamento de dores, melhora da flacidez e é especialmente indicada como suporte em
-            protocolos para lipedema em fase inicial.
+            importante aliada no <strong>tratamento de dores</strong>, <strong>melhora da flacidez</strong> e é especialmente indicada
+            como suporte em protocolos para <strong>lipedema em fase inicial</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Já a criotecarterapia é a combinação da tecarterapia com o resfriamento controlado da superfície da pele,
-            unindo estímulo profundo dos tecidos com maior conforto térmico.
+            Já a criotecarterapia é a combinação da <strong>tecarterapia</strong> com o
+            <strong> resfriamento controlado</strong> da superfície da pele, unindo <strong>estímulo profundo dos tecidos</strong> com
+            maior <strong>conforto térmico</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Essa associação potencializa a circulação, favorece a ação drenante e anti-inflamatória, estimula a
-            regeneração celular e também o aumento de colágeno e elastina, contribuindo para uma pele e tecidos mais
-            saudáveis.
+            Essa associação potencializa a <strong>circulação</strong>, favorece a ação <strong>drenante e anti-inflamatória</strong>,
+            estimula a <strong>regeneração celular</strong> e também o aumento de <strong>colágeno</strong> e
+            <strong> elastina</strong>, contribuindo para uma pele e tecidos mais <strong>saudáveis</strong>.
           </Typography>
 
           <Checklist
@@ -295,14 +303,15 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Por meio de laser e LED aplicados na cor, intensidade e tempo adequados, a fotobiomodulação estimula
-            processos naturais do organismo, promovendo regeneração celular, melhora da circulação e equilíbrio
-            inflamatório.
+            Por meio de <strong>laser</strong> e <strong>LED</strong> aplicados na cor, intensidade e tempo adequados, a
+            <strong> fotobiomodulação</strong> estimula processos naturais do organismo, promovendo
+            <strong> regeneração celular</strong>, <strong>melhora da circulação</strong> e <strong>equilíbrio inflamatório</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            O ILIB atua de forma sistêmica, auxiliando na oxigenação do sangue, recuperação, estímulo de colágeno e
-            melhora da qualidade da pele, com efeito revitalizante e toque de rejuvenescimento.
+            O <strong>ILIB</strong> atua de forma <strong>sistêmica</strong>, auxiliando na <strong>oxigenação do sangue</strong>,
+            <strong> recuperação</strong>, <strong>estímulo de colágeno</strong> e <strong>melhora da qualidade da pele</strong>, com
+            efeito <strong>revitalizante</strong> e toque de <strong>rejuvenescimento</strong>.
           </Typography>
 
           <Checklist
@@ -329,14 +338,15 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Utiliza sucção associada à estimulação mecânica dos tecidos, promovendo melhora da circulação, drenagem
-            linfática e estímulo do colágeno.
+            Utiliza <strong>sucção</strong> associada à <strong>estimulação mecânica</strong> dos tecidos, promovendo
+            <strong> melhora da circulação</strong>, <strong>drenagem linfática</strong> e <strong>estímulo do colágeno</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na redução de celulite, retenção de líquidos e flacidez, melhora o contorno corporal e a textura
-            da pele. Na clínica, é possível associar o vácuo com LEDs em diferentes comprimentos de onda para
-            potencializar os resultados.
+            Auxilia na redução de <strong>celulite</strong>, <strong>retenção de líquidos</strong> e
+            <strong> flacidez</strong>, melhora o <strong>contorno corporal</strong> e a <strong>textura da pele</strong>. Na clínica, é
+            possível associar o vácuo com <strong>LEDs</strong> em diferentes comprimentos de onda para
+            <strong> potencializar os resultados</strong>.
           </Typography>
 
           <Checklist
@@ -364,14 +374,16 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            É a única corrente capaz de imitar a bioeletricidade natural do organismo, por meio de estímulos
-            elétricos de baixa intensidade e imperceptíveis, tornando o tratamento indolor.
+            É a única corrente capaz de imitar a <strong>bioeletricidade natural</strong> do organismo, por meio de
+            estímulos elétricos de <strong>baixa intensidade</strong> e <strong>imperceptíveis</strong>, tornando o tratamento
+            <strong>indolor</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na normalização das funções celulares, tonificação, melhora da flacidez, definição de contornos e
-            revitalização da pele, promovendo uma aparência mais firme, iluminada e saudável no rosto e no corpo,
-            além de potencializar os resultados de todos os protocolos estéticos.
+            Auxilia na <strong>normalização das funções celulares</strong>, <strong>tonificação</strong>,
+            <strong> melhora da flacidez</strong>, <strong>definição de contornos</strong> e <strong>revitalização da pele</strong>,
+            promovendo uma aparência mais <strong>firme</strong>, <strong>iluminada</strong> e <strong>saudável</strong> no rosto e no corpo,
+            além de <strong>potencializar os resultados</strong> de todos os protocolos estéticos.
           </Typography>
 
           <Checklist
@@ -398,13 +410,14 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A corrente russa utiliza estímulos elétricos para promover contrações musculares controladas.
+            A corrente russa utiliza <strong>estímulos elétricos</strong> para promover <strong>contrações musculares controladas</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia no fortalecimento e tonificação muscular, melhora da flacidez, definição de contornos e suporte
-            ao contorno corporal e facial, potencializando os resultados dos protocolos estéticos, de forma segura e
-            controlada no rosto e no corpo.
+            Auxilia no <strong>fortalecimento</strong> e <strong>tonificação muscular</strong>, <strong>melhora da flacidez</strong>,
+            <strong> definição de contornos</strong> e suporte ao <strong>contorno corporal e facial</strong>,
+            <strong> potencializando os resultados</strong> dos protocolos estéticos, de forma <strong>segura</strong> e
+            <strong> controlada</strong> no rosto e no corpo.
           </Typography>
 
           <Checklist
@@ -427,13 +440,14 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Massagem com estímulos eletrovibratórios, promovendo relaxamento profundo, melhora da circulação e
-            liberação de tensões.
+            Massagem com <strong>estímulos eletrovibratórios</strong>, promovendo <strong>relaxamento profundo</strong>,
+            <strong> melhora da circulação</strong> e <strong>liberação de tensões</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Potencializa os resultados estéticos por ter ação drenante, anti-inflamatória e analgésica para dores,
-            proporcionando sensação de leveza, conforto e reconexão com o próprio corpo.
+            Potencializa os <strong>resultados estéticos</strong> por ter ação <strong>drenante</strong>,
+            <strong> anti-inflamatória</strong> e <strong>analgésica</strong> para dores, proporcionando sensação de
+            <strong> leveza</strong>, <strong>conforto</strong> e <strong>reconexão com o próprio corpo</strong>.
           </Typography>
 
           <Checklist
@@ -457,13 +471,15 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Promove aquecimento controlado, estimulando a circulação, a sudorese e o relaxamento muscular.
+            Promove <strong>aquecimento controlado</strong>, estimulando a <strong>circulação</strong>, a
+            <strong> sudorese</strong> e o <strong>relaxamento muscular</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na eliminação de toxinas, potencializa a redução de medidas, melhora a absorção de ativos e
-            contribui para o bem-estar e leveza corporal, sendo uma excelente aliada nos protocolos estéticos, de
-            forma confortável e segura.
+            Auxilia na <strong>eliminação de toxinas</strong>, <strong>potencializa a redução de medidas</strong>,
+            <strong> melhora a absorção de ativos</strong> e contribui para o <strong>bem-estar</strong> e
+            <strong> leveza corporal</strong>, sendo uma excelente aliada nos protocolos estéticos, de forma
+            <strong> confortável</strong> e <strong>segura</strong>.
           </Typography>
 
           <Checklist
@@ -491,13 +507,14 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A bota pneumática utiliza compressão de ar sequencial para estimular a circulação, a drenagem linfática e
-            o retorno venoso.
+            A bota pneumática utiliza <strong>compressão de ar sequencial</strong> para estimular a
+            <strong> circulação</strong>, a <strong>drenagem linfática</strong> e o <strong>retorno venoso</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Auxilia na redução de inchaço, sensação de peso e fadiga nas pernas, promovendo alívio, leveza e
-            bem-estar, além de potencializar os resultados dos protocolos estéticos.
+            Auxilia na redução de <strong>inchaço</strong>, sensação de <strong>peso</strong> e
+            <strong> fadiga nas pernas</strong>, promovendo <strong>alívio</strong>, <strong>leveza</strong> e
+            <strong> bem-estar</strong>, além de <strong>potencializar os resultados</strong> dos protocolos estéticos.
           </Typography>
 
           <Checklist
@@ -525,13 +542,14 @@ export default function TecnologiasPage() {
       more: (
         <>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            A terapia combinada permite a associação de duas ou mais tecnologias no mesmo atendimento, seja de forma
-            simultânea em diferentes áreas ou por meio de um único aplicador.
+            A terapia combinada permite a <strong>associação de duas ou mais tecnologias</strong> no mesmo atendimento, seja de
+            forma <strong>simultânea em diferentes áreas</strong> ou por meio de um <strong>único aplicador</strong>.
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
-            Essa integração potencializa os resultados dos tratamentos, otimiza tempo, estimula diferentes camadas dos
-            tecidos e promove melhora da flacidez, contorno e qualidade geral da pele.
+            Essa integração <strong>potencializa os resultados</strong> dos tratamentos, <strong>otimiza tempo</strong>, estimula
+            diferentes <strong>camadas dos tecidos</strong> e promove melhora da <strong>flacidez</strong>,
+            <strong> contorno</strong> e <strong>qualidade geral da pele</strong>.
           </Typography>
 
           <Checklist
