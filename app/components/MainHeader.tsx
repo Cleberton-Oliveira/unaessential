@@ -5,7 +5,6 @@ import Image from "next/image";
 import {
   AppBar,
   Toolbar,
-  Typography,
   Button,
   Container,
   Stack,
@@ -57,12 +56,24 @@ export function MainHeader() {
         <Toolbar
           disableGutters
           sx={{
-            py: 1.5,
+            pt: 1.5,
+            pb: 1.7,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
           }}
         >
+          {/* MENU MOBILE */}
+          <IconButton
+            edge="start"
+            color="secondary"
+            aria-label="abrir menu"
+            onClick={handleOpenMobileMenu}
+            sx={{ display: { xs: "flex", md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+
           <Box
             component={Link}
             href="/"
@@ -70,6 +81,7 @@ export function MainHeader() {
               display: "flex",
               alignItems: "center",
               textDecoration: "none",
+              mx: { xs: "auto", md: 0 },
             }}
           >
             <Image
@@ -136,23 +148,12 @@ export function MainHeader() {
             </Button>
           </Box>
 
-          {/* MENU MOBILE */}
-          <IconButton
-            edge="end"
-            color="secondary"
-            aria-label="abrir menu"
-            onClick={handleOpenMobileMenu}
-            sx={{ display: { xs: "flex", md: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-
           <Menu
             anchorEl={mobileMenuAnchorEl}
             open={mobileMenuOpen}
             onClose={handleCloseMobileMenu}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            transformOrigin={{ vertical: "top", horizontal: "right" }}
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+            transformOrigin={{ vertical: "top", horizontal: "left" }}
           >
             {navItems.map((item) => {
               const isActive =

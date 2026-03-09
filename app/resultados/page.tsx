@@ -75,6 +75,22 @@ const resultSlides: ResultSlide[] = [
     imageSrc: "/image/resultados/bracos.png",
     alt: "Antes e depois de tratamento estético em braços.",
   },
+  {
+    id: "criolipolise-placas-25-1",
+    title: "Criolipólise de placas · 25 dias",
+    description:
+      "Resultado de 1 sessão de criolipólise de placas após 25 dias. O resultado final costuma aparecer entre 60 e 90 dias — em processo.",
+    imageSrc: "/image/resultados/Criopos25.jpg",
+    alt: "Resultado de criolipólise de placas após 25 dias (1 sessão).",
+  },
+  {
+    id: "criolipolise-placas-25-2",
+    title: "Criolipólise de placas · 25 dias",
+    description:
+      "Resultado de 1 sessão de criolipólise de placas após 25 dias. O resultado final costuma aparecer entre 60 e 90 dias — em processo.",
+    imageSrc: "/image/resultados/criopos252.jpg",
+    alt: "Resultado de criolipólise de placas após 25 dias (1 sessão) - imagem 2.",
+  },
 ];
 
 const RESULTS_PER_PAGE = 4;
