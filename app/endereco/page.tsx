@@ -2,9 +2,6 @@
 
 import { Container, Typography, Box, Stack, IconButton } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import LocalTaxiIcon from "@mui/icons-material/LocalTaxi";
-import MapIcon from "@mui/icons-material/Map";
-import NavigationIcon from "@mui/icons-material/Navigation";
 
 export default function EnderecoPage() {
   const enderecoFormatado =
@@ -63,9 +60,8 @@ export default function EnderecoPage() {
                   display: "flex",
                   height: 48,
                   borderRadius: 2,
-                  border: "2 solid #ccc",
+                  border: "2px solid #ccc",
                   overflow: "hidden",
-  
                 }}
               >
                 <IconButton
@@ -94,9 +90,15 @@ export default function EnderecoPage() {
                     borderRadius: 0,
                     borderRight: 1,
                     borderColor: "divider",
+                    p: 0,
                   }}
                 >
-                  <LocalTaxiIcon />
+                  <Box
+                    component="img"
+                    src="/icons/uber.png"
+                    alt="Uber"
+                    sx={{ width: 32, height: 32 }}
+                  />
                 </IconButton>
 
                 <IconButton
@@ -111,9 +113,15 @@ export default function EnderecoPage() {
                     borderRadius: 0,
                     borderRight: 1,
                     borderColor: "divider",
+                    p: 0,
                   }}
                 >
-                  <MapIcon />
+                  <Box
+                    component="img"
+                    src="/icons/google_maps.png"
+                    alt="Google Maps"
+                    sx={{ width: 32, height: 32 }}
+                  />
                 </IconButton>
 
                 <IconButton
@@ -126,9 +134,15 @@ export default function EnderecoPage() {
                   sx={{
                     flex: 1,
                     borderRadius: 0,
+                    p: 0,
                   }}
                 >
-                  <NavigationIcon />
+                  <Box
+                    component="img"
+                    src="/icons/waze.png"
+                    alt="Waze"
+                    sx={{ width: 32, height: 32 }}
+                  />
                 </IconButton>
               </Box>
             </Box>
