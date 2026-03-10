@@ -180,7 +180,8 @@ export default function Home() {
           position: "relative",
           overflow: "hidden",
           py: { xs: 6, md: 7 },
-          minHeight: { xs: "45vh", md: "58vh" },
+          minHeight: { xs: "80vh", md: "90vh" },
+          mt: { xs: -7, md: -8 },
           borderBottom: 1,
           borderColor: "divider",
           bgcolor: "background.paper",
@@ -232,7 +233,8 @@ export default function Home() {
 
         <Box
           sx={{
-            position: "relative",
+            position: "absolute",
+            inset: 0,
             zIndex: 1,
             bgcolor: "rgba(0, 0, 0, 0.55)",
             backdropFilter: "blur(1px)",
@@ -248,7 +250,7 @@ export default function Home() {
                 gap: 10,
               }}
             >
-              <Box sx={{ flex: 1 }}>
+              <Box sx={{ flex: 1, pt: 20 }}>
               <Typography variant="overline" sx={{ letterSpacing: 2, color: "common.white", textShadow: "0 2px 10px rgba(0,0,0,0.85)" }}>
                 estética & bem-estar
               </Typography>

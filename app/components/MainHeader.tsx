@@ -16,7 +16,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Início", href: "/" },
@@ -29,6 +29,28 @@ const navItems = [
 
 export function MainHeader() {
   const pathname = usePathname();
+
+  const isHome = pathname === "/";
+  const [overBanner, setOverBanner] = useState<boolean>(isHome);
+
+  useEffect(() => {
+    if (!isHome) {
+      setOverBanner(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.80;
+      setOverBanner(window.scrollY < threshold);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isHome]);
 
   const [mobileMenuAnchorEl, setMobileMenuAnchorEl] = useState<null | HTMLElement>(null);
   const mobileMenuOpen = Boolean(mobileMenuAnchorEl);
@@ -49,15 +71,15 @@ export function MainHeader() {
       sx={{
         borderBottom: 1,
         borderColor: "divider",
-        bgcolor: "primary.main",
+        bgcolor: isHome && overBanner ? "rgba(0, 0, 0, 0.35)" : "primary.main",
       }}
     >
       <Container maxWidth="lg">
         <Toolbar
           disableGutters
           sx={{
-            pt: 1.5,
-            pb: 1.7,
+            pt: 0.75,
+            pb: 1,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -118,9 +140,10 @@ export function MainHeader() {
                     sx={{
                       textTransform: "none",
                       fontSize: 14,
-                      color: isActive ? "primary.main" : "secondary.main",
-                      bgcolor: isActive ? "secondary.main" : "transparent",
-                      borderRadius: 999,
+                      color: isActive ? "#e8dfcf" : "common.white",
+                      fontWeight: isActive ? 600 : 500,
+                      borderBottom: isActive ? "2px solid #e8dfcf" : "2px solid transparent",
+                      borderRadius: 0,
                       px: 2,
                     }}
                   >
@@ -140,8 +163,14 @@ export function MainHeader() {
                 textTransform: "none",
                 fontSize: 14,
                 borderRadius: 999,
-                px: 2.5,
+                px: 2,
                 ml: "auto",
+                py: 0.5,
+                bgcolor: "#e8dfcf",
+                color: "#1a1a1a",
+                "&:hover": {
+                  bgcolor: "#d8cdbb",
+                },
               }}
             >
               Agendar agora
