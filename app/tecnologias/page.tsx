@@ -6,6 +6,8 @@ import {
   Box,
   Stack,
   Button,
+  Tabs,
+  Tab,
   Chip,
   Card,
   CardContent,
@@ -16,7 +18,8 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import type { ReactNode } from "react";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { useMemo, useState, type ReactNode } from "react";
 
 const WHATSAPP_PHONE = "5548991904131";
 const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
@@ -565,6 +568,86 @@ export default function TecnologiasPage() {
     },
   ];
 
+  const tabConfigs = useMemo(
+    () =>
+      [
+        {
+          key: "todas",
+          label: "TODAS TECNOLOGIAS",
+          ids: technologyCards.map((card) => card.id),
+        },
+        {
+          key: "lipedema",
+          label: "LIPEDEMA",
+          ids: [
+            "criolipolise-placas",
+            "ultrassom-estetico",
+            "tecarterapia",
+            "laser-led",
+            "vacuum-led",
+            "bota-pneumatica",
+            "microcorrentes",
+            "terapia-combinada",
+          ],
+        },
+        {
+          key: "reduz-gordura",
+          label: "REDUZ GORDURA",
+          ids: [
+            "criolipolise-placas",
+            "radiofrequencia",
+            "ultrassom-estetico",
+            "vacuum-led",
+            "laser-led",
+          ],
+        },
+        {
+          key: "flacidez",
+          label: "FLACIDEZ",
+          ids: [
+            "criolipolise-placas",
+            "radiofrequencia",
+            "laser-led",
+            "vacuum-led",
+            "microcorrentes",
+            "corrente-russa-aussie",
+          ],
+        },
+        {
+          key: "retencao-constipacao-inflamacao",
+          label: "RETENÇÃO, CONSTIPAÇÃO E INFLAMAÇÃO",
+          ids: [
+            "microcorrentes",
+            "bota-pneumatica",
+            "laser-led",
+            "tecarterapia",
+            "ultrassom-estetico",
+            "massagem-aura",
+            "manta-termica-detox",
+            "terapia-combinada",
+          ],
+        },
+        {
+          key: "detox",
+          label: "DETOX",
+          ids: ["massagem-aura", "microcorrentes", "tecarterapia", "terapia-combinada"],
+        },
+      ] as const,
+    [technologyCards]
+  );
+
+  const [activeTab, setActiveTab] = useState<(typeof tabConfigs)[number]["key"]>("todas");
+
+  const activeTabCardIds = useMemo(() => {
+    const config = tabConfigs.find((tab) => tab.key === activeTab);
+    return new Set(config?.ids ?? []);
+  }, [activeTab, tabConfigs]);
+
+  const visibleTechnologyCards = useMemo(
+    () => technologyCards.filter((card) => activeTabCardIds.has(card.id)),
+    [activeTabCardIds, technologyCards]
+  );
+
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
@@ -581,6 +664,23 @@ export default function TecnologiasPage() {
           saúde da pele e do corpo.
         </Typography>
 
+        <Tabs
+          value={activeTab}
+          onChange={(_, value) => setActiveTab(value)}
+          variant="scrollable"
+          scrollButtons="auto"
+          sx={{ mt: 3 }}
+        >
+          {tabConfigs.map((tab) => (
+            <Tab
+              key={tab.key}
+              value={tab.key}
+              label={tab.label}
+              sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
+            />
+          ))}
+        </Tabs>
+
         {/* MENU INTERNO DE ATALHOS */}
         <Box
           sx={{
@@ -590,7 +690,7 @@ export default function TecnologiasPage() {
             gap: 1,
           }}
         >
-          {technologyCards.map((card) => (
+          {visibleTechnologyCards.map((card) => (
             <Button
               key={`shortcut-${card.id}`}
               component="a"
@@ -613,7 +713,7 @@ export default function TecnologiasPage() {
             gap: 2,
           }}
         >
-          {technologyCards.map((card) => (
+          {visibleTechnologyCards.map((card) => (
             <Card
               key={card.id}
               id={`card-${card.id}`}
@@ -702,6 +802,7 @@ export default function TecnologiasPage() {
                   rel="noopener noreferrer"
                   variant="contained"
                   color="primary"
+                  startIcon={<WhatsAppIcon fontSize="small" />}
                   sx={{ textTransform: "none" }}
                 >
                   Agendar
