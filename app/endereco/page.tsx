@@ -1,11 +1,11 @@
 "use client";
 
-import { Container, Typography, Box, Stack, IconButton } from "@mui/material";
+import { Container, Typography, Box, Stack, IconButton, Paper } from "@mui/material";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 export default function EnderecoPage() {
   const enderecoFormatado =
-    "Av. Rio Branco, 354 - Sala 803 - Centro, Florianópolis - SC, 88015-200";
+    "Av. Rio Branco, 354 - Condomínio Centro Executivo Maxim's, Sala 803 - Centro, Florianópolis - SC, 88015-200";
 
   const handleCopyAddress = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
@@ -25,11 +25,23 @@ export default function EnderecoPage() {
           Onde estamos
         </Typography>
 
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={3}
-          sx={{ mt: 3, alignItems: { xs: "flex-start", md: "stretch" } }}
+        <Paper
+          elevation={0}
+          sx={{
+            mt: 3,
+            p: { xs: 1, md: 2 },
+            borderRadius: 3,
+            border: 1,
+            borderColor: "#d2c3b0",
+            bgcolor: "#e8dfcf",
+          }}
         >
+          {/* PRIMEIRA LINHA: CARD DE ENDEREÇO + MAPA */}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={2}
+            sx={{ alignItems: { xs: "flex-start", md: "stretch" } }}
+          >
           <Box
             sx={{
               width: { xs: "100%", md: "33.333%" },
@@ -38,17 +50,19 @@ export default function EnderecoPage() {
             <Box
               sx={{
                 borderRadius: 3,
-                boxShadow: 3,
-                bgcolor: "background.paper",
+                boxShadow: 0,
+                bgcolor: "#ffffffaf",
                 p: 3,
                 height: "100%",
+                border: 1,
+                borderColor: "#d2c3b0",
               }}
             >
               <Typography variant="h6" sx={{ fontWeight: 600 }}>
                 Clínica unaessential
               </Typography>
               <Typography variant="body1" sx={{ mt: 1, fontSize: "1.1rem" }}>
-                Av. Rio Branco, 354 - Sala 803 - Centro
+                Av. Rio Branco, 354 - Condomínio Centro Executivo Maxim's, Sala 803 - Centro
               </Typography>
               <Typography variant="body1" sx={{ fontSize: "1.1rem" }}>
                 Florianópolis - SC
@@ -56,12 +70,13 @@ export default function EnderecoPage() {
 
               <Box
                 sx={{
-                  mt: 16,
+                  mt: 12,
                   display: "flex",
-                  height: 48,
+                  height: 45,
                   borderRadius: 2,
-                  border: "2px solid #ccc",
+                  border: "1px solid #d2c3b0",
                   overflow: "hidden",
+                  bgcolor: "#fff",
                 }}
               >
                 <IconButton
@@ -72,7 +87,7 @@ export default function EnderecoPage() {
                     flex: 1,
                     borderRadius: 0,
                     borderRight: 1,
-                    borderColor: "divider",
+                    borderColor: "#d2c3b0",
                   }}
                 >
                   <ContentCopyIcon />
@@ -89,7 +104,7 @@ export default function EnderecoPage() {
                     flex: 1,
                     borderRadius: 0,
                     borderRight: 1,
-                    borderColor: "divider",
+                    borderColor: "#d2c3b0",
                     p: 0,
                   }}
                 >
@@ -112,7 +127,7 @@ export default function EnderecoPage() {
                     flex: 1,
                     borderRadius: 0,
                     borderRight: 1,
-                    borderColor: "divider",
+                    borderColor: "#d2c3b0",
                     p: 0,
                   }}
                 >
@@ -157,8 +172,11 @@ export default function EnderecoPage() {
               sx={{
                 borderRadius: 3,
                 overflow: "hidden",
-                boxShadow: 1,
+                boxShadow: 0,
                 height: 320,
+                border: 1,
+                borderColor: "divider",
+                bgcolor: "background.paper",
               }}
             >
               <iframe
@@ -173,36 +191,79 @@ export default function EnderecoPage() {
               />
             </Box>
           </Box>
-        </Stack>
+          </Stack>
 
-        <Box
-          sx={{
-            mt: 3,
-            borderRadius: 3,
-            overflow: "hidden",
-            boxShadow: 1,
-            height: { xs: 340, md: 480 },
-            border: 1,
-            borderColor: "divider",
-            bgcolor: "background.paper",
-          }}
-        >
-          <Box
-            component="video"
-            src="/video/clinica.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-        </Box>
+          {/* SEGUNDA LINHA: VÍDEO DA CLÍNICA + FACHADA */}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={2}
+            sx={{ mt: 2.5 }}
+          >
+            <Box
+              sx={{
+                width: { xs: "100%", md: "50%" },
+              }}
+            >
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  boxShadow: 0,
+                  height: { xs: 260, md: 360 },
+                  border: 1,
+                  borderColor: "#d2c3b0",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <Box
+                  component="video"
+                  src="/video/clinica.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                width: { xs: "100%", md: "50%" },
+              }}
+            >
+              <Box
+                sx={{
+                  borderRadius: 3,
+                  overflow: "hidden",
+                  boxShadow: 0,
+                  height: { xs: 260, md: 360 },
+                  border: 1,
+                  borderColor: "#d2c3b0",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/image/faixada.jpg"
+                  alt="Fachada da clínica Unaessential"
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                />
+              </Box>
+            </Box>
+          </Stack>
+        </Paper>
 
       </Container>
     </Box>
