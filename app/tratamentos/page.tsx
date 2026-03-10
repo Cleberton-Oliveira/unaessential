@@ -820,22 +820,49 @@ export default function TratamentosPage() {
           Estética, saúde & SPA UnaEssential
         </Typography>
 
-        <Tabs
-          value={activeTab}
-          onChange={(_, value) => setActiveTab(value)}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{ mt: 3 }}
+        <Box
+          sx={{
+            mt: 3,
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            flexWrap: "wrap",
+          }}
         >
-          {tabConfigs.map((tab) => (
-            <Tab
-              key={tab.key}
-              value={tab.key}
-              label={tab.label}
-              sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
-            />
-          ))}
-        </Tabs>
+          <Tabs
+            value={activeTab}
+            onChange={(_, value) => setActiveTab(value)}
+            variant="scrollable"
+            scrollButtons="auto"
+            sx={{ flex: "1 1 auto", minHeight: 42 }}
+          >
+            {tabConfigs.map((tab) => (
+              <Tab
+                key={tab.key}
+                value={tab.key}
+                label={tab.label}
+                sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
+              />
+            ))}
+          </Tabs>
+
+          <Chip
+            component="a"
+            href="https://online.maapp.com.br/UnaEssential"
+            target="_blank"
+            rel="noopener noreferrer"
+            clickable
+            icon={<EventAvailableIcon sx={{ color: "text.secondary" }} />}
+            label="Catálogo com valores e agendamento online"
+            variant="filled"
+            sx={{
+              bgcolor: "rgba(46, 125, 50, 0.12)",
+              color: "text.secondary",
+              fontWeight: 700,
+              px: 0.5,
+            }}
+          />
+        </Box>
 
         {/* MENU INTERNO DE ATALHOS */}
         <Box
@@ -859,19 +886,6 @@ export default function TratamentosPage() {
               {card.title}
             </Button>
           ))}
-
-          <Button
-            component="a"
-            href="https://online.maapp.com.br/UnaEssential"
-            target="_blank"
-            rel="noopener noreferrer"
-            size="small"
-            variant="contained"
-            color="primary"
-            sx={{ textTransform: "none", fontSize: 13 }}
-          >
-            Catálogo com link para agendamento online
-          </Button>
         </Box>
 
         <Box
