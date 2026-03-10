@@ -504,7 +504,7 @@ export default function TratamentosPage() {
     },
     {
       id: "spa-dos-labios",
-      title: "Spa dos Lábios",
+      title: "SPA dos lábios",
       description:
         "Esfoliação suave + hidratação profunda para lábios macios, nutridos e com aspecto saudável. Serviço adicional.",
       durations: ["5 a 15min"],
@@ -647,14 +647,6 @@ export default function TratamentosPage() {
           </Typography>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
-            O Spa dos Pés é um <strong>tratamento completo</strong> que inclui <strong>escalda-pés</strong>,
-            <strong> esfoliação</strong>, <strong>hidratação profunda</strong> e <strong>massagem relaxante</strong>. Ele promove
-            <strong> alívio de tensões</strong>, <strong>melhora da circulação</strong>, <strong>maciez da pele</strong> e uma
-            <strong> sensação intensa de conforto e bem-estar</strong>, proporcionando <strong>descanso</strong> e
-            <strong> renovação para os pés</strong>.
-          </Typography>
-
-          <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
             Em alguns rituais de Day SPA, o Spa dos Pés já está incluso como parte da experiência completa de cuidado e
             relaxamento.
           </Typography>
@@ -697,6 +689,29 @@ export default function TratamentosPage() {
       ),
     },
     {
+      id: "spa-dos-pes",
+      title: "SPA dos pés",
+      description:
+        "Ritual para descansar e renovar os pés, com esfoliação, hidratação e massagem relaxante combinados a escalda-pés aromático.",
+      durations: ["35min"],
+      media: { type: "video" as const, src: "/Reels/Spadospes.mp4" },
+      more: (
+        <>
+          <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 760 }}>
+            O Spa dos Pés é um momento de <strong>pausa</strong> e <strong>renovação</strong> dedicado exclusivamente aos seus pés.
+            Começamos com uma <strong>esfoliação suave</strong> para remover células mortas, seguida de
+            <strong> hidratação profunda</strong> e <strong>massagem relaxante</strong> que ajuda a aliviar tensões e a sensação de peso.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
+            Durante o ritual, você desfruta de um <strong>escalda-pés aromático</strong> que potencializa o relaxamento e o
+            conforto. Para completar a experiência, oferecemos <strong>chás quentes ou gelados</strong> e
+            <strong> snacks sem glúten e sem lactose</strong>, criando um ambiente acolhedor e cuidadoso em cada detalhe.
+          </Typography>
+        </>
+      ),
+    },
+    {
       id: "plastica-dos-pes",
       title: "Plástica dos pés",
       description:
@@ -729,6 +744,7 @@ export default function TratamentosPage() {
     "harmonizacao-corporal-e-facial-sem-cortes": 15,
     "design-de-sobrancelhas-spa": 16,
     "spa-dos-labios": 17,
+    "spa-dos-pes": 18,
     "plastica-dos-pes": 99,
   };
 
@@ -792,7 +808,7 @@ export default function TratamentosPage() {
         {
           key: "pes",
           label: "PÉS",
-          ids: ["plastica-dos-pes"],
+          ids: ["spa-dos-pes", "plastica-dos-pes"],
         },
       ] as const,
     [sortedTreatmentCards]
