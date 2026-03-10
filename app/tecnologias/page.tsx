@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useMemo, useState, type ReactNode } from "react";
 
 const WHATSAPP_PHONE = "5548991904131";
@@ -801,6 +802,7 @@ export default function TecnologiasPage() {
                   rel="noopener noreferrer"
                   variant="contained"
                   color="primary"
+                  startIcon={<WhatsAppIcon fontSize="small" />}
                   sx={{ textTransform: "none" }}
                 >
                   Agendar
