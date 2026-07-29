@@ -187,7 +187,7 @@ export default function ProfissionaisPage() {
           </Card>
 
           {/* BLOCO AMANDA */}
-          <Card elevation={0} sx={{ border: 1, borderColor: "divider", borderRadius: 4, overflow: "hidden" }}>
+          {/* <Card elevation={0} sx={{ border: 1, borderColor: "divider", borderRadius: 4, overflow: "hidden" }}>
             <Stack direction={{ xs: "column", md: "row" }} sx={{ alignItems: "stretch" }}>
               <CardContent sx={{ flex: 1, p: { xs: 3, md: 4 }, order: { xs: 2, md: 1 } }}>
                 <Typography variant="h5" sx={{ fontWeight: 600 }}>
@@ -287,7 +287,7 @@ export default function ProfissionaisPage() {
                 />
               </Box>
             </Stack>
-          </Card>
+          </Card> */}
         </Stack>
       </Container>
     </Box>

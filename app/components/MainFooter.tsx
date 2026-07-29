@@ -14,7 +14,7 @@ export function MainFooter() {
         borderTop: 0,
         borderColor: "divider",
         py: 1.7,
-        bgcolor: "#2a2a2a",
+        bgcolor: "#5f7350",
         bottom: 0,
         width: "100%",
       }}
@@ -29,7 +29,7 @@ export function MainFooter() {
             gap: 2,
           }}
         >
-          <Typography variant="body2" sx={{ color: "#ffffff" }}>
+          <Typography variant="body2" sx={{ color: "#e8dfcf" }}>
             © unaessential. Todos os direitos reservados.
           </Typography>
 

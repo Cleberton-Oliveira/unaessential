@@ -794,7 +794,7 @@ export default function TecnologiasPage() {
                 </Accordion>
               </CardContent>
 
-              <CardActions sx={{ px: 2, pb: 2, pt: 0 }}>
+              <CardActions sx={{ px: 2, pb: 2, pt: 0, width: "100%" }}>
                 <Button
                   component="a"
                   href={buildWhatsAppUrl(card.title)}
@@ -802,6 +802,7 @@ export default function TecnologiasPage() {
                   rel="noopener noreferrer"
                   variant="contained"
                   color="primary"
+                  fullWidth
                   startIcon={<WhatsAppIcon fontSize="small" />}
                   sx={{ textTransform: "none" }}
                 >
