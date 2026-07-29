@@ -14,6 +14,8 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import Image from "next/image";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -98,6 +100,110 @@ const ONLINE_SCHEDULING_LINKS: Record<string, string> = {
   "massagem-pedras-quentes":
     "https://online.maapp.com.br/UnaEssential/agenda?servicos=7131653",
 };
+
+const ONLINE_SCHEDULING_OPTIONS: Record<string, { label: string; href: string }[]> = {
+  "head-spa": [
+    {
+      label: "60min",
+      href: "https://online.maapp.com.br/UnaEssential/agenda?servicos=6073303",
+    },
+    {
+      label: "90min",
+      href: "https://online.maapp.com.br/UnaEssential/agenda?servicos=6073295",
+    },
+  ],
+  "day-spa": [
+    {
+      label: "120min",
+      href: "https://online.maapp.com.br/UnaEssential/agenda?servicos=6132639",
+    },
+    {
+      label: "180min",
+      href: "https://online.maapp.com.br/UnaEssential/agenda?servicos=6132678",
+    },
+    {
+      label: "240min",
+      href: "https://online.maapp.com.br/UnaEssential/agenda?servicos=6132603",
+    },
+  ],
+};
+
+function ScheduleCardActions({ cardId, title }: { cardId: string; title: string }) {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const durationOptions = ONLINE_SCHEDULING_OPTIONS[cardId];
+  const singleLink = ONLINE_SCHEDULING_LINKS[cardId];
+  const hasOnlineScheduling = Boolean(durationOptions?.length || singleLink);
+
+  return (
+    <CardActions sx={{ px: 2, pb: 2, pt: 0, gap: 1, flexWrap: "wrap", width: "100%" }}>
+      <Button
+        component="a"
+        href={buildWhatsAppUrl(title)}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="contained"
+        color="primary"
+        startIcon={<WhatsAppIcon fontSize="small" />}
+        fullWidth={!hasOnlineScheduling}
+        sx={{
+          textTransform: "none",
+          flex: hasOnlineScheduling ? 1 : undefined,
+        }}
+      >
+        Agendar
+      </Button>
+
+      {durationOptions?.length ? (
+        <>
+          <Button
+            variant="outlined"
+            color="primary"
+            startIcon={<EventAvailableIcon fontSize="small" />}
+            onClick={(event) => setAnchorEl(event.currentTarget)}
+            aria-haspopup="menu"
+            aria-expanded={Boolean(anchorEl) ? "true" : undefined}
+            sx={{ textTransform: "none", flex: 1 }}
+          >
+            Agendar pelo link
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={() => setAnchorEl(null)}
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            transformOrigin={{ vertical: "bottom", horizontal: "center" }}
+          >
+            {durationOptions.map((option) => (
+              <MenuItem
+                key={option.href}
+                component="a"
+                href={option.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setAnchorEl(null)}
+              >
+                {option.label}
+              </MenuItem>
+            ))}
+          </Menu>
+        </>
+      ) : singleLink ? (
+        <Button
+          component="a"
+          href={singleLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="outlined"
+          color="primary"
+          startIcon={<EventAvailableIcon fontSize="small" />}
+          sx={{ textTransform: "none", flex: 1 }}
+        >
+          Agendar pelo link
+        </Button>
+      ) : null}
+    </CardActions>
+  );
+}
 
 export default function TratamentosPage() {
   const treatmentCards: TreatmentCard[] = [
@@ -1013,107 +1119,7 @@ export default function TratamentosPage() {
                 ) : null}
               </CardContent>
 
-              <CardActions sx={{ px: 2, pb: 2, pt: 0, gap: 1, flexWrap: "wrap" }}>
-                <Button
-                  component="a"
-                  href={buildWhatsAppUrl(card.title)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  color="primary"
-                  startIcon={<WhatsAppIcon fontSize="small" />}
-                  sx={{
-                    textTransform: "none",
-                    flex:
-                      ONLINE_SCHEDULING_LINKS[card.id] || card.id === "day-spa" || card.id === "head-spa"
-                        ? 1
-                        : undefined,
-                  }}
-                >
-                  Agendar
-                </Button>
-
-                {card.id === "head-spa" ? (
-                  <>
-                    <Button
-                      component="a"
-                      href="https://online.maapp.com.br/UnaEssential/agenda?servicos=6073303"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<EventAvailableIcon fontSize="small" />}
-                      sx={{ textTransform: "none", flex: 1 }}
-                    >
-                      Agendar 60min
-                    </Button>
-                    <Button
-                      component="a"
-                      href="https://online.maapp.com.br/UnaEssential/agenda?servicos=6073295"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<EventAvailableIcon fontSize="small" />}
-                      sx={{ textTransform: "none", flex: 1 }}
-                    >
-                      Agendar 90min
-                    </Button>
-                  </>
-                ) : card.id === "day-spa" ? (
-                  <>
-                    <Button
-                      component="a"
-                      href="https://online.maapp.com.br/UnaEssential/agenda?servicos=6132639"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<EventAvailableIcon fontSize="small" />}
-                      sx={{ textTransform: "none", flex: 1 }}
-                    >
-                      Agendar 120min
-                    </Button>
-                    <Button
-                      component="a"
-                      href="https://online.maapp.com.br/UnaEssential/agenda?servicos=6132678"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<EventAvailableIcon fontSize="small" />}
-                      sx={{ textTransform: "none", flex: 1 }}
-                    >
-                      Agendar 180min
-                    </Button>
-                    <Button
-                      component="a"
-                      href="https://online.maapp.com.br/UnaEssential/agenda?servicos=6132603"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      variant="outlined"
-                      color="primary"
-                      startIcon={<EventAvailableIcon fontSize="small" />}
-                      sx={{ textTransform: "none", flex: 1 }}
-                    >
-                      Agendar 240min
-                    </Button>
-                  </>
-                ) : ONLINE_SCHEDULING_LINKS[card.id] ? (
-                  <Button
-                    component="a"
-                    href={ONLINE_SCHEDULING_LINKS[card.id]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="outlined"
-                    color="primary"
-                    startIcon={<EventAvailableIcon fontSize="small" />}
-                    sx={{ textTransform: "none", flex: 1 }}
-                  >
-                    Agendar pelo link
-                  </Button>
-                ) : null}
-              </CardActions>
+              <ScheduleCardActions cardId={card.id} title={card.title} />
             </Card>
           ))}
         </Box>
