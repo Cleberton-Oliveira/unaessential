@@ -21,7 +21,7 @@ export default function EnderecoPage() {
         <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
           endereço
         </Typography>
-        <Typography variant="h3" sx={{ mt: 1 }}>
+        <Typography variant="h4" sx={{ mt: 1 }}>
           Onde estamos
         </Typography>
 

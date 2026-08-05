@@ -181,7 +181,6 @@ export default function Home() {
           overflow: "hidden",
           py: { xs: 6, md: 7 },
           minHeight: { xs: "80vh", md: "90vh" },
-          mt: { xs: -7, md: -8 },
           borderBottom: 1,
           borderColor: "divider",
           bgcolor: "background.paper",

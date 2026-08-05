@@ -20,6 +20,8 @@ import Image from "next/image";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useMemo, useState, type ReactNode } from "react";
+import { ViewportVideo } from "../components/ViewportVideo";
+import { PageIntroText } from "../components/PageIntroText";
 
 const WHATSAPP_PHONE = "5548991904131";
 const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
@@ -654,15 +656,15 @@ export default function TecnologiasPage() {
         <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
           tecnologias
         </Typography>
-        <Typography variant="h3" sx={{ mt: 1 }}>
+        <Typography variant="h4" sx={{ mt: 1 }}>
           Tecnologias a favor da sua pele
         </Typography>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 760 }}>
+        <PageIntroText>
           Aqui você encontra, de forma simples e organizada, as principais tecnologias utilizadas nos tratamentos da
           UnaEssential. Todas são não invasivas e pensadas para entregar resultados com segurança, conforto e foco em
           saúde da pele e do corpo.
-        </Typography>
+        </PageIntroText>
 
         <Tabs
           value={activeTab}
@@ -710,7 +712,7 @@ export default function TecnologiasPage() {
             mt: 4,
             display: "grid",
             gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
-            gap: 2,
+            gap: 3,
           }}
         >
           {visibleTechnologyCards.map((card) => (
@@ -719,31 +721,26 @@ export default function TecnologiasPage() {
               id={`card-${card.id}`}
               sx={{
                 borderRadius: 3,
-                border: 1,
-                borderColor: "divider",
+                border: "1px solid rgba(95, 115, 80, 0.16)",
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
                 scrollMarginTop: { xs: 96, md: 112 },
+                bgcolor: "rgba(255, 255, 255, 0.94)",
+                boxShadow: "0 16px 42px rgba(53, 62, 45, 0.08)",
+                transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: "0 22px 54px rgba(53, 62, 45, 0.14)",
+                  borderColor: "rgba(95, 115, 80, 0.32)",
+                },
               }}
             >
-              <Box sx={{ width: "100%", height: 220, bgcolor: "background.paper" }}>
+              <Box sx={{ width: "100%", height: { xs: 240, md: 248 }, bgcolor: "background.paper" }}>
                 {card.media.type === "video" ? (
-                  <Box
-                    component="video"
+                  <ViewportVideo
                     src={card.media.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: card.id === "manta-termica-detox" ? "50% 80%" : "50% 50%",
-                      display: "block",
-                    }}
+                    objectPosition={card.id === "manta-termica-detox" ? "50% 80%" : "50% 50%"}
                   />
                 ) : (
                   <Image
@@ -762,8 +759,13 @@ export default function TecnologiasPage() {
                 )}
               </Box>
 
-              <CardContent sx={{ flex: 1 }}>
-                <Typography variant="h6">{card.title}</Typography>
+              <CardContent sx={{ flex: 1, px: 2.5, pt: 2.5, pb: 2 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontSize: "1.28rem", lineHeight: 1.25, color: "#263020", letterSpacing: "-0.01em" }}
+                >
+                  {card.title}
+                </Typography>
 
                 {card.chips?.length ? (
                   <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
@@ -771,22 +773,34 @@ export default function TecnologiasPage() {
                       <Chip
                         key={`${card.id}-${label}`}
                         label={label}
+                        size="small"
                         variant="filled"
                         sx={{
-                          bgcolor: "rgba(46, 125, 50, 0.12)",
-                          color: "text.secondary",
+                          bgcolor: "rgba(95, 115, 80, 0.10)",
+                          color: "#4d6041",
                           fontWeight: 600,
+                          border: "1px solid rgba(95, 115, 80, 0.12)",
                         }}
                       />
                     ))}
                   </Box>
                 ) : null}
 
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, lineHeight: 1.7 }}>
                   {card.description}
                 </Typography>
 
-                <Accordion elevation={0} sx={{ mt: 2, border: 1, borderColor: "divider", borderRadius: 2 }}>
+                <Accordion
+                  elevation={0}
+                  disableGutters
+                  sx={{
+                    mt: 2.25,
+                    border: "1px solid rgba(95, 115, 80, 0.14)",
+                    borderRadius: "14px !important",
+                    bgcolor: "rgba(252, 247, 239, 0.7)",
+                    "&::before": { display: "none" },
+                  }}
+                >
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                     <Typography variant="subtitle2">Saiba mais</Typography>
                   </AccordionSummary>
@@ -794,7 +808,7 @@ export default function TecnologiasPage() {
                 </Accordion>
               </CardContent>
 
-              <CardActions sx={{ px: 2, pb: 2, pt: 0, width: "100%" }}>
+              <CardActions sx={{ px: 2.5, pb: 2.5, pt: 0, width: "100%" }}>
                 <Button
                   component="a"
                   href={buildWhatsAppUrl(card.title)}
@@ -804,7 +818,7 @@ export default function TecnologiasPage() {
                   color="primary"
                   fullWidth
                   startIcon={<WhatsAppIcon fontSize="small" />}
-                  sx={{ textTransform: "none" }}
+                  sx={{ textTransform: "none", borderRadius: 999, py: 1.15, fontWeight: 700 }}
                 >
                   Agendar
                 </Button>

@@ -1,4 +1,5 @@
 import { Container, Typography, Box } from "@mui/material";
+import { PageIntroText } from "../components/PageIntroText";
 
 export default function FeedbacksPage() {
   return (
@@ -10,10 +11,10 @@ export default function FeedbacksPage() {
         <Typography variant="h3" sx={{ mt: 1 }}>
           A voz de quem viveu a experiência
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 720 }}>
+        <PageIntroText>
           Página voltada para depoimentos, comentários e percepções de pacientes sobre o cuidado recebido na
           unaessential.
-        </Typography>
+        </PageIntroText>
       </Container>
     </Box>
   );

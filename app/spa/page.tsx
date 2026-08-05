@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Button } from "@mui/material";
 import Link from "next/link";
+import { PageIntroText } from "../components/PageIntroText";
 
 export default function SpaPage() {
   return (
@@ -14,15 +15,15 @@ export default function SpaPage() {
           Experiências de SPA & Day SPA
         </Typography>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 760 }}>
+        <PageIntroText>
           Todas as informações detalhadas sobre nossos rituais de SPA, Day SPA, head spa, massagens e experiências
           sensoriais estão reunidas na página <strong>Tratamentos &amp; SPA</strong>.
-        </Typography>
+        </PageIntroText>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
+        <PageIntroText>
           Por lá, você encontra indicações, benefícios, tempos de duração e espaços reservados para fotos e vídeos de
           cada experiência, para que possa escolher com calma o cuidado que mais conversa com o seu momento.
-        </Typography>
+        </PageIntroText>
 
         <Button
           component={Link}
