@@ -3,7 +3,6 @@ import {
   Container,
   Typography,
   Box,
-  Stack,
   Button,
   Tabs,
   Tab,
@@ -23,6 +22,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { useMemo, useState, type ReactNode } from "react";
+import { ViewportVideo } from "../components/ViewportVideo";
 
  type TreatmentCardMedia = {
    type: "video" | "image";
@@ -135,7 +135,18 @@ function ScheduleCardActions({ cardId, title }: { cardId: string; title: string 
   const hasOnlineScheduling = Boolean(durationOptions?.length || singleLink);
 
   return (
-    <CardActions sx={{ px: 2, pb: 2, pt: 0, gap: 1, flexWrap: "wrap", width: "100%" }}>
+    <CardActions
+      sx={{
+        px: 2.5,
+        pb: 2.5,
+        pt: 0,
+        gap: 1,
+        flexWrap: "wrap",
+        flexDirection: { xs: "column", sm: "row" },
+        width: "100%",
+        "& > *": { width: { xs: "100%", sm: "auto" } },
+      }}
+    >
       <Button
         component="a"
         href={buildWhatsAppUrl(title)}
@@ -148,6 +159,9 @@ function ScheduleCardActions({ cardId, title }: { cardId: string; title: string 
         sx={{
           textTransform: "none",
           flex: hasOnlineScheduling ? 1 : undefined,
+          borderRadius: 999,
+          py: 1.05,
+          fontWeight: 700,
         }}
       >
         Agendar
@@ -162,9 +176,9 @@ function ScheduleCardActions({ cardId, title }: { cardId: string; title: string 
             onClick={(event) => setAnchorEl(event.currentTarget)}
             aria-haspopup="menu"
             aria-expanded={Boolean(anchorEl) ? "true" : undefined}
-            sx={{ textTransform: "none", flex: 1 }}
+            sx={{ textTransform: "none", flex: 1, borderRadius: 999, py: 1.05, fontWeight: 700 }}
           >
-            Agendar pelo link
+            Agendar
           </Button>
           <Menu
             anchorEl={anchorEl}
@@ -196,9 +210,9 @@ function ScheduleCardActions({ cardId, title }: { cardId: string; title: string 
           variant="outlined"
           color="primary"
           startIcon={<EventAvailableIcon fontSize="small" />}
-          sx={{ textTransform: "none", flex: 1 }}
+          sx={{ textTransform: "none", flex: 1, borderRadius: 999, py: 1.05, fontWeight: 700 }}
         >
-          Agendar pelo link
+          Agendar
         </Button>
       ) : null}
     </CardActions>
@@ -938,7 +952,7 @@ export default function TratamentosPage() {
         <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
           tratamentos
         </Typography>
-        <Typography variant="h3" sx={{ mt: 1 }}>
+        <Typography variant="h4" sx={{ mt: 1 }}>
           Estética, saúde & SPA UnaEssential
         </Typography>
 
@@ -1015,7 +1029,7 @@ export default function TratamentosPage() {
             mt: 4,
             display: "grid",
             gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
-            gap: 2,
+            gap: 3,
           }}
         >
           {visibleTreatmentCards.map((card) => (
@@ -1024,31 +1038,26 @@ export default function TratamentosPage() {
               id={`card-${card.id}`}
               sx={{
                 borderRadius: 3,
-                border: 1,
-                borderColor: "divider",
+                border: "1px solid rgba(95, 115, 80, 0.16)",
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
                 scrollMarginTop: { xs: 96, md: 112 },
+                bgcolor: "rgba(255, 255, 255, 0.94)",
+                boxShadow: "0 16px 42px rgba(53, 62, 45, 0.08)",
+                transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: "0 22px 54px rgba(53, 62, 45, 0.14)",
+                  borderColor: "rgba(95, 115, 80, 0.32)",
+                },
               }}
             >
-              <Box sx={{ width: "100%", height: 220, bgcolor: "background.paper" }}>
+              <Box sx={{ width: "100%", height: { xs: 240, md: 248 }, bgcolor: "background.paper" }}>
                 {card.media.type === "video" ? (
-                  <Box
-                    component="video"
+                  <ViewportVideo
                     src={card.media.src}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: card.id === "detox-spa-intensivo" ? "50% 80%" : "50% 50%",
-                      display: "block",
-                    }}
+                    objectPosition={card.id === "detox-spa-intensivo" ? "50% 80%" : "50% 50%"}
                   />
                 ) : (
                   <Image
@@ -1061,8 +1070,13 @@ export default function TratamentosPage() {
                 )}
               </Box>
 
-              <CardContent sx={{ flex: 1 }}>
-                <Typography variant="h6">{card.title}</Typography>
+              <CardContent sx={{ flex: 1, px: 2.5, pt: 2.5, pb: 2 }}>
+                <Typography
+                  variant="h6"
+                  sx={{ fontSize: "1.28rem", lineHeight: 1.25, color: "#263020", letterSpacing: "-0.01em" }}
+                >
+                  {card.title}
+                </Typography>
                 {card.durations?.length ? (
                   <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
                     {card.durations.map((duration) => (
@@ -1070,24 +1084,36 @@ export default function TratamentosPage() {
                         key={`${card.id}-${duration}`}
                         icon={<AccessTimeIcon sx={{ color: "text.secondary" }} />}
                         label={duration}
+                        size="small"
                         variant="filled"
                         sx={{
-                          bgcolor: "rgba(46, 125, 50, 0.12)",
-                          color: "text.secondary",
+                          bgcolor: "rgba(95, 115, 80, 0.10)",
+                          color: "#4d6041",
                           fontWeight: 600,
+                          border: "1px solid rgba(95, 115, 80, 0.12)",
                         }}
                       />
                     ))}
                   </Box>
                 ) : null}
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25 }}>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, lineHeight: 1.7 }}>
                   {card.description}
                 </Typography>
 
                 {card.introMore ? <Box sx={{ mt: 2 }}>{card.introMore}</Box> : null}
 
                 {card.more ? (
-                  <Accordion elevation={0} sx={{ mt: 2, border: 1, borderColor: "divider", borderRadius: 2 }}>
+                  <Accordion
+                    elevation={0}
+                    disableGutters
+                    sx={{
+                      mt: 2.25,
+                      border: "1px solid rgba(95, 115, 80, 0.14)",
+                      borderRadius: "14px !important",
+                      bgcolor: "rgba(252, 247, 239, 0.7)",
+                      "&::before": { display: "none" },
+                    }}
+                  >
                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                       <Typography variant="subtitle2">Saiba mais</Typography>
                     </AccordionSummary>

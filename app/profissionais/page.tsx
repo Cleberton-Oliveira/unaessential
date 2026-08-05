@@ -32,7 +32,7 @@ export default function ProfissionaisPage() {
         <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
           profissionais
         </Typography>
-        <Typography variant="h3" sx={{ mt: 1 }}>
+        <Typography variant="h4" sx={{ mt: 1 }}>
           Quem cuida de você
         </Typography>
 

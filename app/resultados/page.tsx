@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Container, Typography, Box, Card, CardContent, Stack, Button, Rating } from "@mui/material";
+import { PageIntroText } from "../components/PageIntroText";
 
 type ResultSlide = {
   id: string;
@@ -203,20 +204,20 @@ export default function ResultadosPage() {
         <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
           resultados & feedbacks
         </Typography>
-        <Typography variant="h3" sx={{ mt: 1 }}>
+        <Typography variant="h4" sx={{ mt: 1 }}>
           Resultados & Feedbacks
         </Typography>
 
-        <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 760 }}>
+        <PageIntroText>
           Nesta página você encontra resultados de alguns tratamentos estéticos e registros fotográficos de alívio
           imediato após drenagem, além de depoimentos de pessoas que já viveram a experiência na unaessential. Os
           relatos apresentados aqui também podem ser encontrados nas avaliações do Google, reforçando a transparência
           e a realidade da experiência de quem passa por nossos atendimentos.
-        </Typography>
+        </PageIntroText>
 
         {/* CARROSSEL DE RESULTADOS (FOTOS) */}
         <Box sx={{ mt: 6 }}>
-          <Typography variant="h4">Resultados</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 500 }}>Resultados</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
             Em breve, aqui você verá fotos de antes e depois organizadas por tipo de tratamento.
           </Typography>
@@ -320,7 +321,7 @@ export default function ResultadosPage() {
 
         {/* CARROSSEL DE FEEDBACKS (TEXTO ESTILO GOOGLE) */}
         <Box sx={{ mt: 8 }}>
-          <Typography variant="h4">Feedbacks</Typography>
+        <Typography variant="h5" sx={{ fontWeight: 500 }}>Feedbacks</Typography>
 
           <Card
             sx={{
