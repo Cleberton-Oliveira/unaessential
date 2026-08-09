@@ -6,6 +6,7 @@ import { MuiThemeProvider } from "./mui-theme-provider";
 import { MainHeader } from "./components/MainHeader";
 import { MainFooter } from "./components/MainFooter";
 import { FloatingWhatsappButton } from "./components/FloatingWhatsappButton";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 const GTM_ID = "GTM-MN2TBDMX";
 
@@ -55,20 +56,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <MuiThemeProvider>
-          <div
-            style={{
-              minHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <MainHeader />
-            <main style={{ flex: 1 }}>{children}</main>
-            <MainFooter />
-          </div>
-          <FloatingWhatsappButton />
-        </MuiThemeProvider>
+        <AppRouterCacheProvider>
+          <MuiThemeProvider>
+            <div
+              style={{
+                minHeight: "100vh",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <MainHeader />
+              <main style={{ flex: 1 }}>{children}</main>
+              <MainFooter />
+            </div>
+            <FloatingWhatsappButton />
+          </MuiThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -21,7 +21,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { ViewportVideo } from "../components/ViewportVideo";
 
  type TreatmentCardMedia = {
@@ -936,6 +936,10 @@ export default function TratamentosPage() {
 
   const [activeTab, setActiveTab] = useState<(typeof tabConfigs)[number]["key"]>("todos");
 
+  useEffect(() => {
+    if (window.location.hash === "#spa") setActiveTab("spa");
+  }, []);
+
   const activeTabCardIds = useMemo(() => {
     const config = tabConfigs.find((tab) => tab.key === activeTab);
     return new Set(config?.ids ?? []);
@@ -957,8 +961,10 @@ export default function TratamentosPage() {
         </Typography>
 
         <Box
+          id="spa"
           sx={{
             mt: 3,
+            scrollMarginTop: { xs: 90, md: 106 },
             display: "flex",
             alignItems: "center",
             gap: 1.5,

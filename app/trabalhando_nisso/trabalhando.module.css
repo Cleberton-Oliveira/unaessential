@@ -1,0 +1,60 @@
+.page { --green: #5f7350; --dark: #34432e; --deep: #263620; --cream: #fcf7ef; --beige: #e8dfcf; --sage: #dce4d4; min-height: calc(100svh - 84px); position: relative; overflow: hidden; color: var(--dark); background: radial-gradient(circle at 83% 18%, rgba(220,228,212,.9), transparent 32%), linear-gradient(135deg, #fcf7ef 0%, #f5eee3 100%); }
+.ambient { position: absolute; inset: 0; pointer-events: none; }
+.ringOne, .ringTwo { position: absolute; display: block; border: 1px solid rgba(95,115,80,.16); border-radius: 50%; }
+.ringOne { width: 420px; height: 180px; left: -170px; top: 18%; transform: rotate(28deg); }
+.ringTwo { width: 580px; height: 250px; right: -230px; bottom: 5%; transform: rotate(-22deg); }
+.snowOne, .snowTwo { position: absolute; color: rgba(95,115,80,.12); animation: drift 6s ease-in-out infinite; }
+.snowOne { left: 5%; bottom: 12%; }.snowOne svg { font-size: 42px; }
+.snowTwo { right: 4%; top: 11%; animation-delay: 1.5s; }.snowTwo svg { font-size: 30px; }
+.hero { width: min(1440px, 100%); min-height: calc(100svh - 84px); margin: auto; padding: 80px max(7vw, 28px) 95px; position: relative; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: clamp(65px, 8vw, 125px); }
+.brandMark { position: absolute; top: 34px; left: max(7vw, 28px); width: 43px; height: 58px; display: grid; place-items: center; border-radius: 50%; }
+.brandMark img { width: auto; height: 44px; filter: brightness(.72); }
+.copy { position: relative; z-index: 2; animation: rise .8s ease both; }
+.eyebrow { display: flex; align-items: center; gap: 10px; color: var(--green); font: 700 10px var(--font-geist-sans), Arial, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.eyebrow svg { font-size: 17px; }
+.copy h1 { margin: 25px 0; font-size: clamp(55px, 6.4vw, 91px); line-height: .96; font-weight: 500; letter-spacing: -.055em; }
+.copy h1 em { display: inline-block; color: var(--green); font-family: Georgia, serif; font-weight: 400; }
+.lead { max-width: 650px; margin: 0; color: #5c6758; font: 400 17px/1.75 var(--font-geist-sans), Arial, sans-serif; }
+.features { margin: 38px 0; display: grid; gap: 13px; }
+.features > div { display: flex; align-items: center; gap: 14px; }
+.features > div > span { width: 43px; height: 43px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid rgba(95,115,80,.22); border-radius: 50%; color: var(--green); background: rgba(255,255,255,.55); }
+.features svg { font-size: 20px; }
+.features p { margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.features strong { font: 650 13px var(--font-geist-sans), Arial, sans-serif; }
+.features small { color: #727b6d; font: 400 11px/1.5 var(--font-geist-sans), Arial, sans-serif; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.primaryButton, .secondaryButton { min-height: 51px; padding: 0 21px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; font: 700 13px var(--font-geist-sans), Arial, sans-serif; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+.primaryButton { color: #fff; background: var(--green); }.primaryButton svg { font-size: 20px; }
+.secondaryButton { color: var(--dark); border: 1px solid rgba(52,67,46,.25); }.secondaryButton svg { font-size: 19px; }
+.primaryButton:hover, .secondaryButton:hover { transform: translateY(-2px); }.secondaryButton:hover { background: rgba(255,255,255,.65); }
+.visual { min-height: 630px; position: relative; display: grid; place-items: center; animation: reveal .9s .15s ease both; }
+.visual::before, .visual::after { content: ""; position: absolute; border: 1px solid rgba(95,115,80,.2); border-radius: 50%; }
+.visual::before { width: 98%; aspect-ratio: 1; }.visual::after { width: 115%; aspect-ratio: 1.25; transform: rotate(-18deg); }
+.imageFrame { width: 77%; height: 555px; position: relative; z-index: 1; overflow: hidden; border-radius: 48% 48% 13% 48% / 41% 53% 16% 59%; box-shadow: 0 34px 80px rgba(52,67,46,.18); }
+.imageFrame img { object-fit: cover; object-position: center; }
+.imageVeil { position: absolute; inset: 0; background: linear-gradient(160deg, transparent 45%, rgba(38,54,32,.35)); }
+.launchSeal { width: 128px; height: 128px; position: absolute; z-index: 2; right: 0; top: 10%; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; color: #fff; background: var(--green); box-shadow: 0 16px 40px rgba(52,67,46,.25); transform: rotate(8deg); }
+.launchSeal span, .launchSeal small { font: 700 8px var(--font-geist-sans), Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; }.launchSeal strong { font: 500 31px/1 Georgia, serif; }
+.sparkBadge { min-width: 145px; padding: 13px 16px; position: absolute; z-index: 2; left: 0; bottom: 11%; display: flex; align-items: center; gap: 10px; border-radius: 5px 20px 5px 5px; color: var(--dark); background: rgba(255,255,255,.92); box-shadow: 0 14px 38px rgba(52,67,46,.16); }
+.sparkBadge svg { color: var(--green); }.sparkBadge span { font: 700 9px/1.35 var(--font-geist-sans), Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes reveal { from { opacity: 0; transform: translateY(20px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes drift { 50% { transform: translateY(-12px) rotate(10deg); } }
+@media (max-width: 940px) {
+  .hero { grid-template-columns: 1fr; padding-top: 120px; }
+  .copy { max-width: 760px; }
+  .visual { width: min(650px, 100%); margin: auto; }
+}
+@media (max-width: 600px) {
+  .page, .hero { min-height: calc(100svh - 72px); }
+  .hero { padding: 105px 21px 80px; gap: 50px; }
+  .brandMark { left: 22px; top: 28px; }
+  .copy h1 { font-size: clamp(48px, 14vw, 66px); }
+  .lead { font-size: 15px; }
+  .actions { align-items: stretch; }.primaryButton, .secondaryButton { width: 100%; }
+  .visual { min-height: 470px; }
+  .imageFrame { height: 430px; width: 82%; }
+  .launchSeal { width: 98px; height: 98px; right: 0; }.launchSeal strong { font-size: 24px; }
+  .sparkBadge { left: 0; bottom: 4%; }
+}
+@media (prefers-reduced-motion: reduce) { .page * { animation: none !important; } }

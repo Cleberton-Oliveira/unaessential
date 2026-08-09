@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Início", href: "/" },
+  { label: "Criolipólise", href: "/trabalhando_nisso", featured: true },
   { label: "Tratamentos & SPA", href: "/tratamentos" },
   { label: "Profissionais", href: "/profissionais" },
   { label: "Tecnologias", href: "/tecnologias" },
@@ -73,8 +74,12 @@ export function MainHeader() {
           <Toolbar
             disableGutters
             sx={{
-              minHeight: { xs: 64, md: 68 },
+              minHeight: {
+                xs: scrolled ? 64 : 92,
+                md: scrolled ? 68 : 94,
+              },
               gap: { xs: 1.25, lg: 2.5 },
+              transition: "min-height 320ms cubic-bezier(0.22, 1, 0.36, 1)",
             }}
           >
             <Box
@@ -86,6 +91,10 @@ export function MainHeader() {
                 alignItems: "center",
                 textDecoration: "none",
                 flexShrink: 0,
+                position: "relative",
+                width: scrolled ? { xs: 150, md: 176 } : { xs: 198, md: 234 },
+                height: scrolled ? 36 : 80,
+                transition: "width 320ms cubic-bezier(0.22, 1, 0.36, 1), height 320ms cubic-bezier(0.22, 1, 0.36, 1)",
               }}
             >
               <Image
@@ -93,7 +102,33 @@ export function MainHeader() {
                 alt="Unaessential"
                 width={176}
                 height={44}
-                style={{ width: "clamp(144px, 16vw, 176px)", height: "auto", maxHeight: 36 }}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  objectPosition: "left center",
+                  opacity: scrolled ? 1 : 0,
+                  transition: "opacity 220ms ease",
+                }}
+                priority
+              />
+              <Image
+                src="/logo/logo_completa.svg"
+                alt="Unaessential"
+                width={234}
+                height={100}
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  objectPosition: "left center",
+                  opacity: scrolled ? 0 : 1,
+                  transition: "opacity 220ms ease",
+                }}
                 priority
               />
             </Box>
@@ -121,7 +156,7 @@ export function MainHeader() {
                     color="inherit"
                     sx={{
                       minWidth: 0,
-                      px: 1.35,
+                      px: item.featured ? 1.65 : 1.15,
                       py: 0.85,
                       borderRadius: 999,
                       position: "relative",
@@ -132,8 +167,13 @@ export function MainHeader() {
                       lineHeight: 1.2,
                       letterSpacing: "0.015em",
                       fontWeight: active ? 650 : 500,
-                      color: active ? "#fffaf1" : "rgba(255,255,255,0.82)",
-                      bgcolor: active ? "rgba(232, 223, 207, 0.12)" : "transparent",
+                      color: active || item.featured ? "#fffaf1" : "rgba(255,255,255,0.82)",
+                      bgcolor: active
+                        ? "rgba(232, 223, 207, 0.20)"
+                        : item.featured
+                          ? "rgba(232, 223, 207, 0.13)"
+                          : "transparent",
+                      border: item.featured ? "1px solid rgba(232, 223, 207, 0.30)" : "1px solid transparent",
                       transition: "color 220ms ease, background-color 220ms ease",
                       "&::after": {
                         content: '\"\"',
@@ -159,7 +199,7 @@ export function MainHeader() {
                       },
                     }}
                   >
-                    {item.label}
+                    {item.featured ? "❄ " : ""}{item.label}
                   </Button>
                 );
               })}
@@ -236,7 +276,7 @@ export function MainHeader() {
         </Container>
       </AppBar>
 
-      {!isHome ? <Box aria-hidden="true" sx={{ height: { xs: 64, md: 68 } }} /> : null}
+      {!isHome ? <Box aria-hidden="true" sx={{ height: { xs: 72, md: 84 } }} /> : null}
 
       <Drawer
         anchor="right"
@@ -290,12 +330,14 @@ export function MainHeader() {
                     borderRadius: 2.5,
                     fontFamily: "var(--font-geist-sans), Arial, sans-serif",
                     color: active ? "primary.main" : "text.primary",
+                    border: item.featured ? "1px solid rgba(95, 115, 80, 0.20)" : "1px solid transparent",
+                    bgcolor: item.featured && !active ? "rgba(95, 115, 80, 0.06)" : undefined,
                     "&.Mui-selected": { bgcolor: "rgba(95, 115, 80, 0.10)" },
                     "&.Mui-selected:hover": { bgcolor: "rgba(95, 115, 80, 0.14)" },
                   }}
                 >
                   <ListItemText
-                    primary={item.label}
+                    primary={`${item.featured ? "❄  " : ""}${item.label}`}
                     slotProps={{
                       primary: {
                         fontFamily: "var(--font-geist-sans), Arial, sans-serif",
