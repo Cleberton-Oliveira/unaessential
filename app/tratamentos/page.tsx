@@ -1,28 +1,20 @@
 'use client';
 import {
-  Container,
   Typography,
   Box,
-  Button,
-  Tabs,
-  Tab,
-  Card,
-  CardContent,
-  CardActions,
-  Chip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Menu,
-  MenuItem,
 } from "@mui/material";
 import Image from "next/image";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
+import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { ViewportVideo } from "../components/ViewportVideo";
+import styles from "./tratamentos.module.css";
 
  type TreatmentCardMedia = {
    type: "video" | "image";
@@ -48,6 +40,7 @@ import { ViewportVideo } from "../components/ViewportVideo";
 
 const WHATSAPP_PHONE = "5548991904131";
 const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
+const ONLINE_CATALOG_URL = "https://online.maapp.com.br/UnaEssential";
 
 function buildWhatsAppUrl(serviceName: string) {
   const text = `${WHATSAPP_BASE_TEXT} ${serviceName}`;
@@ -128,94 +121,63 @@ const ONLINE_SCHEDULING_OPTIONS: Record<string, { label: string; href: string }[
   ],
 };
 
-function ScheduleCardActions({ cardId, title }: { cardId: string; title: string }) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+function getOnlineSchedulingUrl(cardId: string) {
+  return ONLINE_SCHEDULING_LINKS[cardId] ?? ONLINE_CATALOG_URL;
+}
+
+function ScheduleActions({ cardId, title }: { cardId: string; title: string }) {
   const durationOptions = ONLINE_SCHEDULING_OPTIONS[cardId];
   const singleLink = ONLINE_SCHEDULING_LINKS[cardId];
-  const hasOnlineScheduling = Boolean(durationOptions?.length || singleLink);
 
   return (
-    <CardActions
-      sx={{
-        px: 2.5,
-        pb: 2.5,
-        pt: 0,
-        gap: 1,
-        flexWrap: "wrap",
-        flexDirection: { xs: "column", sm: "row" },
-        width: "100%",
-        "& > *": { width: { xs: "100%", sm: "auto" } },
-      }}
-    >
-      <Button
-        component="a"
+    <div className={styles.scheduleActions}>
+      <a
         href={buildWhatsAppUrl(title)}
         target="_blank"
         rel="noopener noreferrer"
-        variant="contained"
-        color="primary"
-        startIcon={<WhatsAppIcon fontSize="small" />}
-        fullWidth={!hasOnlineScheduling}
-        sx={{
-          textTransform: "none",
-          flex: hasOnlineScheduling ? 1 : undefined,
-          borderRadius: 999,
-          py: 1.05,
-          fontWeight: 700,
-        }}
+        className={styles.whatsappButton}
       >
+        <WhatsAppIcon />
         Agendar
-      </Button>
+      </a>
 
       {durationOptions?.length ? (
-        <>
-          <Button
-            variant="outlined"
-            color="primary"
-            startIcon={<EventAvailableIcon fontSize="small" />}
-            onClick={(event) => setAnchorEl(event.currentTarget)}
-            aria-haspopup="menu"
-            aria-expanded={Boolean(anchorEl) ? "true" : undefined}
-            sx={{ textTransform: "none", flex: 1, borderRadius: 999, py: 1.05, fontWeight: 700 }}
-          >
-            Agendar
-          </Button>
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={() => setAnchorEl(null)}
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            transformOrigin={{ vertical: "bottom", horizontal: "center" }}
-          >
+        <div className={styles.onlineOptions}>
+          <span><EventAvailableIcon /> Agendar online</span>
+          <div>
             {durationOptions.map((option) => (
-              <MenuItem
+              <a
                 key={option.href}
-                component="a"
                 href={option.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setAnchorEl(null)}
               >
                 {option.label}
-              </MenuItem>
+              </a>
             ))}
-          </Menu>
-        </>
+          </div>
+        </div>
       ) : singleLink ? (
-        <Button
-          component="a"
+        <a
           href={singleLink}
           target="_blank"
           rel="noopener noreferrer"
-          variant="outlined"
-          color="primary"
-          startIcon={<EventAvailableIcon fontSize="small" />}
-          sx={{ textTransform: "none", flex: 1, borderRadius: 999, py: 1.05, fontWeight: 700 }}
+          className={styles.onlineButton}
         >
+          <EventAvailableIcon />
           Agendar
-        </Button>
+        </a>
       ) : null}
-    </CardActions>
+    </div>
+  );
+}
+
+function BenefitsBox({ children }: { children: ReactNode }) {
+  return (
+    <div className={styles.benefitsBox}>
+      <span>Benefícios</span>
+      {children}
+    </div>
   );
 }
 
@@ -243,33 +205,17 @@ export default function TratamentosPage() {
             costas e lombar.
           </Typography>
 
-          <Typography variant="overline" color="primary" sx={{ letterSpacing: 1, mt: 1 }}>
-            Benefícios
-          </Typography>
-
-          <Box component="ul" sx={{ mt: 1, pl: 3, color: "text.secondary" }}>
-            <li>
-              Redução de medidas
-            </li>
-            <li>
-              Melhora da firmeza da pele
-            </li>
-            <li>
-              Diminuição da aparência de celulite
-            </li>
-            <li>
-              Estímulo de colágeno
-            </li>
-            <li>
-              Redução de retenção de líquidos e inchaço
-            </li>
-            <li>
-              Melhora da circulação sanguínea e linfática
-            </li>
-            <li>
-              Aumento da oxigenação dos tecidos
-            </li>
-          </Box>
+          <BenefitsBox>
+            <ul>
+              <li>Redução de medidas</li>
+              <li>Melhora da firmeza da pele</li>
+              <li>Diminuição da aparência de celulite</li>
+              <li>Estímulo de colágeno</li>
+              <li>Redução de retenção de líquidos e inchaço</li>
+              <li>Melhora da circulação sanguínea e linfática</li>
+              <li>Aumento da oxigenação dos tecidos</li>
+            </ul>
+          </BenefitsBox>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.25, maxWidth: 760 }}>
             O resultado é um <strong>corpo mais leve e definido</strong>, com <strong>pele mais firme, uniforme e saudável</strong>.
@@ -323,21 +269,16 @@ export default function TratamentosPage() {
             gordura em regiões específicas.
           </Typography>
 
-          <Typography variant="overline" color="primary" sx={{ letterSpacing: 1, mt: 3 }}>
-            Benefícios
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1, maxWidth: 760 }}>
-            Ao longo do tratamento, buscamos:
-          </Typography>
-
-          <Box component="ul" sx={{ mt: 1, pl: 3, color: "text.secondary" }}>
-            <li>Melhorar a circulação linfática</li>
-            <li>Reduzir o edema e a inflamação do tecido</li>
-            <li>Melhorar a aparência da celulite e da pele em &quot;casca de laranja&quot;</li>
-            <li>Estimular a produção de colágeno</li>
-            <li>Melhorar a firmeza e a qualidade da pele</li>
-          </Box>
+          <BenefitsBox>
+            <p>Ao longo do tratamento, buscamos:</p>
+            <ul>
+              <li>Melhorar a circulação linfática</li>
+              <li>Reduzir o edema e a inflamação do tecido</li>
+              <li>Melhorar a aparência da celulite e da pele em &quot;casca de laranja&quot;</li>
+              <li>Estimular a produção de colágeno</li>
+              <li>Melhorar a firmeza e a qualidade da pele</li>
+            </ul>
+          </BenefitsBox>
 
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, maxWidth: 760 }}>
             Quando necessário, também podem ser incluídos <strong>suplementos de suporte</strong>, que auxiliam no controle da
@@ -389,18 +330,16 @@ export default function TratamentosPage() {
             pescoço, colo e mãos, valorizando a sua beleza de forma natural e não invasiva.
           </Typography>
 
-          <Typography variant="overline" color="primary" sx={{ letterSpacing: 1, mt: 1 }}>
-            Benefícios
-          </Typography>
-
-          <Box component="ul" sx={{ mt: 1, pl: 3, color: "text.secondary" }}>
-            <li>Melhorar textura e viço da pele</li>
-            <li>Reduzir linhas de expressão e sinais de cansaço</li>
-            <li>Suavizar manchas, acne e poros aparentes</li>
-            <li>Estimular colágeno e firmeza da pele</li>
-            <li>Equilibrar oleosidade e ressecamento</li>
-            <li>Valorizar contornos de rosto, pescoço, colo e mãos</li>
-          </Box>
+          <BenefitsBox>
+            <ul>
+              <li>Melhorar textura e viço da pele</li>
+              <li>Reduzir linhas de expressão e sinais de cansaço</li>
+              <li>Suavizar manchas, acne e poros aparentes</li>
+              <li>Estimular colágeno e firmeza da pele</li>
+              <li>Equilibrar oleosidade e ressecamento</li>
+              <li>Valorizar contornos de rosto, pescoço, colo e mãos</li>
+            </ul>
+          </BenefitsBox>
         </>
       ),
     },
@@ -874,293 +813,291 @@ export default function TratamentosPage() {
     return orderA - orderB;
   });
 
-  const tabConfigs = useMemo(
-    () =>
-      [
-        {
-          key: "todos",
-          label: "TODOS SERVIÇOS",
-          ids: sortedTreatmentCards.map((card) => card.id),
-        },
-        {
-          key: "corpo",
-          label: "CORPO",
-          ids: [
-            "tratamentos-corporais",
-            "tratamento-lipedema",
-            "drenagem-linfatica",
-            "drenarelax",
-            "drenadetox",
-            "detox-spa-intensivo",
-            "massagem-aura",
-            "massagem-relaxante",
-            "massagem-pedras-quentes",
-            "harmonizacao-corporal-e-facial-sem-cortes",
-          ],
-        },
-        {
-          key: "rosto",
-          label: "ROSTO",
-          ids: [
-            "tratamentos-faciais",
-            "limpeza-de-pele",
-            "hidratacao-intensiva-facial-multicamadas",
-            "peeling-vulcanico",
-            "design-de-sobrancelhas-spa",
-            "spa-dos-labios",
-            "harmonizacao-corporal-e-facial-sem-cortes",
-          ],
-        },
-        {
-          key: "spa",
-          label: "SPA",
-          ids: [
-            "head-spa",
-            "day-spa",
-            "massagem-relaxante",
-            "massagem-pedras-quentes",
-            "drenarelax",
-            "drenadetox",
-            "detox-spa-intensivo",
-            "spa-dos-labios",
-          ],
-        },
-        {
-          key: "pes",
-          label: "PÉS",
-          ids: ["spa-dos-pes", "plastica-dos-pes"],
-        },
-      ] as const,
-    [sortedTreatmentCards]
-  );
+  const spaIds = useMemo(() => new Set([
+    "head-spa",
+    "day-spa",
+    "massagem-relaxante",
+    "massagem-pedras-quentes",
+    "massagem-aura",
+    "detox-spa-intensivo",
+    "spa-dos-labios",
+    "design-de-sobrancelhas-spa",
+    "spa-dos-pes",
+    "plastica-dos-pes",
+  ]), []);
 
-  const [activeTab, setActiveTab] = useState<(typeof tabConfigs)[number]["key"]>("todos");
+  const filters = {
+    tratamentos: [
+      { key: "todos", label: "Todos" },
+      { key: "corpo", label: "Corpo" },
+      { key: "rosto", label: "Rosto" },
+    ],
+    spa: [
+      { key: "todos", label: "Todos" },
+      { key: "rituais", label: "Rituais" },
+      { key: "massagens", label: "Massagens" },
+      { key: "cuidados", label: "Cuidados especiais" },
+    ],
+  } as const;
+
+  const treatmentGroups: Record<string, string[]> = {
+    corpo: ["tratamentos-corporais", "tratamento-lipedema", "drenagem-linfatica", "drenarelax", "drenadetox", "harmonizacao-corporal-e-facial-sem-cortes"],
+    rosto: ["tratamentos-faciais", "limpeza-de-pele", "peeling-vulcanico", "hidratacao-intensiva-facial-multicamadas", "harmonizacao-corporal-e-facial-sem-cortes"],
+  };
+
+  const spaGroups: Record<string, string[]> = {
+    rituais: ["head-spa", "day-spa", "detox-spa-intensivo"],
+    massagens: ["massagem-relaxante", "massagem-pedras-quentes", "massagem-aura"],
+    cuidados: ["spa-dos-labios", "design-de-sobrancelhas-spa", "spa-dos-pes", "plastica-dos-pes"],
+  };
+
+  const [universe, setUniverse] = useState<"tratamentos" | "spa">("tratamentos");
+  const [activeFilter, setActiveFilter] = useState("todos");
+  const [query, setQuery] = useState("");
+  const [selectedCard, setSelectedCard] = useState<TreatmentCard | null>(null);
 
   useEffect(() => {
-    if (window.location.hash === "#spa") setActiveTab("spa");
+    const syncHash = () => {
+      const nextUniverse = window.location.hash === "#spa" ? "spa" : "tratamentos";
+      setUniverse(nextUniverse);
+      setActiveFilter("todos");
+    };
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
-  const activeTabCardIds = useMemo(() => {
-    const config = tabConfigs.find((tab) => tab.key === activeTab);
-    return new Set(config?.ids ?? []);
-  }, [activeTab, tabConfigs]);
+  useEffect(() => {
+    if (!selectedCard) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedCard(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [selectedCard]);
 
-  const visibleTreatmentCards = useMemo(
-    () => sortedTreatmentCards.filter((card) => activeTabCardIds.has(card.id)),
-    [activeTabCardIds, sortedTreatmentCards]
-  );
+  const changeUniverse = (nextUniverse: "tratamentos" | "spa") => {
+    setUniverse(nextUniverse);
+    setActiveFilter("todos");
+    setQuery("");
+    window.history.replaceState(null, "", nextUniverse === "spa" ? "#spa" : window.location.pathname);
+  };
+
+  const visibleTreatmentCards = useMemo(() => {
+    const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
+    const groupIds = activeFilter === "todos"
+      ? null
+      : new Set((universe === "spa" ? spaGroups : treatmentGroups)[activeFilter] ?? []);
+
+    return sortedTreatmentCards.filter((card) => {
+      const isInUniverse = universe === "spa" ? spaIds.has(card.id) : !spaIds.has(card.id);
+      const isInGroup = !groupIds || groupIds.has(card.id);
+      const matchesQuery = !normalizedQuery || `${card.title} ${card.description}`.toLocaleLowerCase("pt-BR").includes(normalizedQuery);
+      return isInUniverse && isInGroup && matchesQuery;
+    });
+  }, [activeFilter, query, sortedTreatmentCards, spaGroups, spaIds, treatmentGroups, universe]);
+
+  const getCardLabel = (cardId: string) => {
+    if (universe === "spa") {
+      if (spaGroups.massagens.includes(cardId)) return "Massagem";
+      if (spaGroups.rituais.includes(cardId)) return "Ritual SPA";
+      return "Cuidado especial";
+    }
+    const isFace = treatmentGroups.rosto.includes(cardId);
+    const isBody = treatmentGroups.corpo.includes(cardId);
+    return isFace && isBody ? "Corpo & rosto" : isFace ? "Rosto" : "Corpo";
+  };
 
   return (
-    <Box sx={{ py: { xs: 6, md: 8 } }}>
-      <Container maxWidth="lg">
-        <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
-          tratamentos
-        </Typography>
-        <Typography variant="h4" sx={{ mt: 1 }}>
-          Estética, saúde & SPA UnaEssential
-        </Typography>
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <span className={styles.heroOrbitOne} />
+        <span className={styles.heroOrbitTwo} />
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrowLight}>Estética, saúde & bem-estar</span>
+          <h1>Cuidado pensado para o <em>seu momento.</em></h1>
+          <p>
+            Tratamentos personalizados e experiências de SPA reunidos de um jeito mais simples,
+            para você encontrar o cuidado que combina com o que precisa hoje.
+          </p>
+          <button type="button" className={styles.heroLink} onClick={() => document.getElementById("servicos")?.scrollIntoView({ behavior: "smooth" })}>
+            Explorar experiências <ArrowForwardIcon />
+          </button>
+        </div>
 
-        <Box
-          id="spa"
-          sx={{
-            mt: 3,
-            scrollMarginTop: { xs: 90, md: 106 },
-            display: "flex",
-            alignItems: "center",
-            gap: 1.5,
-            flexWrap: "wrap",
-          }}
-        >
-          <Tabs
-            value={activeTab}
-            onChange={(_, value) => setActiveTab(value)}
-            variant="scrollable"
-            scrollButtons="auto"
-            sx={{ flex: "1 1 auto", minHeight: 42 }}
-          >
-            {tabConfigs.map((tab) => (
-              <Tab
-                key={tab.key}
-                value={tab.key}
-                label={tab.label}
-                sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
-              />
+        <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.heroImage}>
+            <Image src="/image/tratamentos/headspa1.jpg" alt="" fill sizes="(max-width: 760px) 75vw, 38vw" priority />
+          </div>
+          <span className={styles.heroSeal}><SpaOutlinedIcon /><b>Corpo</b><small>& mente</small></span>
+          <div className={styles.heroNote}>
+            <AutoAwesomeOutlinedIcon />
+            <span><small>Experiências</small><b>personalizadas</b></span>
+          </div>
+        </div>
+
+        <div className={styles.heroIndex}>
+          <span><b>01</b> Escolha o seu universo</span>
+          <i />
+          <span><b>02</b> Encontre o cuidado ideal</span>
+        </div>
+      </section>
+
+      <section className={styles.explorer} id="servicos">
+        <header className={styles.sectionHeader}>
+          <div>
+            <span className={styles.eyebrow}>Nossos cuidados</span>
+            <h2>O que você busca <em>hoje?</em></h2>
+          </div>
+          <p>
+            Separamos cada experiência por intenção. Navegue entre tratamentos estéticos
+            e rituais de SPA sem excesso de informação.
+          </p>
+        </header>
+
+        <div className={styles.universeTabs} id="spa" role="tablist" aria-label="Tipo de serviço">
+          <button type="button" role="tab" aria-selected={universe === "tratamentos"} className={universe === "tratamentos" ? styles.universeActive : ""} onClick={() => changeUniverse("tratamentos")}>
+            <span><AutoAwesomeOutlinedIcon /></span>
+            <span><small>Resultados & saúde</small><b>Tratamentos</b></span>
+            <ArrowForwardIcon />
+          </button>
+          <button type="button" role="tab" aria-selected={universe === "spa"} className={universe === "spa" ? styles.universeActive : ""} onClick={() => changeUniverse("spa")}>
+            <span><SpaOutlinedIcon /></span>
+            <span><small>Pausa & reconexão</small><b>SPA</b></span>
+            <ArrowForwardIcon />
+          </button>
+        </div>
+
+        <div className={styles.collectionIntro}>
+          <div>
+            <span>{universe === "spa" ? "Experiências de SPA" : "Tratamentos UnaEssential"}</span>
+            <h3>
+              {universe === "spa"
+                ? <>Tempo para <em>desacelerar.</em></>
+                : <>Tecnologia, técnica e <em>individualidade.</em></>}
+            </h3>
+          </div>
+          <a href="https://online.maapp.com.br/UnaEssential" target="_blank" rel="noopener noreferrer">
+            Ver catálogo e valores <ArrowForwardIcon />
+          </a>
+        </div>
+
+        <div className={styles.toolbar}>
+          <div className={styles.filters} role="tablist" aria-label="Filtrar serviços">
+            {filters[universe].map((filter) => (
+              <button key={filter.key} type="button" role="tab" aria-selected={activeFilter === filter.key} className={activeFilter === filter.key ? styles.filterActive : ""} onClick={() => setActiveFilter(filter.key)}>
+                {filter.label}
+              </button>
             ))}
-          </Tabs>
+          </div>
+          <label className={styles.search}>
+            <SearchIcon />
+            <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar um cuidado" aria-label="Buscar um cuidado" />
+          </label>
+        </div>
 
-          <Chip
-            component="a"
-            href="https://online.maapp.com.br/UnaEssential"
-            target="_blank"
-            rel="noopener noreferrer"
-            clickable
-            icon={<EventAvailableIcon sx={{ color: "text.secondary" }} />}
-            label="Catálogo com valores e agendamento online"
-            variant="filled"
-            sx={{
-              bgcolor: "rgba(46, 125, 50, 0.12)",
-              color: "text.secondary",
-              fontWeight: 700,
-              px: 0.5,
-            }}
-          />
-        </Box>
+        <div className={styles.resultCount}>
+          <span>{String(visibleTreatmentCards.length).padStart(2, "0")}</span>
+          {visibleTreatmentCards.length === 1 ? " experiência encontrada" : " experiências encontradas"}
+        </div>
 
-        {/* MENU INTERNO DE ATALHOS */}
-        <Box
-          sx={{
-            mt: 3,
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          {visibleTreatmentCards.map((card) => (
-            <Button
-              key={`shortcut-${card.id}`}
-              component="a"
-              href={`#card-${card.id}`}
-              size="small"
-              variant="outlined"
-              color="primary"
-              sx={{ textTransform: "none", fontSize: 13 }}
-            >
-              {card.title}
-            </Button>
-          ))}
-        </Box>
+        {visibleTreatmentCards.length ? (
+          <div className={styles.cardGrid}>
+            {visibleTreatmentCards.map((card, index) => (
+              <article className={styles.serviceCard} key={card.id} style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}>
+                <button type="button" className={styles.cardMedia} onClick={() => setSelectedCard(card)} aria-label={`Ver detalhes de ${card.title}`}>
+                  {card.media.type === "video" ? (
+                    <ViewportVideo src={card.media.src} objectPosition={card.id === "detox-spa-intensivo" ? "50% 80%" : "50% 50%"} />
+                  ) : (
+                    <Image src={card.media.src} alt={card.media.alt ?? card.title} width={800} height={600} />
+                  )}
+                  <span className={styles.cardMediaTitle}>{card.title}</span>
+                  <span className={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</span>
+                </button>
+                <div className={styles.cardContent}>
+                  <div className={styles.cardMeta}>
+                    <span>{getCardLabel(card.id)}</span>
+                    {card.durations?.length ? <span><AccessTimeIcon /> {card.durations.join(" · ")}</span> : null}
+                  </div>
+                  <p>{card.description}</p>
+                  <div className={styles.cardActions}>
+                    <button type="button" className={styles.cardLink} onClick={() => setSelectedCard(card)}>
+                      Conheça melhor <ArrowForwardIcon />
+                    </button>
+                    <div className={styles.cardBookingActions}>
+                      <a href={getOnlineSchedulingUrl(card.id)} target="_blank" rel="noopener noreferrer" className={styles.cardSchedule}>
+                        Agendar
+                      </a>
+                      <a href={buildWhatsAppUrl(card.title)} target="_blank" rel="noopener noreferrer" className={styles.cardWhatsapp} aria-label={`Agendar ${card.title} pelo WhatsApp`}>
+                        <WhatsAppIcon />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.emptyState}>
+            <SearchIcon />
+            <h4>Nenhum cuidado encontrado</h4>
+            <p>Tente buscar por outro termo ou veja todas as opções desta categoria.</p>
+            <button type="button" onClick={() => { setQuery(""); setActiveFilter("todos"); }}>Limpar busca</button>
+          </div>
+        )}
+      </section>
 
-        <Box
-          sx={{
-            mt: 4,
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
-            gap: 3,
-          }}
-        >
-          {visibleTreatmentCards.map((card) => (
-            <Card
-              key={card.id}
-              id={`card-${card.id}`}
-              sx={{
-                borderRadius: 3,
-                border: "1px solid rgba(95, 115, 80, 0.16)",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden",
-                scrollMarginTop: { xs: 96, md: 112 },
-                bgcolor: "rgba(255, 255, 255, 0.94)",
-                boxShadow: "0 16px 42px rgba(53, 62, 45, 0.08)",
-                transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 22px 54px rgba(53, 62, 45, 0.14)",
-                  borderColor: "rgba(95, 115, 80, 0.32)",
-                },
-              }}
-            >
-              <Box sx={{ width: "100%", height: { xs: 240, md: 248 }, bgcolor: "background.paper" }}>
-                {card.media.type === "video" ? (
-                  <ViewportVideo
-                    src={card.media.src}
-                    objectPosition={card.id === "detox-spa-intensivo" ? "50% 80%" : "50% 50%"}
-                  />
-                ) : (
-                  <Image
-                    src={card.media.src}
-                    alt={card.media.alt ?? ""}
-                    width={800}
-                    height={600}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                  />
-                )}
-              </Box>
+      <section className={styles.catalogCta}>
+        <div className={styles.ctaSymbol}><SpaOutlinedIcon /></div>
+        <div>
+          <span>Pronta para escolher?</span>
+          <h2>Seu momento de cuidado <em>começa aqui.</em></h2>
+        </div>
+        <a href="https://online.maapp.com.br/UnaEssential" target="_blank" rel="noopener noreferrer">
+          Ver horários e valores <ArrowForwardIcon />
+        </a>
+      </section>
 
-              <CardContent sx={{ flex: 1, px: 2.5, pt: 2.5, pb: 2 }}>
-                <Typography
-                  variant="h6"
-                  sx={{ fontSize: "1.28rem", lineHeight: 1.25, color: "#263020", letterSpacing: "-0.01em" }}
-                >
-                  {card.title}
-                </Typography>
-                {card.durations?.length ? (
-                  <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
-                    {card.durations.map((duration) => (
-                      <Chip
-                        key={`${card.id}-${duration}`}
-                        icon={<AccessTimeIcon sx={{ color: "text.secondary" }} />}
-                        label={duration}
-                        size="small"
-                        variant="filled"
-                        sx={{
-                          bgcolor: "rgba(95, 115, 80, 0.10)",
-                          color: "#4d6041",
-                          fontWeight: 600,
-                          border: "1px solid rgba(95, 115, 80, 0.12)",
-                        }}
-                      />
-                    ))}
-                  </Box>
-                ) : null}
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, lineHeight: 1.7 }}>
-                  {card.description}
-                </Typography>
-
-                {card.introMore ? <Box sx={{ mt: 2 }}>{card.introMore}</Box> : null}
-
-                {card.more ? (
-                  <Accordion
-                    elevation={0}
-                    disableGutters
-                    sx={{
-                      mt: 2.25,
-                      border: "1px solid rgba(95, 115, 80, 0.14)",
-                      borderRadius: "14px !important",
-                      bgcolor: "rgba(252, 247, 239, 0.7)",
-                      "&::before": { display: "none" },
-                    }}
-                  >
-                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography variant="subtitle2">Saiba mais</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>{card.more}</AccordionDetails>
-                  </Accordion>
-                ) : null}
-
-                {card.moreByDuration?.length ? (
-                  <Box sx={{ mt: 2 }}>
-                    {card.moreByDuration.map((item: { duration: string; content: ReactNode }) => (
-                      <Accordion
-                        key={`${card.id}-${item.duration}`}
-                        elevation={0}
-                        sx={{
-                          mt: 1.5,
-                          border: 1,
-                          borderColor: "divider",
-                          borderRadius: 2,
-                          overflow: "hidden",
-                        }}
-                      >
-                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                          <Typography variant="subtitle2">{item.duration} · saiba mais</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>{item.content}</AccordionDetails>
-                      </Accordion>
-                    ))}
-                  </Box>
-                ) : null}
-              </CardContent>
-
-              <ScheduleCardActions cardId={card.id} title={card.title} />
-            </Card>
-          ))}
-        </Box>
-
-        {/* SEÇÕES ANTIGAS OCULTAS */}
-        <Box sx={{ display: "none" }}>
-          {/* ...conteúdo antigo mantido para referência... */}
-        </Box>
-      </Container>
-    </Box>
+      {selectedCard ? (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setSelectedCard(null);
+        }}>
+          <section className={styles.serviceModal} role="dialog" aria-modal="true" aria-labelledby="service-modal-title">
+            <button type="button" className={styles.modalClose} onClick={() => setSelectedCard(null)} aria-label="Fechar detalhes"><CloseIcon /></button>
+            <div className={styles.modalMedia}>
+              {selectedCard.media.type === "video" ? (
+                <ViewportVideo src={selectedCard.media.src} objectPosition={selectedCard.id === "detox-spa-intensivo" ? "50% 80%" : "50% 50%"} />
+              ) : (
+                <Image src={selectedCard.media.src} alt={selectedCard.media.alt ?? selectedCard.title} width={900} height={1100} />
+              )}
+              <span>{getCardLabel(selectedCard.id)}</span>
+            </div>
+            <div className={styles.modalDetails}>
+              <div className={styles.modalHeading}>
+                <span className={styles.modalEyebrow}>UnaEssential · experiência personalizada</span>
+                <h2 id="service-modal-title">{selectedCard.title}</h2>
+                {selectedCard.durations?.length ? <p className={styles.modalDuration}><AccessTimeIcon /> {selectedCard.durations.join(" · ")}</p> : null}
+              </div>
+              <div className={styles.modalBody}>
+                <p className={styles.modalLead}>{selectedCard.description}</p>
+                {selectedCard.introMore ? <div className={styles.richContent}>{selectedCard.introMore}</div> : null}
+                {selectedCard.more ? <div className={styles.richContent}>{selectedCard.more}</div> : null}
+                {selectedCard.moreByDuration?.map((item) => (
+                  <div className={styles.durationDetail} key={item.duration}>
+                    <h3>{item.duration}</h3>
+                    <div className={styles.richContent}>{item.content}</div>
+                  </div>
+                ))}
+              </div>
+              <ScheduleActions cardId={selectedCard.id} title={selectedCard.title} />
+            </div>
+          </section>
+        </div>
+      ) : null}
+    </main>
   );
 }
