@@ -18,12 +18,17 @@ type Professional = {
   role: string;
   subtitle: string;
   image: string;
+  imagePosition?: string;
   alt: string;
   summary: string;
   experience: string;
   about: string[];
   journey: { title: string; text: string }[];
-  education: { title: string; type: string }[];
+  education: { title: string; type: string; text?: string }[];
+  detailsLabel: string;
+  detailsEyebrow: string;
+  detailsTitle: string;
+  quote: string;
   values: string[];
   whatsappUrl: string;
 };
@@ -35,6 +40,7 @@ const professionals: Professional[] = [
     role: "CEO & Esteticista",
     subtitle: "Fundadora e idealizadora da Unaessential",
     image: "/image/profissionais/Laura.jpg",
+    imagePosition: "center 24%",
     alt: "Laura Araujo, CEO e esteticista da Unaessential",
     summary: "Técnicas manuais, terapias integrativas e tecnologias em atendimentos personalizados.",
     experience: "Mais de 10 anos de experiência em estética, saúde e bem-estar.",
@@ -57,8 +63,49 @@ const professionals: Professional[] = [
       { title: "Harmonização corporal e facial não invasiva", type: "Especialização com Chris Tofoli" },
       { title: "Tecnologias estéticas", type: "Especialização com Aline Canicais" },
     ],
+    detailsLabel: "Formações",
+    detailsEyebrow: "Formação & aperfeiçoamento",
+    detailsTitle: "Conhecimento em movimento.",
+    quote: "Mais do que resultados estéticos, acredito em oferecer conforto, ética, presença e acolhimento.",
     values: ["Acolhimento", "Escuta", "Resultado"],
     whatsappUrl: "https://wa.me/5548991904131?text=Oii%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20e%20agendar%20com%20a%20Laura%20Araujo",
+  },
+  {
+    id: "andreza-saraiva",
+    name: "Andreza Saraiva",
+    role: "Biomédica Esteta & Tricologista",
+    subtitle: "Saúde capilar, estética avançada e arquitetura da imagem",
+    image: "/image/profissionais/Andreza.jpeg",
+    imagePosition: "center 31%",
+    alt: "Andreza Saraiva, biomédica esteta e tricologista da Unaessential",
+    summary: "Ciência, tecnologia e olhar integrativo para cuidar dos cabelos, da pele e da imagem.",
+    experience: "Mais de 30 anos de experiência dedicados à beleza, saúde e bem-estar.",
+    about: [
+      "Andreza Saraiva é biomédica esteta, tricologista e arquiteta de imagem. Sua atuação é voltada a quem deseja cuidar dos cabelos e da pele de forma integrativa, unindo ciência, tecnologia e um olhar individualizado.",
+      "Em cada consulta, investiga as possíveis causas das alterações capilares e estéticas para criar protocolos personalizados, respeitando a história, o estilo de vida e os objetivos de cada paciente.",
+      "Mais do que tratar sintomas, seu propósito é promover saúde, autoestima e resultados duradouros por meio de uma experiência de cuidado, acolhimento e excelência.",
+    ],
+    journey: [
+      { title: "Mais de três décadas de cuidado", text: "Uma trajetória dedicada à beleza, à saúde e ao bem-estar, construída com estudo contínuo e atenção às transformações de cada paciente." },
+      { title: "Investigação e individualidade", text: "Cada atendimento começa com uma avaliação cuidadosa das possíveis causas das alterações capilares e estéticas, considerando história, rotina e objetivos." },
+      { title: "Ciência que acolhe", text: "Protocolos personalizados combinam tecnologias avançadas, estética regenerativa e uma visão integrativa para promover resultados naturais e duradouros." },
+    ],
+    education: [
+      { title: "Tricologia Integrativa", type: "Saúde capilar", text: "Avaliação clínica detalhada e protocolos personalizados para investigar queda de cabelo e alterações do couro cabeludo." },
+      { title: "Terapia Capilar", type: "Tratamento", text: "Fortalecimento dos fios, controle da queda e estímulo ao crescimento com tecnologias regenerativas e ativos selecionados." },
+      { title: "Head Spa Terapêutico", type: "Experiência", text: "Massagem, aromaterapia, limpeza do couro cabeludo e cuidados específicos para saúde capilar e relaxamento profundo." },
+      { title: "Harmonização Facial", type: "Estética avançada", text: "Procedimentos minimamente invasivos que valorizam proporções, naturalidade e a beleza individual." },
+      { title: "Harmonização Corporal", type: "Estética avançada", text: "Protocolos para contornos, qualidade da pele, flacidez, estímulo de colágeno e equilíbrio das proporções corporais." },
+      { title: "Estética Regenerativa", type: "Regeneração", text: "Tratamentos que estimulam o reparo dos tecidos, a produção de colágeno e a revitalização progressiva da pele." },
+      { title: "Tecnologias Avançadas", type: "Alta performance", text: "Equipamentos de última geração para potencializar tratamentos faciais, corporais e capilares baseados em evidências." },
+      { title: "Visagismo e Arquitetura da Imagem", type: "Imagem pessoal", text: "Análise de traços, proporções, personalidade e estilo de vida para construir uma imagem autêntica e harmoniosa." },
+    ],
+    detailsLabel: "Especialidades",
+    detailsEyebrow: "Tratamentos & especialidades",
+    detailsTitle: "Ciência, saúde e beleza em harmonia.",
+    quote: "Ciência, saúde e beleza em perfeita harmonia.",
+    values: ["Ciência", "Individualidade", "Excelência"],
+    whatsappUrl: "https://wa.me/5548991904131?text=Oii%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20e%20agendar%20com%20a%20Andreza%20Saraiva",
   },
 ];
 
@@ -118,14 +165,14 @@ export default function ProfissionaisPage() {
         <section className={styles.teamSection} id="equipe">
           <header className={`${styles.sectionHeader} ${styles.reveal}`} data-professional-reveal>
             <div><span className={styles.eyebrow}>Nossa equipe</span><h2>Conheça nossos<br /><em>profissionais.</em></h2></div>
-            <p>Cada perfil reúne função, experiência, trajetória e formações. Selecione uma profissional para conhecer todos os detalhes.</p>
+            <p>Cada perfil reúne função, experiência, trajetória e especialidades. Selecione uma profissional para conhecer todos os detalhes.</p>
           </header>
 
           <div className={styles.teamGrid}>
             {professionals.map((professional, index) => (
               <article className={`${styles.professionalCard} ${styles.revealScale}`} data-professional-reveal key={professional.id}>
                 <button className={styles.cardImage} onClick={() => openProfile(professional)} aria-label={`Conhecer o perfil de ${professional.name}`}>
-                  <Image src={professional.image} alt={professional.alt} fill sizes="(max-width: 600px) 100vw, 390px" />
+                  <Image src={professional.image} alt={professional.alt} fill sizes="(max-width: 600px) 100vw, 390px" style={{ objectPosition: professional.imagePosition }} />
                   <span className={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</span>
                   <span className={styles.cardRole}>{professional.role}</span>
                 </button>
@@ -159,7 +206,7 @@ export default function ProfissionaisPage() {
           <article className={styles.profileModal} onClick={(event) => event.stopPropagation()}>
             <button className={styles.modalClose} onClick={() => setSelected(null)} aria-label="Fechar perfil"><CloseRoundedIcon /></button>
             <aside className={styles.modalIdentity}>
-              <div className={styles.modalPhoto}><Image src={selected.image} alt={selected.alt} fill sizes="(max-width: 760px) 100vw, 390px" /></div>
+              <div className={styles.modalPhoto}><Image src={selected.image} alt={selected.alt} fill sizes="(max-width: 760px) 100vw, 390px" style={{ objectPosition: selected.imagePosition }} /></div>
               <span className={styles.modalRole}>{selected.role}</span>
               <h2>{selected.name}</h2>
               <p>{selected.subtitle}</p>
@@ -171,7 +218,7 @@ export default function ProfissionaisPage() {
               <nav className={styles.modalTabs} aria-label="Informações do perfil">
                 {(["sobre", "trajetoria", "formacoes"] as ProfileTab[]).map((tab) => (
                   <button key={tab} onClick={() => setActiveTab(tab)} className={activeTab === tab ? styles.tabActive : ""} aria-pressed={activeTab === tab}>
-                    {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : "Formações"}
+                    {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : selected.detailsLabel}
                   </button>
                 ))}
               </nav>
@@ -190,15 +237,15 @@ export default function ProfissionaisPage() {
                   <div className={styles.journeyList}>
                     <span className={styles.modalEyebrow}>Trajetória & propósito</span>
                     {selected.journey.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
-                    <blockquote>“Mais do que resultados estéticos, acredito em oferecer conforto, ética, presença e acolhimento.”</blockquote>
+                    <blockquote>“{selected.quote}”</blockquote>
                   </div>
                 )}
 
                 {activeTab === "formacoes" && (
                   <div className={styles.educationContent}>
-                    <span className={styles.modalEyebrow}>Formação & aperfeiçoamento</span>
-                    <h3>Conhecimento em<br /><em>movimento.</em></h3>
-                    <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title}><SchoolRoundedIcon /><span><small>{item.type}</small><b>{item.title}</b></span></article>)}</div>
+                    <span className={styles.modalEyebrow}>{selected.detailsEyebrow}</span>
+                    <h3>{selected.detailsTitle}</h3>
+                    <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title}><SchoolRoundedIcon /><span><small>{item.type}</small><b>{item.title}</b>{item.text ? <p>{item.text}</p> : null}</span></article>)}</div>
                   </div>
                 )}
               </div>
