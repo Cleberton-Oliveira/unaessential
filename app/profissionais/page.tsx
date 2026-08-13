@@ -1,295 +1,211 @@
 "use client";
 
-import {
-  Container,
-  Typography,
-  Box,
-  Stack,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  Chip,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
 import Image from "next/image";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import styles from "./profissionais.module.css";
 
-const WHATSAPP_PHONE = "5548991904131";
-const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
+type ProfileTab = "sobre" | "trajetoria" | "formacoes";
 
-function buildWhatsAppUrl(extraText?: string) {
-  const text = extraText ? `${WHATSAPP_BASE_TEXT} - ${extraText}` : WHATSAPP_BASE_TEXT;
-  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
-}
+type Professional = {
+  id: string;
+  name: string;
+  role: string;
+  subtitle: string;
+  image: string;
+  alt: string;
+  summary: string;
+  experience: string;
+  about: string[];
+  journey: { title: string; text: string }[];
+  education: { title: string; type: string }[];
+  values: string[];
+  whatsappUrl: string;
+};
+
+const professionals: Professional[] = [
+  {
+    id: "laura-araujo",
+    name: "Laura Araujo",
+    role: "CEO & Esteticista",
+    subtitle: "Fundadora e idealizadora da Unaessential",
+    image: "/image/profissionais/Laura.jpg",
+    alt: "Laura Araujo, CEO e esteticista da Unaessential",
+    summary: "Técnicas manuais, terapias integrativas e tecnologias em atendimentos personalizados.",
+    experience: "Mais de 10 anos de experiência em estética, saúde e bem-estar.",
+    about: [
+      "Laura une técnicas manuais, terapias integrativas e tecnologias estéticas para criar atendimentos personalizados, com foco em resultados reais, conforto e acolhimento.",
+      "Sua forma de trabalhar parte de uma escuta cuidadosa: cada sessão considera o que o corpo ou o rosto realmente precisa naquele momento e como vem respondendo ao tratamento.",
+      "Na Unaessential, o foco não é a venda a qualquer custo, mas a história, o momento e aquilo que realmente faz sentido para cada pessoa.",
+    ],
+    journey: [
+      { title: "Experiência que virou visão", text: "Ao longo de mais de uma década em clínicas e consultórios, Laura acompanhou os bastidores da estética e percebeu que protocolos engessados nem sempre respeitavam a real necessidade de cada pessoa." },
+      { title: "Conhecimento em movimento", text: "A busca constante por formação reuniu técnicas manuais, tecnologias e terapias integrativas em um repertório amplo e conectado." },
+      { title: "Nasce a Unaessential", text: "Uma clínica focada em pessoas, não em metas: cada jornada é ajustada à história, aos objetivos e à resposta de quem escolhe confiar seu cuidado à equipe." },
+    ],
+    education: [
+      { title: "Método Renata França", type: "Aperfeiçoamento" },
+      { title: "Método Amanda Fernandes", type: "Aperfeiçoamento" },
+      { title: "Lipoescultura gessada", type: "Formação" },
+      { title: "Lipedema e linfedema", type: "Especialização" },
+      { title: "Terapias integrativas", type: "Pós-graduação" },
+      { title: "Harmonização corporal e facial não invasiva", type: "Especialização com Chris Tofoli" },
+      { title: "Tecnologias estéticas", type: "Especialização com Aline Canicais" },
+    ],
+    values: ["Acolhimento", "Escuta", "Resultado"],
+    whatsappUrl: "https://wa.me/5548991904131?text=Oii%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20e%20agendar%20com%20a%20Laura%20Araujo",
+  },
+];
 
 export default function ProfissionaisPage() {
+  const [selected, setSelected] = useState<Professional | null>(null);
+  const [activeTab, setActiveTab] = useState<ProfileTab>("sobre");
+
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>("[data-professional-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.revealVisible);
+          observer.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.12, rootMargin: "0px 0px -35px" },
+    );
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!selected) return;
+    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setSelected(null);
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [selected]);
+
+  const openProfile = (professional: Professional) => {
+    setSelected(professional);
+    setActiveTab("sobre");
+  };
+
   return (
-    <Box sx={{ py: { xs: 6, md: 8 } }}>
-      <Container maxWidth="lg">
-        <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
-          profissionais
-        </Typography>
-        <Typography variant="h4" sx={{ mt: 1 }}>
-          Quem cuida de você
-        </Typography>
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <span className={styles.heroOrbitOne} aria-hidden="true" />
+        <span className={styles.heroOrbitTwo} aria-hidden="true" />
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrowLight}>Quem cuida de você</span>
+          <h1>Pessoas que <em>cuidam de pessoas.</em></h1>
+          <p>Conhecimento, escuta e presença para construir atendimentos que respeitam a sua história e o seu momento.</p>
+          <a href="#equipe" className={styles.heroLink}>Conhecer a equipe <ArrowForwardRoundedIcon /></a>
+        </div>
+        <div className={styles.heroPortrait}>
+          <Image src={professionals[0].image} alt={professionals[0].alt} fill priority sizes="(max-width: 760px) 60vw, 28vw" />
+          <span><small>Fundadora</small><b>CEO & Esteticista</b></span>
+        </div>
+      </section>
 
-        <Stack spacing={{ xs: 4, md: 5 }} sx={{ mt: 3 }}>
-          {/* BLOCO LAURA */}
-          <Card elevation={0} sx={{ border: 1, borderColor: "divider", borderRadius: 4, overflow: "hidden" }}>
-            <Stack direction={{ xs: "column", md: "row" }} sx={{ alignItems: "stretch" }}>
-              <Box
-                sx={{
-                  flex: { xs: "0 0 auto", md: "0 0 360px" },
-                  width: { xs: "100%", md: 360 },
-                  position: "relative",
-                  minHeight: { xs: 260, sm: 320, md: "auto" },
-                }}
-              >
-                <Image
-                  src="/image/profissionais/Laura.jpg"
-                  alt="Foto de Laura Araujo na UnaEssential"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 360px"
-                  style={{ objectFit: "cover", objectPosition: "50% 35%" }}
-                  priority
-                />
-              </Box>
+      <main>
+        <section className={styles.teamSection} id="equipe">
+          <header className={`${styles.sectionHeader} ${styles.reveal}`} data-professional-reveal>
+            <div><span className={styles.eyebrow}>Nossa equipe</span><h2>Conheça nossos<br /><em>profissionais.</em></h2></div>
+            <p>Cada perfil reúne função, experiência, trajetória e formações. Selecione uma profissional para conhecer todos os detalhes.</p>
+          </header>
 
-              <CardContent sx={{ flex: 1, p: { xs: 3, md: 4 } }}>
-                <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                  Laura Araujo
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
-                  Fundadora e idealizadora da UnaEssential
-                </Typography>
+          <div className={styles.teamGrid}>
+            {professionals.map((professional, index) => (
+              <article className={`${styles.professionalCard} ${styles.revealScale}`} data-professional-reveal key={professional.id}>
+                <button className={styles.cardImage} onClick={() => openProfile(professional)} aria-label={`Conhecer o perfil de ${professional.name}`}>
+                  <Image src={professional.image} alt={professional.alt} fill sizes="(max-width: 600px) 100vw, 390px" />
+                  <span className={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</span>
+                  <span className={styles.cardRole}>{professional.role}</span>
+                </button>
+                <div className={styles.cardContent}>
+                  <span>{professional.subtitle}</span>
+                  <h3>{professional.name}</h3>
+                  <p>{professional.summary}</p>
+                  <div className={styles.cardActions}>
+                    <button onClick={() => openProfile(professional)}>Ver perfil completo <ArrowForwardRoundedIcon /></button>
+                    <a href={professional.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Agendar com ${professional.name}`}><WhatsAppIcon /></a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-                <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  {[
-                    "Renata França",
-                    "Amanda Fernandes",
-                    "Lipoescultura gessada",
-                    "Lipedema e linfedema",
-                    "Terapias integrativas",
-                    "Harmonização não invasiva",
-                    "Tecnologias",
-                  ].map((label) => (
-                    <Chip
-                      key={`laura-${label}`}
-                      label={label}
-                      variant="filled"
-                      sx={{
-                        bgcolor: "rgba(46, 125, 50, 0.12)",
-                        color: "text.secondary",
-                        fontWeight: 600,
-                      }}
-                    />
-                  ))}
-                </Box>
+        <section className={styles.compactCta}>
+          <div className={`${styles.ctaSymbol} ${styles.revealScale}`} data-professional-reveal><Image src="/logo/icon_unaessential.svg" alt="" width={30} height={54} /></div>
+          <div className={`${styles.ctaCopy} ${styles.reveal}`} data-professional-reveal>
+            <span className={styles.eyebrowLight}>Cuidado personalizado</span>
+            <h2>Não sabe com quem agendar?</h2>
+            <p>Conte seu objetivo para a equipe e ajudamos você a encontrar a profissional e o cuidado ideais.</p>
+          </div>
+          <Link href="/agendar" className={styles.ctaButton}>Agendar avaliação <ArrowForwardRoundedIcon /></Link>
+        </section>
+      </main>
 
-                <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 900 }}>
-                  <strong>Idealizadora da UnaEssential</strong>, com <strong>mais de 10 anos de experiência</strong> em
-                  <strong> estética, saúde e bem-estar</strong>. Une <strong>técnicas manuais</strong> e
-                  <strong> tecnologias</strong> para criar <strong>atendimentos personalizados</strong> com foco em
-                  <strong> resultado real</strong>, <strong>conforto</strong> e <strong>acolhimento</strong>.
-                </Typography>
+      {selected && (
+        <div className={styles.modalBackdrop} role="dialog" aria-modal="true" aria-label={`Perfil profissional de ${selected.name}`} onClick={() => setSelected(null)}>
+          <article className={styles.profileModal} onClick={(event) => event.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setSelected(null)} aria-label="Fechar perfil"><CloseRoundedIcon /></button>
+            <aside className={styles.modalIdentity}>
+              <div className={styles.modalPhoto}><Image src={selected.image} alt={selected.alt} fill sizes="(max-width: 760px) 100vw, 390px" /></div>
+              <span className={styles.modalRole}>{selected.role}</span>
+              <h2>{selected.name}</h2>
+              <p>{selected.subtitle}</p>
+              <small>{selected.experience}</small>
+              <a href={selected.whatsappUrl} target="_blank" rel="noopener noreferrer">Agendar com {selected.name.split(" ")[0]} <WhatsAppIcon /></a>
+            </aside>
 
-                <Accordion
-                  elevation={0}
-                  sx={{ mt: 1.5, bgcolor: "transparent", border: 1, borderColor: "divider" }}
-                >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography sx={{ fontWeight: 600 }}>Conheça mais</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 900 }}>
-                      Laura Araujo, 30 anos, é a <strong>idealizadora da UnaEssential</strong>. Com
-                      <strong> mais de 10 anos de experiência</strong> na área da <strong>estética, saúde e bem-estar</strong>,
-                      construiu sua trajetória atuando em <strong>diferentes clínicas</strong> e acompanhando de perto os
-                      bastidores do setor.
-                    </Typography>
+            <div className={styles.modalDetails}>
+              <nav className={styles.modalTabs} aria-label="Informações do perfil">
+                {(["sobre", "trajetoria", "formacoes"] as ProfileTab[]).map((tab) => (
+                  <button key={tab} onClick={() => setActiveTab(tab)} className={activeTab === tab ? styles.tabActive : ""} aria-pressed={activeTab === tab}>
+                    {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : "Formações"}
+                  </button>
+                ))}
+              </nav>
 
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Ao longo dessa caminhada, Laura buscou <strong>constante formação e aperfeiçoamento</strong>: realizou
-                      cursos nos <strong>métodos Renata França e Amanda Fernandes</strong>, formação em
-                      <strong> lipoescultura gessada</strong>, especialização em <strong>lipedema e linfedema</strong>,
-                      pós-graduação em <strong>terapias integrativas</strong>, especialização em
-                      <strong> harmonização corporal e facial não invasiva</strong> com Chris Tofoli e especialização em
-                      <strong> tecnologias</strong> com Aline Canicais. A partir desse repertório técnico e da vivência
-                      prática em consultório, hoje ela desenvolveu o <strong>próprio método de atendimento</strong>, unindo o
-                      que há de mais eficiente em cada técnica para potencializar <strong>resultados reais</strong>.
-                    </Typography>
+              <div className={styles.tabContent} key={activeTab}>
+                {activeTab === "sobre" && (
+                  <div className={styles.aboutContent}>
+                    <span className={styles.modalEyebrow}>Perfil profissional</span>
+                    <h3>Cuidado com técnica,<br /><em>escuta e propósito.</em></h3>
+                    {selected.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    <div className={styles.valueList}>{selected.values.map((value) => <span key={value}><FavoriteBorderRoundedIcon /> {value}</span>)}</div>
+                  </div>
+                )}
 
-                    <Box component="ul" sx={{ mt: 1.5, pl: 3, maxWidth: 900, color: "text.secondary" }}>
-                      <li>Método Renata França</li>
-                      <li>Método Amanda Fernandes</li>
-                      <li>Lipoescultura gessada</li>
-                      <li>Especialização em lipedema e linfedema</li>
-                      <li>Pós-graduação em terapias integrativas</li>
-                      <li>Especialização em harmonização corporal e facial não invasiva com Chris Tofoli</li>
-                      <li>Especialização em tecnologias com Aline Canicais</li>
-                    </Box>
+                {activeTab === "trajetoria" && (
+                  <div className={styles.journeyList}>
+                    <span className={styles.modalEyebrow}>Trajetória & propósito</span>
+                    {selected.journey.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+                    <blockquote>“Mais do que resultados estéticos, acredito em oferecer conforto, ética, presença e acolhimento.”</blockquote>
+                  </div>
+                )}
 
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Ao longo dessa jornada, percebeu um padrão que não condizia com a forma como acredita que o
-                      cuidado deve ser oferecido: <strong>atendimentos focados apenas em lucro</strong>,
-                      <strong> protocolos engessados</strong> e a exigência de <strong>"pacotes específicos"</strong> para cada
-                      demanda — estética, relaxamento ou bem-estar — muitas vezes sem considerar a
-                      <strong> real necessidade de cada pessoa</strong>.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      A UnaEssential nasce, então, do <strong>desejo de fazer diferente</strong>. Aqui, o foco não é a
-                      <strong> venda a qualquer custo</strong> para bater uma meta, mas sim <strong>você</strong>: sua história, seu
-                      momento e aquilo que realmente faz sentido para o seu corpo e para a sua rotina.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Por isso, o <strong>valor dos tratamentos é único</strong>, independentemente dos
-                      <strong> ativos concentrados</strong>, das <strong>técnicas manuais</strong> e das
-                      <strong> tecnologias</strong> utilizadas durante o atendimento para atingir o seu objetivo. Cada sessão
-                      é conduzida de acordo com o que o corpo ou o rosto realmente precisa naquele momento, considerando
-                      também a <strong>resposta ao tratamento</strong>, o que permite ajustar tecnologias e estímulos sem custos
-                      adicionais.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      A única exceção é a tecnologia de <strong>criolipólise</strong>, devido ao <strong>alto custo do equipamento</strong>,
-                      dos <strong>insumos descartáveis</strong> necessários e por entregar <strong>resultados expressivos</strong> em um
-                      número bem mais reduzido de sessões.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Mais do que <strong>resultados estéticos</strong>, Laura acredita em oferecer
-                      <strong> conforto</strong>, <strong>acolhimento</strong>, <strong>ética</strong> e
-                      <strong> presença</strong>. A UnaEssential é reflexo dessa visão: uma clínica pensada para promover
-                      <strong> resultados reais</strong> e <strong>bem-estar</strong>.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-
-                <Button
-                  component="a"
-                  href={buildWhatsAppUrl("Agendar consulta com Laura Araujo")}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  sx={{ mt: 1.5, textTransform: "none", borderRadius: 999, py: 1.25 }}
-                >
-                  Agendar consulta
-                </Button>
-              </CardContent>
-            </Stack>
-          </Card>
-
-          {/* BLOCO AMANDA */}
-          {/* <Card elevation={0} sx={{ border: 1, borderColor: "divider", borderRadius: 4, overflow: "hidden" }}>
-            <Stack direction={{ xs: "column", md: "row" }} sx={{ alignItems: "stretch" }}>
-              <CardContent sx={{ flex: 1, p: { xs: 3, md: 4 }, order: { xs: 2, md: 1 } }}>
-                <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                  Amanda Gawain
-                </Typography>
-                <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
-                  Especialista em bem-estar e terapias relaxantes
-                </Typography>
-
-                <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
-                  {[
-                    "Bem-estar",
-                    "Terapias relaxantes",
-                    "Óleos essenciais",
-                    "Day SPA",
-                    "Head spa",
-                    "Experiência em hotéis",
-                    "Experiência em navios",
-                  ].map((label) => (
-                    <Chip
-                      key={`amanda-${label}`}
-                      label={label}
-                      variant="filled"
-                      sx={{
-                        bgcolor: "rgba(46, 125, 50, 0.12)",
-                        color: "text.secondary",
-                        fontWeight: 600,
-                      }}
-                    />
-                  ))}
-                </Box>
-
-                <Typography variant="body1" color="text.secondary" sx={{ mt: 2, maxWidth: 900 }}>
-                  <strong>Especialista em bem-estar e terapias relaxantes</strong>, com
-                  <strong> mais de 15 anos de experiência</strong>. Conduz <strong>atendimentos sensoriais e personalizados</strong>,
-                  com foco em <strong>desacelerar</strong>, <strong>aliviar tensões</strong> e criar uma
-                  <strong> pausa consciente</strong>.
-                </Typography>
-
-                <Accordion elevation={0} sx={{ mt: 1.5, bgcolor: "transparent", border: 1, borderColor: "divider" }}>
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography sx={{ fontWeight: 600 }}>Conheça mais</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 900 }}>
-                      Amanda Gawain, 38 anos, é especializada em <strong>bem-estar</strong>, atendendo principalmente quem busca
-                      <strong> relaxar</strong>, <strong>desacelerar</strong> e sentir o <strong>toque terapêutico</strong> aliado aos
-                      <strong> óleos essenciais</strong> no ambiente. Com <strong>mais de 15 anos de experiência</strong> na área, já atuou
-                      em <strong>SPAs de grandes hotéis</strong> de Florianópolis e também em <strong>navios</strong>, levando cuidado e
-                      acolhimento para diferentes perfis de clientes.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary" sx={{ mt: 1.5, maxWidth: 900 }}>
-                      Em cada atendimento, Amanda busca estar <strong>presente de verdade</strong>, adaptando o momento ao que o
-                      seu corpo pede: seja em regiões com mais <strong>dor</strong>, <strong>tensão</strong> ou
-                      <strong> cansaço acumulado</strong>. Mais do que uma massagem, a proposta é criar uma
-                      <strong> pausa consciente, sensorial e personalizada</strong> para que você se reconecte consigo mesma.
-                      Ela também é responsável pelos <strong>Day SPA</strong> da UnaEssential, montando
-                      <strong> protocolos exclusivos</strong> que envolvem massagem e drenagem relaxante de corpo e rosto,
-                      tratamentos faciais com <strong>dermocosméticos de alta performance</strong> e o famoso
-                      <strong> head spa</strong>, com produtos que <strong>hidratam</strong>, <strong>nutrem</strong> e
-                      <strong> reconstroem profundamente os fios</strong>. São experiências de <strong>cuidado</strong> e
-                      <strong> renovação completa</strong>, que podem durar de <strong>2 a 4 horas consecutivas</strong>.
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-
-                <Button
-                  component="a"
-                  href={buildWhatsAppUrl("Agendar sessão com Amanda Gawain")}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  sx={{ mt: 1.5, textTransform: "none", borderRadius: 999, py: 1.25 }}
-                >
-                  Agendar sessão
-                </Button>
-              </CardContent>
-
-              <Box
-                sx={{
-                  flex: { xs: "0 0 auto", md: "0 0 360px" },
-                  width: { xs: "100%", md: 360 },
-                  position: "relative",
-                  minHeight: { xs: 260, sm: 320, md: "auto" },
-                  order: { xs: 1, md: 2 },
-                }}
-              >
-                <Image
-                  src="/image/profissionais/Amanda.jpg"
-                  alt="Foto de Amanda Gawain na UnaEssential"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 360px"
-                  style={{ objectFit: "cover", objectPosition: "50% 35%" }}
-                />
-              </Box>
-            </Stack>
-          </Card> */}
-        </Stack>
-      </Container>
-    </Box>
+                {activeTab === "formacoes" && (
+                  <div className={styles.educationContent}>
+                    <span className={styles.modalEyebrow}>Formação & aperfeiçoamento</span>
+                    <h3>Conhecimento em<br /><em>movimento.</em></h3>
+                    <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title}><SchoolRoundedIcon /><span><small>{item.type}</small><b>{item.title}</b></span></article>)}</div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        </div>
+      )}
+    </div>
   );
 }

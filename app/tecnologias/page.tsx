@@ -1,27 +1,17 @@
 "use client";
 
-import {
-  Container,
-  Typography,
-  Box,
-  Stack,
-  Button,
-  Tabs,
-  Tab,
-  Chip,
-  Card,
-  CardContent,
-  CardActions,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import Image from "next/image";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { useMemo, useState, type ReactNode } from "react";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+import BiotechOutlinedIcon from "@mui/icons-material/BiotechOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useEffect, useState, type ReactNode } from "react";
 import { ViewportVideo } from "../components/ViewportVideo";
-import { PageIntroText } from "../components/PageIntroText";
+import styles from "./tecnologias.module.css";
 
 const WHATSAPP_PHONE = "5548991904131";
 const WHATSAPP_BASE_TEXT = "oii, vim pelo site e gostaria de saber mais e agendar";
@@ -48,44 +38,11 @@ type TechnologyCard = {
 
 function Checklist({ items }: { items: string[] }) {
   return (
-    <Box
-      sx={{
-        mt: 2,
-        p: 2,
-        borderRadius: 2,
-        border: 1,
-        borderColor: "divider",
-        bgcolor: "grey.50",
-      }}
-    >
-      <Stack spacing={0.75}>
-        {items.map((item) => (
-          <Stack key={item} direction="row" spacing={1.5} alignItems="flex-start">
-            <Box
-              sx={{
-                mt: "3px",
-                width: 14,
-                height: 14,
-                borderRadius: "50%",
-                border: 1,
-                borderColor: "primary.main",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 10,
-                color: "primary.main",
-                flexShrink: 0,
-              }}
-            >
-              ✓
-            </Box>
-            <Typography variant="body2" color="text.secondary">
-              {item}
-            </Typography>
-          </Stack>
-        ))}
-      </Stack>
-    </Box>
+    <div className={styles.checklist}>
+      {items.map((item) => (
+        <div key={item}><CheckCircleOutlineIcon /><span>{item}</span></div>
+      ))}
+    </div>
   );
 }
 
@@ -570,263 +527,301 @@ export default function TecnologiasPage() {
     },
   ];
 
-  const tabConfigs = useMemo(
-    () =>
-      [
-        {
-          key: "todas",
-          label: "TODAS TECNOLOGIAS",
-          ids: technologyCards.map((card) => card.id),
-        },
-        {
-          key: "lipedema",
-          label: "LIPEDEMA",
-          ids: [
-            "criolipolise-placas",
-            "ultrassom-estetico",
-            "tecarterapia",
-            "laser-led",
-            "vacuum-led",
-            "bota-pneumatica",
-            "microcorrentes",
-            "terapia-combinada",
-          ],
-        },
-        {
-          key: "reduz-gordura",
-          label: "REDUZ GORDURA",
-          ids: [
-            "criolipolise-placas",
-            "radiofrequencia",
-            "ultrassom-estetico",
-            "vacuum-led",
-            "laser-led",
-          ],
-        },
-        {
-          key: "flacidez",
-          label: "FLACIDEZ",
-          ids: [
-            "criolipolise-placas",
-            "radiofrequencia",
-            "laser-led",
-            "vacuum-led",
-            "microcorrentes",
-            "corrente-russa-aussie",
-          ],
-        },
-        {
-          key: "retencao-constipacao-inflamacao",
-          label: "RETENÇÃO, CONSTIPAÇÃO E INFLAMAÇÃO",
-          ids: [
-            "microcorrentes",
-            "bota-pneumatica",
-            "laser-led",
-            "tecarterapia",
-            "ultrassom-estetico",
-            "massagem-aura",
-            "manta-termica-detox",
-            "terapia-combinada",
-          ],
-        },
-        {
-          key: "detox",
-          label: "DETOX",
-          ids: ["massagem-aura", "microcorrentes", "tecarterapia", "terapia-combinada"],
-        },
-      ] as const,
-    [technologyCards]
-  );
+  const filterConfigs = [
+    { key: "todas", label: "Todas" },
+    { key: "contorno", label: "Contorno & gordura" },
+    { key: "pele", label: "Firmeza & pele" },
+    { key: "circulacao", label: "Circulação & bem-estar" },
+    { key: "lipedema", label: "Lipedema" },
+  ] as const;
 
-  const [activeTab, setActiveTab] = useState<(typeof tabConfigs)[number]["key"]>("todas");
+  const filterGroups: Record<string, string[]> = {
+    contorno: [
+      "criolipolise-placas",
+      "radiofrequencia",
+      "ultrassom-estetico",
+      "vacuum-led",
+      "corrente-russa-aussie",
+      "terapia-combinada",
+    ],
+    pele: [
+      "criolipolise-placas",
+      "radiofrequencia",
+      "radiofrequencia-fracionada",
+      "laser-led",
+      "microcorrentes",
+      "terapia-combinada",
+    ],
+    circulacao: [
+      "tecarterapia",
+      "laser-led",
+      "vacuum-led",
+      "massagem-aura",
+      "manta-termica-detox",
+      "bota-pneumatica",
+      "terapia-combinada",
+    ],
+    lipedema: [
+      "criolipolise-placas",
+      "ultrassom-estetico",
+      "tecarterapia",
+      "laser-led",
+      "vacuum-led",
+      "bota-pneumatica",
+      "microcorrentes",
+      "terapia-combinada",
+    ],
+  };
 
-  const activeTabCardIds = useMemo(() => {
-    const config = tabConfigs.find((tab) => tab.key === activeTab);
-    return new Set(config?.ids ?? []);
-  }, [activeTab, tabConfigs]);
+  const [activeFilter, setActiveFilter] = useState("todas");
+  const [query, setQuery] = useState("");
+  const [selectedTechnology, setSelectedTechnology] = useState<TechnologyCard | null>(null);
 
-  const visibleTechnologyCards = useMemo(
-    () => technologyCards.filter((card) => activeTabCardIds.has(card.id)),
-    [activeTabCardIds, technologyCards]
-  );
+  useEffect(() => {
+    if (!selectedTechnology) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedTechnology(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [selectedTechnology]);
+
+  const visibleTechnologyCards = technologyCards.filter((card) => {
+    const groupIds = activeFilter === "todas" ? null : filterGroups[activeFilter];
+    const normalizedQuery = query.trim().toLocaleLowerCase("pt-BR");
+    const matchesFilter = !groupIds || groupIds.includes(card.id);
+    const matchesQuery =
+      !normalizedQuery ||
+      `${card.title} ${card.description} ${card.chips.join(" ")}`
+        .toLocaleLowerCase("pt-BR")
+        .includes(normalizedQuery);
+    return matchesFilter && matchesQuery;
+  });
 
   return (
-    <Box sx={{ py: { xs: 6, md: 8 } }}>
-      <Container maxWidth="lg">
-        <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
-          tecnologias
-        </Typography>
-        <Typography variant="h4" sx={{ mt: 1 }}>
-          Tecnologias a favor da sua pele
-        </Typography>
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <span className={styles.heroOrbitOne} />
+        <span className={styles.heroOrbitTwo} />
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrowLight}>Ciência aplicada ao cuidado</span>
+          <h1>Tecnologia a favor de resultados mais <em>naturais.</em></h1>
+          <p>
+            Recursos não invasivos escolhidos com critério para potencializar tratamentos,
+            respeitando a pele, o corpo e os objetivos de cada pessoa.
+          </p>
+          <button
+            type="button"
+            className={styles.heroLink}
+            onClick={() => document.getElementById("tecnologias")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Conhecer tecnologias <ArrowForwardIcon />
+          </button>
+        </div>
 
-        <PageIntroText>
-          Aqui você encontra, de forma simples e organizada, as principais tecnologias utilizadas nos tratamentos da
-          UnaEssential. Todas são não invasivas e pensadas para entregar resultados com segurança, conforto e foco em
-          saúde da pele e do corpo.
-        </PageIntroText>
+        <div className={styles.heroVisual} aria-hidden="true">
+          <div className={styles.heroVideo}>
+            <ViewportVideo src="/Reels/teccrio.mp4" objectPosition="50% 50%" />
+          </div>
+          <div className={styles.heroSeal}>
+            <ShieldOutlinedIcon />
+            <b>100%</b>
+            <small>não invasivas</small>
+          </div>
+          <div className={styles.heroNote}>
+            <BiotechOutlinedIcon />
+            <span><small>Protocolos</small><b>personalizados</b></span>
+          </div>
+        </div>
 
-        <Tabs
-          value={activeTab}
-          onChange={(_, value) => setActiveTab(value)}
-          variant="scrollable"
-          scrollButtons="auto"
-          sx={{ mt: 3 }}
-        >
-          {tabConfigs.map((tab) => (
-            <Tab
-              key={tab.key}
-              value={tab.key}
-              label={tab.label}
-              sx={{ fontWeight: 700, letterSpacing: 1, minHeight: 42, textTransform: "none" }}
+        <div className={styles.heroTrust}>
+          <span><b>01</b> Avaliação individual</span>
+          <span><b>02</b> Segurança & conforto</span>
+          <span><b>03</b> Combinações inteligentes</span>
+        </div>
+      </section>
+
+      <section className={styles.explorer} id="tecnologias">
+        <header className={styles.sectionHeader}>
+          <div>
+            <span className={styles.eyebrow}>Conheça os recursos</span>
+            <h2>Entenda o que cada tecnologia <em>faz.</em></h2>
+          </div>
+          <p>
+            Organizamos os equipamentos pelo resultado que ajudam a construir. Assim, você
+            encontra o que procura sem precisar decifrar nomes técnicos.
+          </p>
+        </header>
+
+        <div className={styles.toolbar}>
+          <div className={styles.filters} role="tablist" aria-label="Filtrar tecnologias por objetivo">
+            {filterConfigs.map((filter) => (
+              <button
+                type="button"
+                role="tab"
+                key={filter.key}
+                aria-selected={activeFilter === filter.key}
+                className={activeFilter === filter.key ? styles.filterActive : ""}
+                onClick={() => setActiveFilter(filter.key)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+          <label className={styles.search}>
+            <SearchIcon />
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Buscar tecnologia"
+              aria-label="Buscar tecnologia"
             />
-          ))}
-        </Tabs>
+          </label>
+        </div>
 
-        {/* MENU INTERNO DE ATALHOS */}
-        <Box
-          sx={{
-            mt: 3,
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
-          {visibleTechnologyCards.map((card) => (
-            <Button
-              key={`shortcut-${card.id}`}
-              component="a"
-              href={`#card-${card.id}`}
-              size="small"
-              variant="outlined"
-              color="primary"
-              sx={{ textTransform: "none", fontSize: 13 }}
+        <div className={styles.resultCount}>
+          <span>{String(visibleTechnologyCards.length).padStart(2, "0")}</span>
+          {visibleTechnologyCards.length === 1 ? " tecnologia encontrada" : " tecnologias encontradas"}
+        </div>
+
+        {visibleTechnologyCards.length ? (
+          <div className={styles.technologyGrid}>
+            {visibleTechnologyCards.map((card, index) => (
+              <article className={styles.technologyCard} key={card.id} style={{ animationDelay: `${Math.min(index, 8) * 55}ms` }}>
+                <button
+                  type="button"
+                  className={styles.cardMedia}
+                  onClick={() => setSelectedTechnology(card)}
+                  aria-label={`Ver detalhes de ${card.title}`}
+                >
+                  {card.media.type === "video" ? (
+                    <ViewportVideo
+                      src={card.media.src}
+                      objectPosition={card.id === "manta-termica-detox" ? "50% 80%" : "50% 50%"}
+                    />
+                  ) : (
+                    <Image
+                      src={card.media.src}
+                      alt={card.media.alt ?? card.title}
+                      width={900}
+                      height={680}
+                      style={{ objectPosition: card.id === "bota-pneumatica" ? "50% 70%" : "50% 50%" }}
+                    />
+                  )}
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                </button>
+
+                <div className={styles.cardContent}>
+                  <div className={styles.cardMeta}>
+                    <span>Não invasiva</span>
+                    <span>{card.chips.filter((chip) => chip !== "Não invasivo").join(" · ")}</span>
+                  </div>
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                  <button type="button" className={styles.cardLink} onClick={() => setSelectedTechnology(card)}>
+                    Entender a tecnologia <ArrowForwardIcon />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.emptyState}>
+            <SearchIcon />
+            <h3>Nenhuma tecnologia encontrada</h3>
+            <p>Tente outro termo ou volte para a visualização completa.</p>
+            <button type="button" onClick={() => { setQuery(""); setActiveFilter("todas"); }}>Limpar busca</button>
+          </div>
+        )}
+      </section>
+
+      <section className={styles.methodSection}>
+        <div className={styles.methodVisual}>
+          <Image
+            src="/image/tecnologias/ultrassom.jpg"
+            alt="Tecnologia estética aplicada em protocolo personalizado"
+            fill
+            sizes="(max-width: 760px) 100vw, 45vw"
+          />
+          <span><BiotechOutlinedIcon /> UnaEssential</span>
+        </div>
+        <div className={styles.methodCopy}>
+          <span className={styles.eyebrowLight}>Nossa forma de cuidar</span>
+          <h2>A tecnologia não escolhe o protocolo. A <em>avaliação escolhe.</em></h2>
+          <p>
+            Cada recurso pode atuar de formas diferentes conforme a região, o tecido e o momento do seu corpo.
+            Por isso, combinamos conhecimento técnico, escuta e acompanhamento para indicar apenas o que faz sentido.
+          </p>
+          <div className={styles.methodPoints}>
+            <div><b>01</b><span><strong>Entender</strong><small>necessidades e objetivos</small></span></div>
+            <div><b>02</b><span><strong>Personalizar</strong><small>tecnologias e intensidade</small></span></div>
+            <div><b>03</b><span><strong>Acompanhar</strong><small>evolução e respostas</small></span></div>
+          </div>
+          <a href={buildWhatsAppUrl("uma avaliação personalizada")} target="_blank" rel="noopener noreferrer">
+            Agendar uma avaliação <ArrowForwardIcon />
+          </a>
+        </div>
+      </section>
+
+      {selectedTechnology ? (
+        <div className={styles.modalBackdrop} role="presentation" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setSelectedTechnology(null);
+        }}>
+          <section className={styles.technologyModal} role="dialog" aria-modal="true" aria-labelledby="technology-modal-title">
+            <button
+              type="button"
+              className={styles.modalClose}
+              onClick={() => setSelectedTechnology(null)}
+              aria-label="Fechar detalhes"
             >
-              {card.title}
-            </Button>
-          ))}
-        </Box>
-
-        <Box
-          sx={{
-            mt: 4,
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "repeat(3, minmax(0, 1fr))" },
-            gap: 3,
-          }}
-        >
-          {visibleTechnologyCards.map((card) => (
-            <Card
-              key={card.id}
-              id={`card-${card.id}`}
-              sx={{
-                borderRadius: 3,
-                border: "1px solid rgba(95, 115, 80, 0.16)",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden",
-                scrollMarginTop: { xs: 96, md: 112 },
-                bgcolor: "rgba(255, 255, 255, 0.94)",
-                boxShadow: "0 16px 42px rgba(53, 62, 45, 0.08)",
-                transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 22px 54px rgba(53, 62, 45, 0.14)",
-                  borderColor: "rgba(95, 115, 80, 0.32)",
-                },
-              }}
-            >
-              <Box sx={{ width: "100%", height: { xs: 240, md: 248 }, bgcolor: "background.paper" }}>
-                {card.media.type === "video" ? (
-                  <ViewportVideo
-                    src={card.media.src}
-                    objectPosition={card.id === "manta-termica-detox" ? "50% 80%" : "50% 50%"}
-                  />
-                ) : (
-                  <Image
-                    src={card.media.src}
-                    alt={card.media.alt ?? ""}
-                    width={800}
-                    height={600}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: card.id === "bota-pneumatica" ? "50% 70%" : "50% 50%",
-                      display: "block",
-                    }}
-                  />
-                )}
-              </Box>
-
-              <CardContent sx={{ flex: 1, px: 2.5, pt: 2.5, pb: 2 }}>
-                <Typography
-                  variant="h6"
-                  sx={{ fontSize: "1.28rem", lineHeight: 1.25, color: "#263020", letterSpacing: "-0.01em" }}
-                >
-                  {card.title}
-                </Typography>
-
-                {card.chips?.length ? (
-                  <Box sx={{ mt: 1.25, display: "flex", flexWrap: "wrap", gap: 1 }}>
-                    {card.chips.map((label) => (
-                      <Chip
-                        key={`${card.id}-${label}`}
-                        label={label}
-                        size="small"
-                        variant="filled"
-                        sx={{
-                          bgcolor: "rgba(95, 115, 80, 0.10)",
-                          color: "#4d6041",
-                          fontWeight: 600,
-                          border: "1px solid rgba(95, 115, 80, 0.12)",
-                        }}
-                      />
-                    ))}
-                  </Box>
-                ) : null}
-
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5, lineHeight: 1.7 }}>
-                  {card.description}
-                </Typography>
-
-                <Accordion
-                  elevation={0}
-                  disableGutters
-                  sx={{
-                    mt: 2.25,
-                    border: "1px solid rgba(95, 115, 80, 0.14)",
-                    borderRadius: "14px !important",
-                    bgcolor: "rgba(252, 247, 239, 0.7)",
-                    "&::before": { display: "none" },
-                  }}
-                >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="subtitle2">Saiba mais</Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>{card.more}</AccordionDetails>
-                </Accordion>
-              </CardContent>
-
-              <CardActions sx={{ px: 2.5, pb: 2.5, pt: 0, width: "100%" }}>
-                <Button
-                  component="a"
-                  href={buildWhatsAppUrl(card.title)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  startIcon={<WhatsAppIcon fontSize="small" />}
-                  sx={{ textTransform: "none", borderRadius: 999, py: 1.15, fontWeight: 700 }}
-                >
-                  Agendar
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
-        </Box>
-      </Container>
-    </Box>
+              <CloseIcon />
+            </button>
+            <div className={styles.modalMedia}>
+              {selectedTechnology.media.type === "video" ? (
+                <ViewportVideo
+                  src={selectedTechnology.media.src}
+                  objectPosition={selectedTechnology.id === "manta-termica-detox" ? "50% 80%" : "50% 50%"}
+                />
+              ) : (
+                <Image
+                  src={selectedTechnology.media.src}
+                  alt={selectedTechnology.media.alt ?? selectedTechnology.title}
+                  width={900}
+                  height={1100}
+                  style={{ objectPosition: selectedTechnology.id === "bota-pneumatica" ? "50% 70%" : "50% 50%" }}
+                />
+              )}
+              <span>Não invasiva</span>
+            </div>
+            <div className={styles.modalDetails}>
+              <div className={styles.modalHeading}>
+                <span className={styles.modalEyebrow}>Tecnologia UnaEssential</span>
+                <h2 id="technology-modal-title">{selectedTechnology.title}</h2>
+                <div className={styles.modalTags}>
+                  {selectedTechnology.chips.map((chip) => <span key={chip}>{chip}</span>)}
+                </div>
+              </div>
+              <div className={styles.modalBody}>
+                <p className={styles.modalLead}>{selectedTechnology.description}</p>
+                <div className={styles.richContent}>{selectedTechnology.more}</div>
+              </div>
+              <a
+                href={buildWhatsAppUrl(selectedTechnology.title)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.modalCta}
+              >
+                <WhatsAppIcon /> Conversar sobre esta tecnologia
+              </a>
+            </div>
+          </section>
+        </div>
+      ) : null}
+    </main>
   );
 }
