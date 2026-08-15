@@ -294,7 +294,7 @@ export default function ResultadosPage() {
           </header>
 
           <div className={styles.testimonialLayout}>
-            <article className={`${styles.featuredTestimonial} ${styles.reveal}`} data-results-reveal key={feedback.id} aria-live="polite">
+            <article className={`${styles.featuredTestimonial} ${styles.reveal}`} data-results-reveal aria-live="polite" aria-atomic="true">
               <FormatQuoteRoundedIcon className={styles.quoteIcon} />
               <div className={styles.stars} aria-label={`${feedback.rating} de 5 estrelas`}>
                 {Array.from({ length: feedback.rating }).map((_, index) => <StarRoundedIcon key={index} />)}
