@@ -10,7 +10,7 @@ import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import styles from "./profissionais.module.css";
 
-type ProfileTab = "sobre" | "trajetoria" | "formacoes";
+type ProfileTab = "sobre" | "trajetoria" | "formacoes" | "servicos";
 
 type Professional = {
   id: string;
@@ -25,6 +25,7 @@ type Professional = {
   about: string[];
   journey: { title: string; text: string }[];
   education: { title: string; type: string; text?: string }[];
+  services: { name: string; description?: string; featured?: boolean }[];
   detailsLabel: string;
   detailsEyebrow: string;
   detailsTitle: string;
@@ -63,6 +64,16 @@ const professionals: Professional[] = [
       { title: "Harmonização corporal e facial não invasiva", type: "Especialização com Chris Tofoli" },
       { title: "Tecnologias estéticas", type: "Especialização com Aline Canicais" },
     ],
+    services: [
+      { name: "Criolipólise — método exclusivo", description: "Método exclusivo desenvolvido pela profissional para lipedema, gordura localizada e flacidez de pele.", featured: true },
+      { name: "Tratamento para lipedema" },
+      { name: "Tratamento corporal", description: "Protocolos para gordura localizada, flacidez, celulite e outras necessidades corporais." },
+      { name: "Tratamento facial", description: "Cuidados para gordura, flacidez, manchas e outras necessidades da pele." },
+      { name: "Limpeza de pele" },
+      { name: "Massagem relaxante", description: "Pode combinar pedras quentes, ventosas, pistola de liberação miofascial, LED para desinflamar e outros recursos." },
+      { name: "Drenagem linfática para gestantes e lactantes", description: "Atendimento especializado e adaptado às necessidades de cada fase." },
+      { name: "Drenagem linfática pré e pós-operatória", description: "Protocolo especializado com tecnologias associadas para favorecer uma recuperação mais rápida." },
+    ],
     detailsLabel: "Formações",
     detailsEyebrow: "Formação & aperfeiçoamento",
     detailsTitle: "Conhecimento em movimento.",
@@ -100,6 +111,16 @@ const professionals: Professional[] = [
       { title: "Tecnologias Avançadas", type: "Alta performance", text: "Equipamentos de última geração para potencializar tratamentos faciais, corporais e capilares baseados em evidências." },
       { title: "Visagismo e Arquitetura da Imagem", type: "Imagem pessoal", text: "Análise de traços, proporções, personalidade e estilo de vida para construir uma imagem autêntica e harmoniosa." },
     ],
+    services: [
+      { name: "Terapia capilar feminina e masculina" },
+      { name: "Botox" },
+      { name: "Bioestimulador" },
+      { name: "Microagulhamento com ou sem sangria" },
+      { name: "Ozônio" },
+      { name: "Head Spa" },
+      { name: "Subcisão" },
+      { name: "Harmonização corporal e facial com injetáveis" },
+    ],
     detailsLabel: "Especialidades",
     detailsEyebrow: "Tratamentos & especialidades",
     detailsTitle: "Ciência, saúde e beleza em harmonia.",
@@ -136,6 +157,15 @@ const professionals: Professional[] = [
       { title: "ThetaHealing", type: "Técnica integrativa" },
       { title: "Terapia Multifuncional", type: "Formação" },
     ],
+    services: [
+      { name: "Massagens integrativas", description: "Atendimento 100% manual ou combinado com pedras quentes, ventosas, bambu e pantalas." },
+      { name: "Liberação miofascial" },
+      { name: "Liberação muscular sistêmica" },
+      { name: "Head Spa" },
+      { name: "Day Spa" },
+      { name: "Plástica dos pés" },
+      { name: "SPA dos pés" },
+    ],
     detailsLabel: "Formações",
     detailsEyebrow: "Formação & técnicas",
     detailsTitle: "Olhar o todo para cuidar melhor.",
@@ -145,6 +175,11 @@ const professionals: Professional[] = [
   },
 
 ];
+
+const getServiceWhatsappUrl = (professional: Professional, serviceName: string) => {
+  const message = `Oii, vi no site o serviço de ${serviceName} e tenho interesse em agendar com a profissional ${professional.name}.`;
+  return `https://wa.me/5548991904131?text=${encodeURIComponent(message)}`;
+};
 
 export default function ProfissionaisPage() {
   const [selected, setSelected] = useState<Professional | null>(null);
@@ -253,9 +288,9 @@ export default function ProfissionaisPage() {
 
             <div className={styles.modalDetails}>
               <nav className={styles.modalTabs} aria-label="Informações do perfil">
-                {(["sobre", "trajetoria", "formacoes"] as ProfileTab[]).map((tab) => (
+                {(["sobre", "trajetoria", "formacoes", "servicos"] as ProfileTab[]).map((tab) => (
                   <button key={tab} onClick={() => setActiveTab(tab)} className={activeTab === tab ? styles.tabActive : ""} aria-pressed={activeTab === tab}>
-                    {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : selected.detailsLabel}
+                    {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : tab === "formacoes" ? selected.detailsLabel : "Serviços"}
                   </button>
                 ))}
               </nav>
@@ -283,6 +318,27 @@ export default function ProfissionaisPage() {
                     <span className={styles.modalEyebrow}>{selected.detailsEyebrow}</span>
                     <h3>{selected.detailsTitle}</h3>
                     <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title}><SchoolRoundedIcon /><span><small>{item.type}</small><b>{item.title}</b>{item.text ? <p>{item.text}</p> : null}</span></article>)}</div>
+                  </div>
+                )}
+
+                {activeTab === "servicos" && (
+                  <div className={styles.servicesContent}>
+                    <span className={styles.modalEyebrow}>Serviços realizados na clínica</span>
+                    <h3>Escolha seu próximo <em>momento de cuidado.</em></h3>
+                    <div className={styles.servicesList}>
+                      {selected.services.map((service) => (
+                        <article key={service.name} className={service.featured ? styles.serviceFeatured : ""}>
+                          <div>
+                            {service.featured ? <small>Destaque</small> : null}
+                            <h4>{service.name}</h4>
+                            {service.description ? <p>{service.description}</p> : null}
+                          </div>
+                          <a href={getServiceWhatsappUrl(selected, service.name)} target="_blank" rel="noopener noreferrer" aria-label={`Agendar ${service.name} com ${selected.name}`}>
+                            Agendar <WhatsAppIcon />
+                          </a>
+                        </article>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
