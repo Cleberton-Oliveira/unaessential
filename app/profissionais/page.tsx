@@ -166,6 +166,7 @@ const professionals: Professional[] = [
     services: [
       { name: "Massagens integrativas", description: "Atendimento 100% manual ou combinado com pedras quentes, ventosas, bambu e pantalas." },
       { name: "Massagem crânio-facial", description: "Técnica voltada ao relaxamento, à liberação de tensões e ao cuidado sensível da face e do couro cabeludo." },
+      { name: "Drenagem linfática", description: "Técnica manual que estimula o sistema linfático, auxilia na redução de inchaços e favorece uma sensação de leveza e bem-estar." },
       { name: "Liberação miofascial" },
       { name: "Liberação muscular sistêmica" },
       { name: "Head Spa" },
