@@ -107,6 +107,43 @@ const professionals: Professional[] = [
     values: ["Ciência", "Individualidade", "Excelência"],
     whatsappUrl: "https://wa.me/5548991904131?text=Oii%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20e%20agendar%20com%20a%20Andreza%20Saraiva",
   },
+  {
+    id: "luana-finco",
+    name: "Luana Finco",
+    role: "Massoterapeuta & Cabeleireira",
+    subtitle: "Terapias integrativas, bem-estar e cuidado capilar",
+    image: "/image/profissionais/Luana-Finco.jpeg",
+    imagePosition: "center 28%",
+    alt: "Luana Finco, massoterapeuta e cabeleireira da Unaessential",
+    summary: "Massoterapia, experiências de SPA e técnicas integrativas conduzidas com uma visão holística.",
+    experience: "Técnicas integrativas desde 2020 e atuação em massoterapia desde 2021.",
+    about: [
+      "Luana Finco é massoterapeuta, cabeleireira e terapeuta holística. Na Unaessential, realiza protocolos de massagens, Head Spa, Day Spa, plástica dos pés, SPA dos pés e outros cuidados voltados à saúde, à beleza e ao bem-estar.",
+      "Sua atuação combina técnicas manuais e integrativas para compreender cada pessoa de forma ampla, respeitando as necessidades do corpo, da mente e do momento vivido.",
+      "Com uma abordagem acolhedora e individualizada, busca proporcionar leveza, equilíbrio e resultados que façam sentido para cada jornada de cuidado.",
+    ],
+    journey: [
+      { title: "O início nas práticas integrativas", text: "Desde 2020, Luana trabalha com técnicas integrativas e desenvolve uma abordagem orientada pela escuta, pelo equilíbrio e pela visão holística." },
+      { title: "A massoterapia como caminho", text: "Em 2021, aprofundou sua atuação em massoterapia, reunindo diferentes técnicas manuais para aliviar tensões, recuperar movimentos e promover bem-estar." },
+      { title: "Cuidado completo na Unaessential", text: "Hoje, combina massagens, terapias integrativas, experiências de SPA e cuidados capilares em protocolos personalizados, olhando para cada pessoa como um todo." },
+    ],
+    education: [
+      { title: "Massoterapia", type: "Formação profissional" },
+      { title: "Liberação Miofascial", type: "Aperfeiçoamento" },
+      { title: "Ventosaterapia", type: "Técnica integrativa" },
+      { title: "Liberação Muscular Sistêmica", type: "Aperfeiçoamento" },
+      { title: "Terapia Holística", type: "Formação" },
+      { title: "ThetaHealing", type: "Técnica integrativa" },
+      { title: "Terapia Multifuncional", type: "Formação" },
+    ],
+    detailsLabel: "Formações",
+    detailsEyebrow: "Formação & técnicas",
+    detailsTitle: "Olhar o todo para cuidar melhor.",
+    quote: "Acredito que é preciso olhar o todo para alcançar objetivos e construir resultados com saúde, leveza, beleza e bem-estar.",
+    values: ["Saúde", "Leveza", "Bem-estar"],
+    whatsappUrl: "https://wa.me/5548991904131?text=Oii%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20e%20agendar%20com%20a%20Luana%20Finco",
+  },
+
 ];
 
 export default function ProfissionaisPage() {
