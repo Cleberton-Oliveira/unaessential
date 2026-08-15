@@ -24,7 +24,7 @@ type Professional = {
   experience: string;
   about: string[];
   journey: { title: string; text: string }[];
-  education: { title: string; type: string; text?: string }[];
+  education: { title: string; type: string; text?: string; featured?: boolean }[];
   services: { name: string; description?: string; featured?: boolean }[];
   detailsLabel: string;
   detailsEyebrow: string;
@@ -46,9 +46,9 @@ const professionals: Professional[] = [
     summary: "Técnicas manuais, terapias integrativas e tecnologias em atendimentos personalizados.",
     experience: "Mais de 10 anos de experiência em estética, saúde e bem-estar.",
     about: [
-      "Laura une técnicas manuais, terapias integrativas e tecnologias estéticas para criar atendimentos personalizados, com foco em resultados reais, conforto e acolhimento.",
-      "Sua forma de trabalhar parte de uma escuta cuidadosa: cada sessão considera o que o corpo ou o rosto realmente precisa naquele momento e como vem respondendo ao tratamento.",
-      "Na Unaessential, o foco não é a venda a qualquer custo, mas a história, o momento e aquilo que realmente faz sentido para cada pessoa.",
+      "Laura iniciou sua trajetória na Fisioterapia, mas encontrou na Estética e Cosmetologia a possibilidade de unir massagens, tecnologias e cuidado integral. Desde então, construiu uma atuação voltada tanto aos resultados estéticos quanto ao bem-estar físico e emocional.",
+      "A experiência em franquias mostrou a ela que o atendimento precisava ir além de metas e protocolos engessados. Mais tarde, ao acompanhar em domicílio uma cliente com linfedema, passou a estudar profundamente linfedema, lipedema e lipolinfedema, especializando-se e trabalhando em uma clínica dedicada ao tema em Florianópolis.",
+      "A Unaessential nasceu dessa visão: oferecer presença, escuta e protocolos personalizados em um ambiente no qual estética, saúde e acolhimento caminham juntos. Durante sua especialização, Laura também descobriu que tem lipedema, ampliando ainda mais sua compreensão e conexão com cada jornada de cuidado.",
     ],
     journey: [
       { title: "Da fisioterapia à estética", text: "Laura iniciou a faculdade de Fisioterapia, mas, a dois anos da formação, percebeu que seu caminho não estava exatamente na reabilitação. Migrou para Estética e Cosmetologia, área em que encontrou a união entre massagens, bem-estar e tecnologias capazes de cuidar de questões que afetam a autoestima de muitas mulheres, como flacidez e gordura localizada." },
@@ -62,7 +62,12 @@ const professionals: Professional[] = [
       { title: "Criolipólise para pernas e braços", type: "Especialização", text: "Formação específica com aplicações voltadas também ao cuidado de pessoas com lipedema." },
       { title: "Criolipólise para abdômen, costas e mama", type: "Especialização", text: "Aprofundamento em protocolos e particularidades das regiões corporais." },
       { title: "Criolipólise para colo, pescoço, papada, contorno facial e face", type: "Especialização", text: "Formação direcionada às regiões delicadas e ao contorno facial." },
-      { title: "Método próprio de criolipólise", type: "Desenvolvimento profissional", text: "A experiência clínica e os diferentes referenciais estudados deram origem a um método exclusivo desenvolvido por Laura." },
+      { title: "Método próprio de criolipólise", type: "Método exclusivo", text: "A experiência clínica e os diferentes referenciais estudados deram origem a um método exclusivo desenvolvido por Laura.", featured: true },
+      { title: "Método Renata França", type: "Aperfeiçoamento" },
+      { title: "Método Amanda Fernandes", type: "Aperfeiçoamento" },
+      { title: "Lipoescultura gessada", type: "Formação" },
+      { title: "Harmonização corporal e facial não invasiva", type: "Especialização — Chris Tofoli" },
+      { title: "Tecnologias estéticas", type: "Especialização — Aline Canicais" },
     ],
     services: [
       { name: "Criolipólise — método exclusivo", description: "Método exclusivo desenvolvido pela profissional para lipedema, gordura localizada e flacidez de pele.", featured: true },
@@ -317,7 +322,7 @@ export default function ProfissionaisPage() {
                   <div className={styles.educationContent}>
                     <span className={styles.modalEyebrow}>{selected.detailsEyebrow}</span>
                     <h3>{selected.detailsTitle}</h3>
-                    <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title}><SchoolRoundedIcon /><span><small>{item.type}</small><b>{item.title}</b>{item.text ? <p>{item.text}</p> : null}</span></article>)}</div>
+                    <div className={styles.educationList}>{selected.education.map((item) => <article key={item.title} style={item.featured ? { borderColor: "var(--green)", background: "linear-gradient(135deg, var(--sage), #fff)" } : undefined}><SchoolRoundedIcon /><span><small>{item.featured ? "Destaque · " : ""}{item.type}</small><b>{item.title}</b>{item.text ? <p>{item.text}</p> : null}</span></article>)}</div>
                   </div>
                 )}
 
