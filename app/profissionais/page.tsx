@@ -301,6 +301,9 @@ export default function ProfissionaisPage() {
                     {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : tab === "formacoes" ? selected.detailsLabel : "Serviços"}
                   </button>
                 ))}
+                {selected.id === "laura-araujo" ? (
+                  <Link href="/laura-araujo" className={styles.landingTab}>Conhecer melhor a Laura</Link>
+                ) : null}
               </nav>
 
               <div className={styles.tabContent} key={activeTab}>
