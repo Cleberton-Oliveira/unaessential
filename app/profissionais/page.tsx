@@ -261,7 +261,11 @@ export default function ProfissionaisPage() {
                   <h3>{professional.name}</h3>
                   <p>{professional.summary}</p>
                   <div className={styles.cardActions}>
-                    <button onClick={() => openProfile(professional)}>Ver perfil completo <ArrowForwardRoundedIcon /></button>
+                    {professional.id === "laura-araujo" ? (
+                      <Link href="/laura-araujo" className={styles.profileLink}>Conhecer a Laura <ArrowForwardRoundedIcon /></Link>
+                    ) : (
+                      <button onClick={() => openProfile(professional)}>Ver perfil completo <ArrowForwardRoundedIcon /></button>
+                    )}
                     <a href={professional.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Agendar com ${professional.name}`}><WhatsAppIcon /></a>
                   </div>
                 </div>
