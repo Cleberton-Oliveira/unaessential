@@ -302,7 +302,7 @@ export default function ProfissionaisPage() {
                   </button>
                 ))}
                 {selected.id === "laura-araujo" ? (
-                  <Link href="/laura-araujo" className={styles.landingTab}>Conhecer melhor a Laura</Link>
+                  <Link href="/laura-araujo" className={styles.landingTab}>Saiba mais</Link>
                 ) : null}
               </nav>
 
