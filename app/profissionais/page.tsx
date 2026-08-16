@@ -261,11 +261,7 @@ export default function ProfissionaisPage() {
                   <h3>{professional.name}</h3>
                   <p>{professional.summary}</p>
                   <div className={styles.cardActions}>
-                    {professional.id === "laura-araujo" ? (
-                      <Link href="/laura-araujo" className={styles.profileLink}>Conhecer a Laura <ArrowForwardRoundedIcon /></Link>
-                    ) : (
-                      <button onClick={() => openProfile(professional)}>Ver perfil completo <ArrowForwardRoundedIcon /></button>
-                    )}
+                    <button onClick={() => openProfile(professional)}>Ver perfil completo <ArrowForwardRoundedIcon /></button>
                     <a href={professional.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Agendar com ${professional.name}`}><WhatsAppIcon /></a>
                   </div>
                 </div>
@@ -305,6 +301,9 @@ export default function ProfissionaisPage() {
                     {tab === "sobre" ? "Sobre" : tab === "trajetoria" ? "Trajetória" : tab === "formacoes" ? selected.detailsLabel : "Serviços"}
                   </button>
                 ))}
+                {selected.id === "laura-araujo" ? (
+                  <Link href="/laura-araujo" className={styles.landingTab}>Conhecer melhor a Laura</Link>
+                ) : null}
               </nav>
 
               <div className={styles.tabContent} key={activeTab}>

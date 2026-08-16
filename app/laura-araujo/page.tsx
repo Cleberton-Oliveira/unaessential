@@ -19,6 +19,11 @@ export const metadata: Metadata = {
 const WHATSAPP_URL =
   "https://wa.me/5548991904131?text=Oii%2C%20vim%20pela%20p%C3%A1gina%20da%20Laura%20e%20gostaria%20de%20conversar%20sobre%20qual%20tratamento%20faz%20mais%20sentido%20para%20mim";
 
+const getServiceWhatsappUrl = (serviceName: string) => {
+  const message = `Oii, vim pela página da Laura e tenho interesse no tratamento: ${serviceName}. Gostaria de entender melhor se ele faz sentido para o meu objetivo.`;
+  return `https://wa.me/5548991904131?text=${encodeURIComponent(message)}`;
+};
+
 const services = [
   {
     number: "01",
@@ -147,7 +152,7 @@ export default function LauraAraujoPage() {
             <h2>Da estética integrativa a um cuidado com identidade própria.</h2>
             <div className={styles.timeline}>
               <article><span>01</span><div><h3>Da Fisioterapia à Estética</h3><p>Laura iniciou sua trajetória na Fisioterapia, mas encontrou na Estética e Cosmetologia a possibilidade de unir massagens, tecnologias, autoestima e bem-estar.</p></div></article>
-              <article><span>02</span><div><h3>Especialização e propósito</h3><p>Ao acompanhar uma cliente com linfedema, aprofundou seus estudos em linfedema, lipedema e lipolinfedema. Mais tarde, trabalhou em uma clínica dedicada ao tema em Florianópolis e descobriu que ela mesma também tem lipedema.</p></div></article>
+              <article><span>02</span><div><h3>Especialização e propósito</h3><p>Ao acompanhar uma cliente com linfedema, desejou aprofundar seus estudos para ajudar e agregar mais resultados em casos de linfedema, lipedema e lipolinfedema. Iniciou sua trajetória e especialização na área pelo desejo de ajudar outras mulheres que sofriam com a doença e, nesse processo, percebeu e descobriu que também tem lipedema. A condição possui diferentes tipos e graus e, muitas vezes, é associada apenas aos casos mais avançados — embora muitas mulheres convivam com ela sem saber. Hoje, Laura busca entregar resultados para dor, inchaço e estética no menor número de sessões possível.</p></div></article>
               <article><span>03</span><div><h3>Nasce a UnaEssential</h3><p>A clínica nasceu para reunir técnica, personalização e acolhimento em um espaço no qual estética e saúde caminham juntas.</p></div></article>
             </div>
           </div>
@@ -165,7 +170,7 @@ export default function LauraAraujoPage() {
                 {service.featured ? <small>Destaque</small> : null}
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a href={`${WHATSAPP_URL}%20Tenho%20interesse%20em%20${encodeURIComponent(service.title)}`} target="_blank" rel="noopener noreferrer">Quero entender melhor <ArrowForwardRoundedIcon /></a>
+                <a href={getServiceWhatsappUrl(service.title)} target="_blank" rel="noopener noreferrer">Quero entender melhor <ArrowForwardRoundedIcon /></a>
               </article>
             ))}
           </div>
