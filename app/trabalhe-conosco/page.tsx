@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
@@ -32,26 +33,26 @@ const plans = [
     eyebrow: "Estrutura",
     title: "Espaço Essencial",
     description: "Para quem já possui sua própria clientela e procura um ambiente profissional, pronto e acolhedor para atender.",
-    price: "A partir de R$ 50",
-    priceDetail: "por hora",
+    price: "R$ 55",
+    priceDetail: "por hora, em qualquer sala",
     items: [
-      "Sala tradicional: R$ 50 por hora",
-      "Sala com lavatório: R$ 55 por hora",
-      "Meio período de 4 horas a partir de R$ 180",
-      "Diária de 8 horas a partir de R$ 320",
-      "Pacotes mensais para horários recorrentes",
+      "Mesmo valor para qualquer uma das salas",
+      "Meio período avulso de 4 horas: R$ 200",
+      "Diária avulsa de 8 horas: R$ 380",
+      "4 horas fixas por semana: R$ 800 por mês",
+      "8 horas fixas por semana: R$ 1.500 por mês",
     ],
-    note: "A profissional cuida da própria agenda, clientela e dos materiais específicos de seus procedimentos.",
+    note: "No pacote mensal de 8 horas semanais, cada diária equivale a aproximadamente R$ 346 pela média anual. A profissional cuida da própria agenda, clientela e materiais.",
   },
   {
     eyebrow: "Flexibilidade",
     title: "Modelo Flexível",
     description: "Uma forma leve de começar, pagando de acordo com os atendimentos realizados, sem assumir um pacote fixo logo no início.",
-    price: "25% por atendimento",
+    price: "30% por atendimento",
     priceDetail: "mínimo de R$ 45",
     items: [
       "Indicado para clientes trazidos pela profissional",
-      "Mínimo referente a atendimentos de até 90 minutos",
+      "Repasse mínimo de R$ 45 para atendimentos de até 60 minutos",
       "Uso da estrutura compartilhada da clínica",
       "Sem mensalidade fixa de sala",
       "Possibilidade de migrar para um pacote recorrente",
@@ -66,9 +67,9 @@ const plans = [
     price: "Divisão por origem",
     priceDetail: "modelo personalizado",
     items: [
-      "Cliente da profissional: 20% a 25% para a clínica",
-      "Cliente captada pela UnaEssential: 45% para a clínica",
-      "Divisão de 50% quando a clínica assume também materiais, taxas e mídia paga",
+      "Cliente da profissional: 30% para a clínica, respeitando o mínimo de R$ 45",
+      "Cliente captada pela UnaEssential: 60% para a clínica e 40% para a profissional",
+      "Nos 60% estão incluídos captação, materiais do procedimento e taxas de cartão",
       "Apoio da secretaria no contato e agendamento",
       "Possibilidade de conteúdo e divulgação profissional",
     ],
@@ -96,10 +97,13 @@ export default function TrabalheConoscoPage() {
           </a>
         </div>
         <aside className={styles.heroCard}>
-          <span>Um ambiente para</span>
-          <strong>receber bem,<br />cuidar melhor.</strong>
-          <p>Duas salas versáteis em uma clínica de estética, saúde integrativa e bem-estar em Florianópolis.</p>
-          <div><GroupsRoundedIcon /> Parcerias com identidade e autonomia</div>
+          <Image src="/image/banners/avaliacao.jpg" alt="Atendimento acolhedor na recepção da UnaEssential" fill priority sizes="(max-width: 700px) 90vw, 34vw" />
+          <div className={styles.heroCardOverlay}>
+            <span>Um ambiente para</span>
+            <strong>receber bem,<br />cuidar melhor.</strong>
+            <p>Duas salas versáteis em uma clínica de estética, saúde integrativa e bem-estar em Florianópolis.</p>
+            <div><GroupsRoundedIcon /> Parcerias com identidade e autonomia</div>
+          </div>
         </aside>
       </section>
 
@@ -112,6 +116,16 @@ export default function TrabalheConoscoPage() {
             </div>
             <p>Você encontra uma estrutura pronta para trabalhar, com liberdade para desenvolver seus atendimentos e uma experiência cuidadosa desde a recepção.</p>
           </header>
+          <div className={styles.environmentShowcase}>
+            <div className={styles.environmentPhoto}>
+              <Image src="/image/banners/recepcao.jpg" alt="Recepção da clínica UnaEssential" fill sizes="(max-width: 700px) 100vw, 44vw" />
+            </div>
+            <div className={styles.environmentMessage}>
+              <span>Um lugar com identidade</span>
+              <h3>Um ambiente profissional sem deixar de ser <em>humano e acolhedor.</em></h3>
+              <p>A experiência começa antes do atendimento. O espaço foi pensado para que profissionais e clientes se sintam confortáveis, cuidadas e bem recebidas.</p>
+            </div>
+          </div>
           <div className={styles.includedGrid}>
             {includedItems.map(({ icon: Icon, title, text }) => (
               <article key={title}>
@@ -160,7 +174,7 @@ export default function TrabalheConoscoPage() {
           </div>
           <div className={styles.detailsList}>
             <p><span>01</span> Agenda, períodos e sala são definidos conforme disponibilidade.</p>
-            <p><span>02</span> Materiais, lavanderia específica e taxas são combinados de acordo com cada serviço.</p>
+            <p><span>02</span> No modelo de captação pela clínica, materiais do procedimento e taxas de cartão já estão contemplados no percentual.</p>
             <p><span>03</span> Clientes próprias e clientes captadas pela clínica têm condições diferentes.</p>
             <p><span>04</span> A parceria começa com um período de adaptação e pode evoluir junto com a agenda.</p>
           </div>
