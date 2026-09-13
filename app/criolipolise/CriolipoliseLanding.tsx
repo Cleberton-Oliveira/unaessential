@@ -16,6 +16,7 @@ import SpaRoundedIcon from "@mui/icons-material/SpaRounded";
 import VerifiedRoundedIcon from "@mui/icons-material/VerifiedRounded";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import styles from "./criolipolise.module.css";
+import { criolipoliseFaqs } from "./faq";
 
 type TreatmentKey = "lipedema" | "gordura" | "flacidez";
 
@@ -163,6 +164,7 @@ export function CriolipoliseLanding() {
   const [openBenefit, setOpenBenefit] = useState(0);
   const [resultIndex, setResultIndex] = useState(0);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState(0);
   const treatment = useMemo(() => treatments.find((item) => item.key === selected)!, [selected]);
   const results = [
     { src: "/image/resultados/Criopos25.jpg", alt: "Antes e depois de uma sessão de criolipólise de placas após 25 dias" },
@@ -304,6 +306,40 @@ export function CriolipoliseLanding() {
           ))}
         </div>
         <p className={styles.protocolNote}>* A descrição dos protocolos é inicial e deve ser validada pela equipe responsável antes da divulgação comercial.</p>
+      </section>
+
+      <section className={styles.faq} id="perguntas-criolipolise">
+        <div className={styles.faqIntro}>
+          <span className={styles.eyebrow}>Perguntas frequentes</span>
+          <h2>Antes de decidir,<br /><em>entenda cada detalhe.</em></h2>
+          <p>Reunimos as dúvidas mais comuns sobre sensações, resultados, segurança, criolipólise de placas e cuidados para pessoas com lipedema.</p>
+          <a href={buildWhatsAppUrl("criolipólise")} target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+            Ainda tenho uma dúvida <WhatsAppIcon />
+          </a>
+        </div>
+        <div className={styles.faqList}>
+          {criolipoliseFaqs.map((item, index) => {
+            const open = openFaq === index;
+            const answerId = `resposta-criolipolise-${index}`;
+            return (
+              <article key={item.question} className={`${styles.faqItem} ${open ? styles.faqOpen : ""}`}>
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(open ? -1 : index)}
+                  aria-expanded={open}
+                  aria-controls={answerId}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{item.question}</strong>
+                  <span className={styles.faqToggle}>{open ? <CloseRoundedIcon /> : <AddRoundedIcon />}</span>
+                </button>
+                <div id={answerId} className={styles.faqAnswer} aria-hidden={!open}>
+                  <p>{item.answer}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       <section className={styles.finalCta}>
