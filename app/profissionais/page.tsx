@@ -268,6 +268,11 @@ export default function ProfissionaisPage() {
               </article>
             ))}
           </div>
+
+          <div className={styles.workWithUs}>
+            <span>Você é profissional da área?</span>
+            <Link href="/trabalhe-conosco">Conheça as formas de atuar conosco <ArrowForwardRoundedIcon /></Link>
+          </div>
         </section>
 
         <section className={styles.compactCta}>
