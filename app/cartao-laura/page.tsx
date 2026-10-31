@@ -1,54 +1,47 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import AcUnitRoundedIcon from "@mui/icons-material/AcUnitRounded";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
-import DownloadRoundedIcon from "@mui/icons-material/DownloadRounded";
-import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import MedicalServicesOutlinedIcon from "@mui/icons-material/MedicalServicesOutlined";
+import SpaOutlinedIcon from "@mui/icons-material/SpaOutlined";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import WavesRoundedIcon from "@mui/icons-material/WavesRounded";
 import { ShareCardButton } from "./ShareCardButton";
 import styles from "./cartao-laura.module.css";
 
 export const metadata: Metadata = {
-  title: "Laura Araújo | Encaminhamentos e parcerias | Unaessential",
+  title: "Laura Araújo | Cartão virtual | Unaessential",
   description:
-    "Cartão profissional de Laura Araújo para encaminhamentos e parcerias de cuidado na Unaessential, em Florianópolis.",
+    "Conheça Laura Araújo e os cuidados oferecidos na Unaessential, em Florianópolis. Drenagem linfática, protocolos para lipedema, criolipólise e ondas de choque.",
 };
 
 const WHATSAPP_URL = `https://wa.me/5548991904131?text=${encodeURIComponent(
-  "Olá! Conheci o trabalho da Laura pelo cartão profissional e gostaria de conversar sobre o encaminhamento de uma paciente ou uma parceria de cuidado.",
+  "Olá! Recebi o cartão virtual da Laura Araújo e gostaria de saber mais sobre os serviços oferecidos na Unaessential.",
 )}`;
 const INSTAGRAM_URL = "https://www.instagram.com/unaessential";
 const MAPS_URL =
   "https://www.google.com/maps/place/Est%C3%A9tica,+Sa%C3%BAde+Integrativa+%26+SPA+-+UnaEssential/data=!4m2!3m1!1s0x0:0x39aa12bac372b03f?sa=X&ved=1t:2428&ictx=111";
 
-const referralSteps = [
+const protocols = [
   {
-    number: "01",
-    title: "Contato e contexto",
-    text: "O profissional, a paciente ou um familiar entra em contato e compartilha o objetivo do encaminhamento.",
+    icon: <WavesRoundedIcon />,
+    title: "Drenagem linfática com tecnologias",
+    text: "Atendimento personalizado que combina drenagem linfática e recursos tecnológicos para auxiliar na redução do inchaço, favorecer a circulação e aliviar desconfortos como peso e sensibilidade corporal.",
   },
   {
-    number: "02",
-    title: "Avaliação individual",
-    text: "Laura avalia as necessidades dentro da sua área de atuação e constrói uma proposta de cuidado personalizada.",
+    icon: <SpaOutlinedIcon />,
+    title: "Cuidados especializados para lipedema",
+    text: "Protocolos construídos de acordo com as necessidades e sintomas de cada pessoa, com foco em conforto, bem-estar e acompanhamento individualizado.",
+    featured: true,
   },
   {
-    number: "03",
-    title: "Cuidado integrado",
-    text: "Quando necessário e autorizado pela paciente, o acompanhamento pode ser alinhado ao profissional responsável.",
+    icon: <AcUnitRoundedIcon />,
+    title: "Criolipólise e ondas de choque",
+    text: "Combinações especializadas para diferentes regiões corporais, indicadas após avaliação individual e planejadas conforme cada objetivo e condição clínica.",
   },
-];
-
-const specialties = [
-  "Acompanhamento complementar para lipedema",
-  "Drenagem linfática e recursos não invasivos",
-  "Cuidados corporais e tecnologias estéticas",
-  "Acompanhamento pré e pós-operatório",
 ];
 
 export default function CartaoLauraPage() {
@@ -73,72 +66,56 @@ export default function CartaoLauraPage() {
         </div>
 
         <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>Cartão profissional</span>
+          <span className={styles.eyebrow}>Cartão virtual</span>
           <h1>Laura Araújo</h1>
-          <p className={styles.role}>Esteticista e Cosmetóloga · Especialista em Lipedema</p>
+          <p className={styles.role}>Esteticista e Cosmetóloga · Atuação especializada em lipedema</p>
           <p className={styles.intro}>
-            Proprietária da Unaessential Estética e Saúde Integrativa. Uma atuação voltada ao cuidado individualizado, à escuta e à integração responsável com outros profissionais.
+            Proprietária da Unaessential Estética e Saúde Integrativa. Um cuidado que combina escuta, conhecimento técnico, tecnologias e protocolos personalizados para promover conforto, bem-estar e resultados possíveis para cada pessoa.
           </p>
 
           <div className={styles.primaryActions}>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>
-              <WhatsAppIcon /> Encaminhar uma paciente
+              <WhatsAppIcon /> Falar com a clínica
             </a>
             <ShareCardButton />
           </div>
 
-          <div className={styles.quickLinks} aria-label="Contatos profissionais">
+          <div className={styles.quickLinks} aria-label="Contatos da Unaessential">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               <InstagramIcon /> <span><small>Instagram</small><b>@unaessential</b></span>
             </a>
             <Link href="/laura-araujo">
-              <LanguageRoundedIcon /> <span><small>Site profissional</small><b>Conhecer a Laura</b></span>
+              <LanguageRoundedIcon /> <span><small>Site</small><b>Conhecer a Laura</b></span>
             </Link>
             <a href={MAPS_URL} target="_blank" rel="noopener noreferrer">
               <LocationOnRoundedIcon /> <span><small>Localização</small><b>Centro · Florianópolis</b></span>
-            </a>
-            <a href="/contatos/laura-araujo.vcf" download>
-              <DownloadRoundedIcon /> <span><small>Contato</small><b>Salvar na agenda</b></span>
             </a>
           </div>
         </div>
       </section>
 
       <main>
-        <section className={styles.partnershipSection}>
-          <div className={styles.partnershipIntro}>
-            <span className={styles.eyebrow}>Para profissionais da saúde</span>
-            <h2>Uma parceria construída com respeito a cada área de atuação.</h2>
-            <p>
-              O acompanhamento na Unaessential é complementar e não substitui diagnóstico, tratamento ou seguimento médico. A proposta é acolher a paciente, respeitar as orientações recebidas e contribuir com cuidados estéticos e de bem-estar compatíveis com cada caso.
-            </p>
-          </div>
-
-          <div className={styles.specialtyCard}>
-            <MedicalServicesOutlinedIcon className={styles.cardIcon} />
-            <span>Principais possibilidades</span>
-            <ul>
-              {specialties.map((specialty) => <li key={specialty}>{specialty}</li>)}
-            </ul>
-            <Link href="/laura-araujo" className={styles.inlineLink}>
-              Ver trajetória e formações <ArrowForwardRoundedIcon />
-            </Link>
-          </div>
-        </section>
-
-        <section className={styles.referralSection}>
+        <section className={styles.protocolSection}>
           <header>
-            <span className={styles.eyebrow}>Como funciona o encaminhamento</span>
-            <h2>Um caminho simples, próximo e individualizado.</h2>
+            <span className={styles.eyebrow}>Principais cuidados</span>
+            <h2>Protocolos pensados para o seu corpo e para o seu momento.</h2>
+            <p>Todos os atendimentos são definidos após uma conversa e avaliação individual, respeitando necessidades, sensibilidades e orientações médicas.</p>
           </header>
-          <div className={styles.stepGrid}>
-            {referralSteps.map((step) => (
-              <article key={step.number}>
-                <span>{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
+
+          <div className={styles.protocolGrid}>
+            {protocols.map((protocol) => (
+              <article key={protocol.title} className={protocol.featured ? styles.protocolFeatured : undefined}>
+                <span className={styles.protocolIcon}>{protocol.icon}</span>
+                {protocol.featured ? <small>Destaque</small> : null}
+                <h3>{protocol.title}</h3>
+                <p>{protocol.text}</p>
               </article>
             ))}
+          </div>
+
+          <div className={styles.moreServices}>
+            <p>A clínica também oferece outros cuidados corporais, faciais, massagens e experiências de SPA.</p>
+            <Link href="/tratamentos">Conhecer todos os serviços <ArrowForwardRoundedIcon /></Link>
           </div>
         </section>
 
@@ -153,7 +130,7 @@ export default function CartaoLauraPage() {
           </div>
           <div className={styles.clinicCopy}>
             <span className={styles.eyebrowLight}>Unaessential · Florianópolis</span>
-            <h2>Um espaço preparado para receber cada encaminhamento com cuidado.</h2>
+            <h2>Um espaço preparado para receber você com calma e cuidado.</h2>
             <div className={styles.address}>
               <LocationOnRoundedIcon />
               <address>
@@ -169,16 +146,14 @@ export default function CartaoLauraPage() {
         </section>
 
         <section className={styles.finalCta}>
-          <div className={styles.finalIcon}><HandshakeOutlinedIcon /></div>
           <div>
             <span className={styles.eyebrow}>Vamos conversar?</span>
-            <h2>Encaminhamentos começam por uma boa troca.</h2>
-            <p>Entre em contato para apresentar um caso, tirar dúvidas sobre a atuação da Laura ou iniciar uma parceria profissional.</p>
+            <h2>Quer entender qual cuidado faz sentido para você?</h2>
+            <p>Fale com a equipe da Unaessential, conte o que você deseja cuidar e tire suas dúvidas antes de agendar.</p>
           </div>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>
-            <WhatsAppIcon /> Falar com a Laura
+            <WhatsAppIcon /> Quero mais informações
           </a>
-          <span className={styles.signature}><BadgeOutlinedIcon /> Laura Araújo · Unaessential</span>
         </section>
       </main>
     </div>

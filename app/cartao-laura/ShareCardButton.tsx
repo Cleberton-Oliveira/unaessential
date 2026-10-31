@@ -13,7 +13,7 @@ export function ShareCardButton() {
   const handleShare = async () => {
     const shareData = {
       title: "Laura Araújo | Unaessential",
-      text: "Conheça o trabalho de Laura Araújo e as possibilidades de encaminhamento para a Unaessential.",
+      text: "Conheça Laura Araújo e os cuidados oferecidos na Unaessential.",
       url: CARD_URL,
     };
 
